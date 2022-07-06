@@ -130,14 +130,15 @@
         <database_derbyclient.version>10.15.2.0</database_derbyclient.version>
         <database_h2.version>2.1.210</database_h2.version>
         <database_hsqldb.version>1.8.0.10</database_hsqldb.version>
-        <database_icu4j.version>69.1</database_icu4j.version>
-        <database_jaybird.version>4.0.5.java11</database_jaybird.version>
-        <database_mssqldb.version>9.4.1.jre11</database_mssqldb.version>
-        <database_mysql-connector-java.version>8.0.28</database_mysql-connector-java.version>
-        <database_oracle.version>21.3.0.0</database_oracle.version>
-        <database_postgresql.version>42.3.3</database_postgresql.version>
+        <database_icu4j.version>71.1</database_icu4j.version>
+        <database_jaybird.version>4.0.6.java11</database_jaybird.version>
+        <database_mssqldb.version>11.1.2.jre11-preview</database_mssqldb.version>
+        <database_mysql-connector-java.version>8.0.29</database_mysql-connector-java.version>
+        <database_oracle.version>21.6.0.0.1</database_oracle.version>
+        <database_postgresql.version>42.4.0</database_postgresql.version>
         <database_mariadb-java-client.version>3.0.4</database_mariadb-java-client.version>
-        <dependency_antlr-runtime.version>3.5.2</dependency_antlr-runtime.version>
+        <mongodb.version>3.12.10</mongodb.version>
+        <dependency_antlr-runtime.version>3.5.3</dependency_antlr-runtime.version>
         <dependency_connector-api.version>1.5</dependency_connector-api.version>
         <dependency_validation-api.version>2.0.1.Final</dependency_validation-api.version>
         <dependency_xml-apis.version>2.0.2</dependency_xml-apis.version>
@@ -145,7 +146,7 @@
         <dependency_log4j.version>2.17.2</dependency_log4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <scriptengine_freemarker.version>2.3.31</scriptengine_freemarker.version>
-        <scriptengine_graalvm.version>21.3.0</scriptengine_graalvm.version>
+        <scriptengine_graalvm.version>22.1.0</scriptengine_graalvm.version>
         <test_junit.version>4.13.2</test_junit.version>
     </properties>
 
@@ -199,6 +200,12 @@
             <version>${database_hsqldb.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>${mongodb.version}</version>
+        </dependency>
+
 
         <!-- rapiddweller dependencies -->
         <dependency>
@@ -242,7 +249,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>4.4.0</version>
+            <version>4.6.1</version>
             <scope>test</scope>
         </dependency>
         <!--  ANTLR (ANother Tool for Language Recognition) is a powerful parser generator for reading, processing,
@@ -392,7 +399,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version>
+                <version>0.8.8</version>
                 <executions>
                     <execution>
                         <id>before-unit-test-execution</id>
@@ -481,7 +488,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M6</version>
+                <version>3.0.0-M7</version>
                 <configuration>
                     <skipTests>${skipUTs}</skipTests>
                     <useSystemClassLoader>false</useSystemClassLoader>
@@ -494,7 +501,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M6</version>
+                <version>3.0.0-M7</version>
                 <configuration>
                     <includes>
                         <include>**/*ShopDemoIntegrationExtDBTest.class</include>
@@ -547,7 +554,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.3.2</version>
+                <version>3.4.0</version>
                 <configuration>
                     <doclint>none</doclint>
                     <source>${maven.compiler.source}</source>
@@ -564,7 +571,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.12.0</version>
                 <executions>
                     <execution>
                         <id>create-site</id>
@@ -589,7 +596,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.10.0</version>
+                <version>2.11.0</version>
             </plugin>
 
             <plugin>
@@ -621,7 +628,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>3.0.0-M6</version>
+                <version>3.0.0-M7</version>
                 <reportSets>
                     <reportSet>
                         <!-- defines aggregate unit test report -->
@@ -659,7 +666,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version>
+                <version>0.8.8</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -738,7 +745,7 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.12</version>
+                        <version>1.6.13</version>
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>ossrh</serverId>
