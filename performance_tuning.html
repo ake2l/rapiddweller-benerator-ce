@@ -1,0 +1,1405 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This document is supposed to become a complete summary of everything you need to know of Benerator usage, use it efficiently and extend it as you need. This reference is under construction and will update from time to time. Feel free to contribute your ideas in our repo at https://github.com/rapiddweller/rapiddweller-benerator-ce/.">
+      
+      
+        <meta name="author" content="rapiddweller GmbH & Volker Bergmann">
+      
+      
+        <link rel="canonical" href="https://docs.benerator.de/performance_tuning.html">
+      
+      <link rel="icon" href="assets/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Benerator Performance Tuning - rapiddweller Benerator</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/termynal.css">
+    
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="rapiddweller" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#benerator-performance-tuning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="rapiddweller Benerator" class="md-header__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            rapiddweller Benerator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Benerator Performance Tuning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="rapiddweller Benerator" class="md-nav__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    rapiddweller Benerator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction_to_benerator.html" class="md-nav__link">
+        Goals and Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="the_benerator_project_wizard.html" class="md-nav__link">
+        The Benerator Project Wizard
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quick_tour_through_the_descriptor_file_format.html" class="md-nav__link">
+        Quick tour through the descriptor file format
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_generation_concepts.html" class="md-nav__link">
+        Data Generation Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_anonymization_concepts.html" class="md-nav__link">
+        Data Anonymization Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="regular_expression_support.html" class="md-nav__link">
+        Regular Expression Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_file_processing.html" class="md-nav__link">
+        CSV File Generation/Anonymization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xml_file_processing.html" class="md-nav__link">
+        XML File Processing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distribution.html" class="md-nav__link">
+        Distribution Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_relational_databases.html" class="md-nav__link">
+        Using Relational Databases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="message_queue_access.html" class="md-nav__link">
+        Message Queue Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kafka_access.html" class="md-nav__link">
+        Kafka Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="environment_files.html" class="md-nav__link">
+        Environment Files
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced_topics.html" class="md-nav__link">
+        Advanced Topics
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="generating_unique_data.html" class="md-nav__link">
+        Generating Unique Data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scripting.html" class="md-nav__link">
+        Scripting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rapiddwellerscript.html" class="md-nav__link">
+        rapiddwellerScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="command_line_tools.html" class="md-nav__link">
+        Command Line Tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="domains.html" class="md-nav__link">
+        Domains
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="component_reference.html" class="md-nav__link">
+        Component Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_db_sanity.html" class="md-nav__link">
+        Using DB Sanity
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maven_benerator_plugin.html" class="md-nav__link">
+        Maven Benerator Plugin
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extending_benerator.html" class="md-nav__link">
+        Extending Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_benerator_as_load_generator.html" class="md-nav__link">
+        Using Benerator as Load Generator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting.html" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="monitoring_benerator.html" class="md-nav__link">
+        Monitoring Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Benerator Performance Tuning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="performance_tuning.html" class="md-nav__link md-nav__link--active">
+        Benerator Performance Tuning
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-enterprise-edition" class="md-nav__link">
+    Using Enterprise Edition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pagesize-database-and-other-transactional-systems-only" class="md-nav__link">
+    pageSize (database and other transactional systems only)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jdbc-batch-database-only" class="md-nav__link">
+    JDBC batch (database only)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-fetch-size-database-only" class="md-nav__link">
+    Query fetch size (database only)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restrict-logging" class="md-nav__link">
+    Restrict logging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id-generation" class="md-nav__link">
+    Id Generation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-data-generation-database" class="md-nav__link">
+    Relational Data Generation (database)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#java-virtual-machine-jvm-products" class="md-nav__link">
+    Java Virtual Machine (JVM) Products
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtualization-costs" class="md-nav__link">
+    Virtualization Costs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts" class="md-nav__link">
+    Scripts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parsing-oracle-metadata" class="md-nav__link">
+    Parsing (Oracle) metadata
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anonymization-algorithms" class="md-nav__link">
+    Anonymization Algorithms
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benerator-modes" class="md-nav__link">
+    Benerator Modes
+  </a>
+  
+    <nav class="md-nav" aria-label="Benerator Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lenient" class="md-nav__link">
+    lenient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strict" class="md-nav__link">
+    strict
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#turbo" class="md-nav__link">
+    turbo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributed-generation" class="md-nav__link">
+    Distributed Generation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributed-anonymization" class="md-nav__link">
+    Distributed Anonymization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ask-the-experts" class="md-nav__link">
+    Ask the experts
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migrating_benerator_projects.html" class="md-nav__link">
+        Migrating Benerator Projects
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-enterprise-edition" class="md-nav__link">
+    Using Enterprise Edition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pagesize-database-and-other-transactional-systems-only" class="md-nav__link">
+    pageSize (database and other transactional systems only)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jdbc-batch-database-only" class="md-nav__link">
+    JDBC batch (database only)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-fetch-size-database-only" class="md-nav__link">
+    Query fetch size (database only)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restrict-logging" class="md-nav__link">
+    Restrict logging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id-generation" class="md-nav__link">
+    Id Generation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-data-generation-database" class="md-nav__link">
+    Relational Data Generation (database)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#java-virtual-machine-jvm-products" class="md-nav__link">
+    Java Virtual Machine (JVM) Products
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtualization-costs" class="md-nav__link">
+    Virtualization Costs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts" class="md-nav__link">
+    Scripts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parsing-oracle-metadata" class="md-nav__link">
+    Parsing (Oracle) metadata
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anonymization-algorithms" class="md-nav__link">
+    Anonymization Algorithms
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benerator-modes" class="md-nav__link">
+    Benerator Modes
+  </a>
+  
+    <nav class="md-nav" aria-label="Benerator Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lenient" class="md-nav__link">
+    lenient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strict" class="md-nav__link">
+    strict
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#turbo" class="md-nav__link">
+    turbo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributed-generation" class="md-nav__link">
+    Distributed Generation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributed-anonymization" class="md-nav__link">
+    Distributed Anonymization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ask-the-experts" class="md-nav__link">
+    Ask the experts
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="benerator-performance-tuning">Benerator Performance Tuning</h1>
+<h2 id="using-enterprise-edition">Using Enterprise Edition</h2>
+<p>Benerator Enterprise Edition enables you to generate and anonymize data concurrently,
+in multiple threads. More than this, its engine and many specialized data generators 
+had significant performance improvements compared to the Community Edition. 
+See the <a href="command_line_tools.html#benchmark-tool">Benchmark Tool Documentations</a> 
+to get some performance comparisons.</p>
+<h2 id="pagesize-database-and-other-transactional-systems-only">pageSize (database and other transactional systems only)</h2>
+<p>'pageSize' is Benerator's abstraction of a kind of bracket put around a group of data objects, 
+for databases and Kafka usually this bracket is mapped to a transaction. 
+For example a pageSize of 10 for a database means that each group of 10 objects is committed 
+to the database in one transaction. Transactions incur processing overhead, so performance 
+improves if the number of transactions is reduced. This is achieved by using a larger pageSize.</p>
+<p>By default, Benerator uses a defensive pageSize of 1, processing each entity in an own transaction, 
+because this simplifies error diagnosis when working out a generation/anonymization process. 
+But this has a tremendous impact on performance. When configuration is complete, and you need 
+larger performance, use a large pagesize for critical <code>&lt;generate&gt;</code> and <code>&lt;iterate&gt;</code> elements, e.g. 
+<code>&lt;generate type="db_user" count="1000000" consumer="db" pagesize="1000"&gt;</code></p>
+<h2 id="jdbc-batch-database-only">JDBC batch (database only)</h2>
+<p>JDBC batches provide for significantly better database insertion performance than standard operation. In Benerator this is turned off by default, since
+error messages that arise from bad generation setup are much harder to analyze in batch mode. When you are finished with defining data generation and
+need performance for mass data, you can activate batch operation by the batch attribute of the database element:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;database</span> <span class="err">...</span> <span class="na">batch=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+<p>Benerator is optimized for performance. Thus, you may get problems when combining nested <code>&lt;generate&gt;</code> elements with batching. It typically results in
+exceptions that indicate a violation of a foreign-key constraint.</p>
+<h2 id="query-fetch-size-database-only">Query fetch size (database only)</h2>
+<p>If you are querying data with large result sets from your database, e.g. when anonymizing 
+production data, you should tune the database's fetch size.
+It determines how many rows are transmitted from the database to Benerator when accessing 
+the first query result. So it reduces the number of network roundtrips. 
+Benerator uses a fetch size of 100 by default which should be useful in most cases.</p>
+<p>You can experiment with higher values, e.g. 1000 by configuring the <strong>fetchSize and batch</strong> 
+attributes of the database element:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;database</span> <span class="err">...</span> <span class="na">fetchSize=</span><span class="s">&quot;1000&quot;</span> <span class="na">batch=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+<p>This is especially useful if the database is accessed over a slow network connection and 
+query result sets are at least as large as the fetch size and are iterated to a relevant extent. 
+When setting the fetch size to a value that is too high, performance may actually decrease.</p>
+<h2 id="restrict-logging">Restrict logging</h2>
+<p>Logging data generation/anonymization details may deteriorate performance tremendously.
+Benerator is shipped with efficient logging settings, but if you changed the settings
+in the process of debugging your data generation/anonymization, make sure to increase
+log filters to <code>info</code> level.
+A high level like 'error' usually do not have a performance impact, but may hide issues
+which are reported using 'warn', so you should not be too restrictive about logging.</p>
+<h2 id="id-generation">Id Generation</h2>
+<p>The most efficient id generation strategy is increment since it works without connecting the database. It works fine for multithreaded generation,
+too. But for concurrent execution of multiple Benerator processes or continuation of a canceled generation process you need an id generation that is
+unique among several runs. The most efficient id strategies with such behavior are seqhilo (database-based) and uuid (universally unique string id).</p>
+<h2 id="relational-data-generation-database">Relational Data Generation (database)</h2>
+<p>Nesting <code>&lt;generate&gt;</code> elements greatly simplifies development and maintenance of a data generation 
+project but can decrease generation speed. 
+At critical generation steps you might want to sacrifice maintainability for speed by replacing nested 
+structures with 'relational' structures, e.g. replacing this code:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">name=</span><span class="s">&quot;db_customer&quot;</span> <span class="na">count=</span><span class="s">&quot;1000000&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;generate</span> <span class="na">name=</span><span class="s">&quot;db_order&quot;</span> <span class="na">minCount=</span><span class="s">&quot;0&quot;</span> <span class="na">maxCount=</span><span class="s">&quot;20 &quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;customer_fk&quot;</span> <span class="na">script=</span><span class="s">&quot;{db_customer.id}&quot;</span><span class="nt">/&gt;</span>
+        ...
+    <span class="nt">&lt;/generate&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>with something like:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">name=</span><span class="s">&quot;db_customer&quot;</span> <span class="na">count=</span><span class="s">&quot;1000000&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;generate</span> <span class="na">name=</span><span class="s">&quot;db_order&quot;</span> <span class="na">count=</span><span class="s">&quot;10000000&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;customer_fk&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">targetType=</span><span class="s">&quot;db_customer&quot;</span> <span class="na">distribution=</span><span class="s">&quot;random&quot;</span> <span class="nt">/&gt;</span>
+    ...
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<h2 id="java-virtual-machine-jvm-products">Java Virtual Machine (JVM) Products</h2>
+<p>Different Java Virtual Machines provide different performance.
+Changing the JVM may easily impact Benerator performance by 20%,
+up to more than 100% in exceptional cases.</p>
+<p>You can choose among a wide range of JVM products and versions. 
+Well known established and reliable products/providers are
+OpenJDK, OpenJ9 (IBM), GraalVM (Oracle) and Azul. Different 
+versions of a product may also exhibit notably different 
+performance. </p>
+<p>Unfortunately, there is not an optimal JVM and version for 
+any task you might want to perform: Some JVMs will perform 
+significantly faster in single threaded execution but others 
+will be better in multithreaded execution.</p>
+<h2 id="virtualization-costs">Virtualization Costs</h2>
+<p>Running Benerator in a virtualization system will always have 
+a certain performance impact. For example, in 2020 Apple 
+discontinued the use of Intel processors and introduced 
+a new architecture using M1 chips in its Mac products. 
+Programs written for the Intel architecture are still supported, 
+but run with in a virtualization system, Rosetta. 
+Though Rosetta's performance is impressive, there is a 
+performance cost which gives JVMs compiled for M1 an advantage 
+over JVMs for the Intel architecture on a Mac. 
+In a simple non-representative test, Azul's M1 JVM was 
+at least 20% faster than OpenJDK for Intel (on average).</p>
+<p>The performance cost of a container like Docker is small 
+and usually outweighed by the other advantages this software 
+offers in enterprise computing.</p>
+<h2 id="scripts">Scripts</h2>
+<p>When using other script languages than rapiddwellerScript, the scripts expressions 
+are parsed at runtime, thus are significantly slower than compiled code. 
+For performing CPU-intensive operations or excessive looping, use rapiddwellerScript 
+or program a Java task (See '<a href="extending_benerator.html#custom-tasks">Custom Tasks</a>').</p>
+<h2 id="parsing-oracle-metadata">Parsing (Oracle) metadata</h2>
+<p>On databases with many tables, scanning metadata can take several minutes. One source of superfluous tables is the Oracle recyclebin. You can speed up
+parsing by including a 'purge recyclebin' in your SQL scripts.</p>
+<p>Using regular expressions in the <code>&lt;database&gt;</code>'s excludeTables and includeTables settings, you can restrict the amount of metadata to be parsed.</p>
+<p>If metadata retrieval still takes too long, you can use <code>&lt;database... metaCache="true" /&gt;</code> for storing metadata in a cache file on your local hard
+drive.</p>
+<p>When Benerator executes SQL with an <code>&lt;execute&gt;</code> statement, it analyzes if the database structure is modified. In that case, the cached database 
+metadata is invalidated and parsed again when they are needed the next time. If you are certain that the change is irrelevant to subsequent generations steps,
+you can suppress the invalidation by</p>
+<p><code>&lt;execute invalidate="false"&gt;</code>ALTER TABLE...<code>&lt;/execute&gt;</code>.</p>
+<h2 id="anonymization-algorithms">Anonymization Algorithms</h2>
+<p>Different anonymization algorithms have different performance:
+An anonymization that takes care of consistency and 'pretty' output
+useful for showcases must be slower than a stupid one which overwrites
+the imported data with purely random data.</p>
+<p>Advice: Do not exaggerate on anonymization performance optimization!
+There are always independent data fields in a software, which will cause
+consistency errors and program failure in the target system if they have
+not been assessed properly.
+This is what prototype-based generation was invented for!</p>
+<p>Only <strong>after</strong> you have set up anonymization that fits consistency
+requirements, checked for other JVMs, have applied other performance
+improvement strategies, maybe tried scaling over multiple threads
+in Enterprise Edition, you may fiddle around with anonymization
+of single fields according to the following information.</p>
+<p>Here some anonymization approaches in the order of increasing performance:</p>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Showcase Applicability</th>
+<th>Perftest Applicability</th>
+<th align="right">Speed Factor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prototype</td>
+<td>great</td>
+<td>good</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>regex</td>
+<td>often passable</td>
+<td>passable</td>
+<td align="right">6</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>poor</td>
+<td>passable</td>
+<td align="right">7</td>
+</tr>
+<tr>
+<td>random</td>
+<td>poor</td>
+<td>passable</td>
+<td align="right">9</td>
+</tr>
+<tr>
+<td>constant</td>
+<td>poor</td>
+<td>poor</td>
+<td align="right">14</td>
+</tr>
+</tbody>
+</table>
+<p>For showcase generation, in which a user is faced with anonymization results,
+only a prototype or regex approach makes sense.</p>
+<p>When anonymizing data for performance tests, one concern is how good the results of
+the chosen anonymization match the real world's data characteristics, especially
+for fields used in caches and indexes. A constant approach will make indexes and
+caches useless as well as the performance test results.</p>
+<p>Using Regex, Hash or Random will provide you with a bigger diversity of data
+than the real world, making the data slightly faster to look up in an index.</p>
+<p>You see that the generation of constants is super-fast but useless in most cases.</p>
+<p>In many cases, a regular expression is a good compromise between anonymization
+performance and applicability for showcases and performance tests.</p>
+<p>For example, a setup like this</p>
+<div class="highlight"><pre><span></span><code>    <span class="nt">&lt;iterate</span> <span class="na">type=</span><span class="s">&#39;Person&#39;</span> <span class="na">source=</span><span class="s">&quot;...&quot;</span> <span class="err">...</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;streetAndNumber&#39;</span> <span class="na">pattern=</span><span class="s">&#39;[A-Z][a-z]{4,10} Street [1-9][0-9]?&#39;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;zip&#39;</span>             <span class="na">pattern=</span><span class="s">&#39;[0-9]{5}&#39;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;city&#39;</span>            <span class="na">pattern=</span><span class="s">&#39;[A-Z][a-z]{4,15}&#39;</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;email&#39;</span>           <span class="na">pattern=</span><span class="s">&#39;[a-z]{4,10}@[a-z]{4,10}\.(com|org|net)&#39;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;workPhone&#39;</span>       <span class="na">pattern=</span><span class="s">&#39;[0-9]{8,12}&#39;</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;firstName&#39;</span>       <span class="na">pattern=</span><span class="s">&#39;[A-Z][a-z]{1,8}&#39;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;midName&#39;</span>         <span class="na">pattern=</span><span class="s">&#39;[A-Z][a-z]{1,8}&#39;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;lastName&#39;</span>        <span class="na">pattern=</span><span class="s">&#39;[A-Z][a-z]{1,12}&#39;</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;CardExp&#39;</span>         <span class="na">pattern=</span><span class="s">&#39;([1-9])|(1[0-2])/2[1-9]&#39;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;Cardno&#39;</span>          <span class="na">pattern=</span><span class="s">&#39;[0-9]{16}&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/iterate&gt;</span>
+</code></pre></div>
+<p>produces results like this</p>
+<div class="highlight"><pre><span></span><code>Person[
+    streetAndNumber Hxpji Street 3
+    zip             27200
+    city            Ccxowbyozqti 
+    email           likoakqcy@nyelekuki.org 
+    workPhone       599209827
+    firstName       Ogszcy
+    midName         Jacxmni
+    lastName        Pnn
+    CardExp         12/24
+    Cardno          2390195664099922
+]
+</code></pre></div>
+<p>You see that usually regex expressions are a viable approach for generating codes like 
+zip codes and phone numbers, but relatively poor for name-like data, but often acceptable.</p>
+<p>In order to get an idea of the costs of different anonymization approaches,
+check the performance numbers in the 
+<a href="command_line_tools.html#benchmark-tool">Benchmark Tool Documentation</a> or run it on
+your system to get an individual insight into your machine's capabilities.</p>
+<h2 id="benerator-modes">Benerator Modes</h2>
+<p>Benerator can run in different modes, which have different performance and strictness characteristics. </p>
+<p>A mode ist activated by the command line argument <code>--mode</code>, eg.</p>
+<div class="highlight"><pre><span></span><code>benerator --mode turbo
+</code></pre></div>
+<h3 id="lenient">lenient</h3>
+<p>The default mode, Benerator is running in. The full feature set is supported and some configuration issues 
+are handled automatically. This is best for users at the beginning of the learning curve.</p>
+<h3 id="strict">strict</h3>
+<p>Benerator stops on configurations which may have performance implications or may possibly be unintended, 
+assuring the full feature set can run with optimum performance. In many cases this will be faster than 
+lenient mode, but requires more knowledge about Benerator.</p>
+<h3 id="turbo">turbo</h3>
+<p>Experimental feature: The fastest mode which in which Benerator can run, but this comes at a price: 
+It uses a restricted feature set: capitalization of variables is ignored and simple-type sub elements 
+may not occur multiple times. 
+This will work fine for most projects in most homogeneous environments, involving only databases 
+and plain file formats. 
+For strongly heterogeneous projects, especially involving XML this may produce unintended results. 
+Use this only when you are desperate for performance and have made sure everything works fine 
+in<code>strict</code> mode.</p>
+<h2 id="distributed-generation">Distributed Generation</h2>
+<p>You can distribute generation over several machines. In oder to do so you will need two types of descriptor files: </p>
+<p>First an initialization descriptor
+that initializes the systems and generates the deterministic core data, </p>
+<p>Second a mass data description file. The initialization file will need to run
+first on a single machine, then the mass data file can be executed on multiple processes or machines concurrently. For mass data generation you will
+need to take special care:</p>
+<p>Choose an id generation strategy that is able to create unique ids under these circumstances 
+(see '<a href="generating_unique_data.html#id-generation">Generating IDs</a>').</p>
+<h2 id="distributed-anonymization">Distributed Anonymization</h2>
+<p>You can distribute anonymization over several machines. 
+A simple and scalable approach is the use of a Kafka cluster: 
+Using a Kafka connector, you can export the data you need to anonymize(eg. from a database table) 
+to a Kafka queue and run several machines with Benerator instances that listen to the Kafka queue, 
+import data, anonymize it and export it to the destination system directly or indirectly 
+via another Kafka queue and Kafka connector.</p>
+<h2 id="ask-the-experts">Ask the experts</h2>
+<p>Feel free to contact us for assistance on performance improvement: <strong><a href="mailto:team@rapiddweller.com">team@rapiddweller.com</a></strong>.</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="monitoring_benerator.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Monitoring Benerator" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Monitoring Benerator
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="migrating_benerator_projects.html" class="md-footer__link md-footer__link--next" aria-label="Next: Migrating Benerator Projects" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Migrating Benerator Projects
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2006 - 2022 rapiddweller GmbH & Volker Bergmann
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/rapiddweller" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/rapiddweller/" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/intent/follow?screen_name=rapiddweller" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["search.suggest", "search.highlight", "search.share", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.top"], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="js/termynal.js"></script>
+      
+        <script src="js/custom.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="js/tablesort.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1339 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This document is supposed to become a complete summary of everything you need to know of Benerator usage, use it efficiently and extend it as you need. This reference is under construction and will update from time to time. Feel free to contribute your ideas in our repo at https://github.com/rapiddweller/rapiddweller-benerator-ce/.">
+      
+      
+        <meta name="author" content="rapiddweller GmbH & Volker Bergmann">
+      
+      
+        <link rel="canonical" href="https://docs.benerator.de/command_line_tools.html">
+      
+      <link rel="icon" href="assets/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Command Line Tools - rapiddweller Benerator</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/termynal.css">
+    
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="rapiddweller" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#command-line-tools" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="rapiddweller Benerator" class="md-header__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            rapiddweller Benerator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Command Line Tools
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="rapiddweller Benerator" class="md-nav__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    rapiddweller Benerator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction_to_benerator.html" class="md-nav__link">
+        Goals and Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="the_benerator_project_wizard.html" class="md-nav__link">
+        The Benerator Project Wizard
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quick_tour_through_the_descriptor_file_format.html" class="md-nav__link">
+        Quick tour through the descriptor file format
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_generation_concepts.html" class="md-nav__link">
+        Data Generation Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_anonymization_concepts.html" class="md-nav__link">
+        Data Anonymization Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="regular_expression_support.html" class="md-nav__link">
+        Regular Expression Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_file_processing.html" class="md-nav__link">
+        CSV File Generation/Anonymization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xml_file_processing.html" class="md-nav__link">
+        XML File Processing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distribution.html" class="md-nav__link">
+        Distribution Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_relational_databases.html" class="md-nav__link">
+        Using Relational Databases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="message_queue_access.html" class="md-nav__link">
+        Message Queue Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kafka_access.html" class="md-nav__link">
+        Kafka Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="environment_files.html" class="md-nav__link">
+        Environment Files
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced_topics.html" class="md-nav__link">
+        Advanced Topics
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="generating_unique_data.html" class="md-nav__link">
+        Generating Unique Data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scripting.html" class="md-nav__link">
+        Scripting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rapiddwellerscript.html" class="md-nav__link">
+        rapiddwellerScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Command Line Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="command_line_tools.html" class="md-nav__link md-nav__link--active">
+        Command Line Tools
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#benerator" class="md-nav__link">
+    Benerator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#db-snapshot-tool" class="md-nav__link">
+    DB Snapshot Tool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benchmark-tool" class="md-nav__link">
+    Benchmark Tool
+  </a>
+  
+    <nav class="md-nav" aria-label="Benchmark Tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assessing-database-performance" class="md-nav__link">
+    Assessing Database Performance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessing-kafka-performance" class="md-nav__link">
+    Assessing Kafka Performance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xml-creator" class="md-nav__link">
+    XML Creator
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="domains.html" class="md-nav__link">
+        Domains
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="component_reference.html" class="md-nav__link">
+        Component Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_db_sanity.html" class="md-nav__link">
+        Using DB Sanity
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maven_benerator_plugin.html" class="md-nav__link">
+        Maven Benerator Plugin
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extending_benerator.html" class="md-nav__link">
+        Extending Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_benerator_as_load_generator.html" class="md-nav__link">
+        Using Benerator as Load Generator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting.html" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="monitoring_benerator.html" class="md-nav__link">
+        Monitoring Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance_tuning.html" class="md-nav__link">
+        Benerator Performance Tuning
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migrating_benerator_projects.html" class="md-nav__link">
+        Migrating Benerator Projects
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#benerator" class="md-nav__link">
+    Benerator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#db-snapshot-tool" class="md-nav__link">
+    DB Snapshot Tool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benchmark-tool" class="md-nav__link">
+    Benchmark Tool
+  </a>
+  
+    <nav class="md-nav" aria-label="Benchmark Tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assessing-database-performance" class="md-nav__link">
+    Assessing Database Performance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessing-kafka-performance" class="md-nav__link">
+    Assessing Kafka Performance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xml-creator" class="md-nav__link">
+    XML Creator
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="command-line-tools">Command Line Tools</h1>
+<h2 id="benerator">Benerator</h2>
+<p>Benerator can be called with a Benerator file name as command line parameter, like</p>
+<div class="highlight"><pre><span></span><code>benerator test.ben.xml
+</code></pre></div>
+<p>If no file is specified, Benerator expects a file <code>benerator.xml</code> 
+in the current directory. </p>
+<p>You can change default behavior by Java VM parameters, e.g.</p>
+<div class="highlight"><pre><span></span><code>benerator.bat -Dfile.encoding<span class="o">=</span>iso-8859-1 -Djava.io.tmpdir<span class="o">=</span><span class="s2">&quot;C:\temp&quot;</span> test.ben.xml
+</code></pre></div>
+<p>Validation can be turned off from the command line alternatively using a VM parameter:</p>
+<div class="highlight"><pre><span></span><code>mvn benerator:generate -Dbenerator.validate<span class="o">=</span><span class="nb">false</span>
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code>benerator myproject.ben.xml -Dbenerator.validate<span class="o">=</span><span class="nb">false</span>
+</code></pre></div>
+<p>You can specify the following options on the command line:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--version,-v</td>
+<td>Display system and version information</td>
+<td></td>
+</tr>
+<tr>
+<td>--help,-h</td>
+<td>Display help information</td>
+<td></td>
+</tr>
+<tr>
+<td>--list <type></td>
+<td>List the available environments or systems. &lt;type&gt; may be <code>env</code>, <code>db</code> or <code>kafka</code>.</td>
+<td></td>
+</tr>
+<tr>
+<td>--clearCaches</td>
+<td>Clear all caches</td>
+<td></td>
+</tr>
+<tr>
+<td>--mode <spec></td>
+<td>Activate Benerator mode <code>strict</code>, <code>lenient</code> or <code>turbo</code></td>
+<td>default is <code>lenient</code></td>
+</tr>
+<tr>
+<td>--anonReport <pct></td>
+<td>Verify 'pct' percent of anonymized data and display an anonymization report. 'pct' is an integer, 100 for complete tracking</td>
+<td>Enterprise Edition only</td>
+</tr>
+</tbody>
+</table>
+<h2 id="db-snapshot-tool">DB Snapshot Tool</h2>
+<p>The DbSnapshotTool creates a snapshot of a full database schema and stores it in a DbUnit XML file. It is invoked from the command line in Windows by
+calling</p>
+<p><code>snapshot [VM-params] export-filename.dbunit.xml</code></p>
+<p>or, on Unix and Mac OS X systems,</p>
+<p><code>sh snapshot [VM-params] export-filename.dbunit.xml</code></p>
+<p>If the export filename is left out, the snapshot will be stored in a file called <code>snapshot.dbunit.xml</code>.</p>
+<p>You need the following VM parameters to configure database access. </p>
+<p>Use them like <code>-Ddb.user=me</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dbUrl</td>
+<td>The JDBC URL of the database</td>
+</tr>
+<tr>
+<td>dbDriver</td>
+<td>The JDBC driver class name</td>
+</tr>
+<tr>
+<td>dbUser</td>
+<td>user name</td>
+</tr>
+<tr>
+<td>dbPassword</td>
+<td>user password</td>
+</tr>
+<tr>
+<td>dbSchema</td>
+<td>Name of the schema to extract (defaults to the user name)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="benchmark-tool">Benchmark Tool</h2>
+<p>Benerator provides a Benchmark Tool to assess and compare the performance 
+of a typical generation or anonymization approaches. </p>
+<p>It is of special use for you if you want to assess the generation/anonymization 
+performance of different hard- and software settings, like numbers of cores, 
+operating system, Java virtual machine, system software configuration and 
+Benerator Enterprise Edition's multithreading configuration.</p>
+<p>The different benchmarks used perform a list of predefined typical generation 
+and anonymization tasks. </p>
+<p>To invoke the Benchmark Tool with standard settings, just open a text console 
+or terminal and enter</p>
+<p><code>benerator-benchmark</code></p>
+<p>Then the benchmark runs for a few minutes and prints a measurement summary.
+In Benerator Consumer Edition, only single-threaded execution is supported, 
+so the report will look something like this:</p>
+<div class="highlight"><pre><span></span><code>+---------------------------------------------------------------------------+
+| Benchmark throughput of Benerator Community Edition 2.0.0-jdk-11-SNAPSHOT |
+| on a Mac OS X 11.4 x86_64 with 8 cores                                    |
+| Java version 11.0.11                                                      |
+| OpenJDK 64-Bit Server VM 11.0.11+9 (AdoptOpenJDK)                         |
+| Date/Time: 2021-09-17T10:41:43.510603+02:00[Europe/Berlin]                |
+|                                                                           |
+| Numbers are reported in million entities generated per hour               |
++----------------------------------------------------------------+----------+
+| Benchmark                                                      | 1 Thread |
++----------------------------------------------------------------+----------+
+| gen-string.ben.xml                                             |       37 |
++----------------------------------------------------------------+----------+
+| gen-person-showcase.ben.xml                                    |       26 |
++----------------------------------------------------------------+----------+
+| anon-person-showcase.ben.xml                                   |       31 |
++----------------------------------------------------------------+----------+
+| anon-person-regex.ben.xml                                      |      346 |
++----------------------------------------------------------------+----------+
+| anon-person-hash.ben.xml                                       |      386 |
++----------------------------------------------------------------+----------+
+| anon-person-random.ben.xml                                     |      576 |
++----------------------------------------------------------------+----------+
+| anon-person-constant.ben.xml                                   |    2,210 |
++----------------------------------------------------------------+----------+
+</code></pre></div>
+<p>In the header the system settings are reported, then each of the following rows 
+displays the benchmark name and its performance, measured in a million entities 
+generated per hour. 
+This means for example that the <code>anon-person-constant.ben.xml</code> anonymizes 
+2,210 million = 2.210 billion data sets per hour running in a single thread.</p>
+<p>The performance numbers above have been measured on a plain Macbook Air M1 of 2020.</p>
+<p>For a Benerator Enterprise Edition installation running on a machine with several cores, 
+the benchmark is executed for several characteristic executionMode settings in order to 
+find the sweet spot of executionMode settings. </p>
+<p>A benchmark runs on the same system with Benerator Enterprise Edition yields 
+the following result:</p>
+<div class="highlight"><pre><span></span><code>+-----------------------------------------------------------------------------+
+| Benchmark throughput of Benerator Enterprise Edition 2.0.0-jdk-11-SNAPSHOT  |
+| on a Mac OS X 11.4 x86_64 with 8 cores                                      |
+| Java version 11.0.11                                                        |
+| OpenJDK 64-Bit Server VM 11.0.11+9 (AdoptOpenJDK)                           |
+| Date/Time: 2021-09-17T10:09:44.460364+02:00[Europe/Berlin]                  |
+|                                                                             |
+| Numbers are reported in million entities generated per hour                 |
++------------------------------+----------+-----------+-----------+-----------+
+| Benchmark                    | 1 Thread | 2 Threads | 4 Threads | 6 Threads |
++------------------------------+----------+-----------+-----------+-----------+
+| gen-string.ben.xml           |      243 |       379 |       809 |       747 |
++------------------------------+----------+-----------+-----------+-----------+
+| gen-person-showcase.ben.xml  |       88 |       162 |       249 |       193 |
++------------------------------+----------+-----------+-----------+-----------+
+| anon-person-showcase.ben.xml |       83 |       165 |       241 |       187 |
++------------------------------+----------+-----------+-----------+-----------+
+| anon-person-regex.ben.xml    |      684 |     1,008 |     1,145 |       794 |
++------------------------------+----------+-----------+-----------+-----------+
+| anon-person-hash.ben.xml     |      923 |     1,344 |     1,142 |     1,187 |
++------------------------------+----------+-----------+-----------+-----------+
+| anon-person-random.ben.xml   |    1,250 |     1,655 |     1,254 |     1,274 |
++------------------------------+----------+-----------+-----------+-----------+
+| anon-person-constant.ben.xml |    1,926 |     2,533 |     1,522 |     1,503 |
++------------------------------+----------+-----------+-----------+-----------+
+</code></pre></div>
+<p>Note that we not only have improved the performance of the Community Edition, 
+but optimized the Enterprise Edition to be even several times faster than 
+the Community Edition.</p>
+<p>For your performance optimization in Enterprise Edition, note that with additional 
+threads' comes additional performance, but after a certain level of concurrency 
+is reached, performance does not improve or even may deteriorate seriously. This 
+may have one or more out of several reasons: </p>
+<ul>
+<li>
+<p>Coordination and synchronization overhead</p>
+</li>
+<li>
+<p>More congestion of threads waiting at bottlenecks</p>
+</li>
+<li>
+<p>Having serious work load on more threads than CPUs are available: The more threads between a CPU has to switch back and forth, the more time is lost on each context switch and you may end up spending more time switching than working.</p>
+</li>
+<li>
+<p>With more threads comes higher throughput, but also higher storage needs. When critical buffer size limits are exceeded, a system's processing capacity may go down significantly though the overall CPU load looks relatively low. </p>
+</li>
+</ul>
+<p>The sweet spot where you have optimum performance with low concurrency usually 
+is where the number of threads equals the number of cores, or is only slightly larger. 
+As you might guess from the performance, the test laptop has 4 cores. 
+Actually, it has more, but its 4 high-performance cores are the only ones that matter 
+for generation and anonymization performance.</p>
+<p>The Benchmark Tool has some command line parameters to configure its test runs. 
+For a short summary, type <code>benerator-benchmark --help</code></p>
+<p>The general invocation format is</p>
+<div class="highlight"><pre><span></span><code>benerator-benchmark <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>name<span class="o">]</span>
+</code></pre></div>
+<p>Name is an optional benchmark name. When specified, only this benchmark is executed. When left out, 
+all benchmarks applicable to the given configuration are called.</p>
+<p>Example: In order to only call the <code>gen-string</code> benchmark, type</p>
+<div class="highlight"><pre><span></span><code>benerator-benchmark <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>name<span class="o">]</span>
+</code></pre></div>
+<p>The command line options are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Meaning</th>
+<th>Default Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--ce</td>
+<td>Run on Benerator Community Edition (CE)</td>
+<td><code>true</code> on CE</td>
+</tr>
+<tr>
+<td>--ee</td>
+<td>Run on Benerator Enterprise Edition (EE)</td>
+<td><code>true</code> EE and only available there</td>
+</tr>
+<tr>
+<td>--minSecs n</td>
+<td>Choose a workload to have the benchmark run at least n seconds</td>
+<td>10</td>
+</tr>
+<tr>
+<td>--maxThreads k</td>
+<td>Use only up to k cores for testing (only on EE)</td>
+<td>a bit more than the number of reported cores</td>
+</tr>
+<tr>
+<td>--env &lt;spec&gt;</td>
+<td>Runs the tests applicable to the specified system(s). &lt;spec&gt; may be an environment name, a system (denoted by environment#system) or a comma-separated list of these (without whitespace)</td>
+<td></td>
+</tr>
+<tr>
+<td>--mode m</td>
+<td>activates Benerator mode <code>strict</code>, <code>lenient</code> or <code>turbo</code></td>
+<td><code>lenient</code></td>
+</tr>
+<tr>
+<td>--list</td>
+<td>lists the names of the predefined benchmarks</td>
+<td></td>
+</tr>
+<tr>
+<td>--help</td>
+<td>print this help</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>--minSecs</strong> settings of 30 requires the benchmark to run with a workload 
+that needs at least 30 seconds to process. It is advisable to choose times 
+which are sufficiently large that the fix initialization time of Benerator 
+has less impact on the measurement and that JVM hotspot optimizers get some 
+time to make Benerator run even more efficiently. 
+If --minSecs is not specified, a default of 10 seconds is used, which is too 
+short for optimum measurements, but was chosen as a defensive measure to 
+save your system's hard drive space: The file generation benchmarks could easily 
+fill up a terabyte of hard disk space in a few minutes. 
+Even on standard developer hardware, a file export of one minute can produce 
+a file of a size of 10 Gigabytes. Generated files are deleted automatically 
+after each benchmark run, but take care not to fill up your disk during a 
+benchmark run.</p>
+<p>By default, the Benchmark tool tests thread settings from single-threaded to a concurrency 
+slightly larger than the number of cores of the system it is running on. Unfortunately, 
+some systems report a higher number of cores than are available for our tests.
+For example a Macbook Air M1 of 2020 reports to have 8 cores, but only 4 of them are high 
+performance cores, 4 are efficiency cores which do not contribute performance to 
+Benerator. So a setting of <code>--maxTreads 6</code> makes the Benchmark go up only to 6 threads 
+instead of 10 threads it would have taken by default.</p>
+<p>The reports above have been created using</p>
+<p><code>benerator-benchmark --ce --minDurationSecs 30 --maxThreads 6</code></p>
+<h3 id="assessing-database-performance">Assessing Database Performance</h3>
+<p>In order to assess database processing performance, you need to configure the relevant database(s) 
+in an environment repository, see <a href="environment_files.html">Environment Files</a> for details. </p>
+<p>For a quick start, the Benchmark Tool comes with two built-in databases <code>h2</code> and <code>hsqlmem</code> in an environment <code>bultin</code>. 
+This will run the database benchmarks on the built-in h2:
+<div class="highlight"><pre><span></span><code>benerator-benchmark --builtin#h2
+</code></pre></div></p>
+<p>In order to test all systems defined in the environment <code>builtin</code>, specify just the environment name</p>
+<div class="highlight"><pre><span></span><code>benerator-benchmark --dev <span class="nb">builtin</span>
+</code></pre></div>
+<p>You can test your own databases in a similar manner by defining them in an environment file 
+(eg. <code>local.env.properties</code>) and providing it in the command line options as above. </p>
+<p>You will notice that the database benchmark may run significantly longer than the simple tests. 
+This is caused by measuring two access types, 'read' and 'write' and requiring each of these 
+to run at least 'minSecs' seconds. For some databases, writing is significantly slower than 
+reading (up to a factor of 20), so that you need to write data for 10 minutes in order to read 
+data for 30 seconds. The database benchmarks alleviate that a bit, by performing two reads for 
+each write (effectively halving execution time), but still will take long time. 
+So please be patient.</p>
+<h3 id="assessing-kafka-performance">Assessing Kafka Performance</h3>
+<p>Testing Kafka performance is a bit tricky, so the Benchmark tool needs one dedicated topic per test. 
+You can reuse pre-existing topics, but they must be empty when starting the tests. 
+Otherwise, the benchmark may read pre-existing data leading to wrong performance metrics. </p>
+<p>Currently, there are two Kafka benchmarks:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>required 'system' name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kafka-small-entity</td>
+<td>kafka_small_entity</td>
+<td>Reads and writes messages with small entities in JSON format</td>
+</tr>
+<tr>
+<td>kafka-big-entity</td>
+<td>kafka_big_entity</td>
+<td>Reads and writes messages with big entities in JSON format (several KBs)</td>
+</tr>
+</tbody>
+</table>
+<p>A <code>dev</code> environment file might look like this, and you can use it to map the system names to topic names 
+which are actually available on your Kafka cluster (<code>dev.env.properties</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="na">kafka_small_entity.kafka.bootstrap.servers</span><span class="o">=</span><span class="s">localhost:9092</span><span class="w"></span>
+<span class="c"># use the following line to specify a topic for the kafka-small-entity benchmark</span><span class="w"></span>
+<span class="na">kafka_small_entity.kafka.topic</span><span class="o">=</span><span class="s">kafkaQueue1</span><span class="w"></span>
+<span class="na">kafka_small_entity.kafka.format</span><span class="o">=</span><span class="s">json</span><span class="w"></span>
+
+<span class="na">kafka_big_entity.kafka.bootstrap.servers</span><span class="o">=</span><span class="s">localhost:9092</span><span class="w"></span>
+<span class="c"># use the following line to specify a topic for the kafka-big-entity benchmark</span><span class="w"></span>
+<span class="na">kafka_big_entity.kafka.topic</span><span class="o">=</span><span class="s">kafkaQueue2</span><span class="w"></span>
+<span class="na">kafka_big_entity.kafka.format</span><span class="o">=</span><span class="s">json</span><span class="w"></span>
+</code></pre></div>
+<h2 id="xml-creator">XML Creator</h2>
+<p>The XMLCreator reads a XML Schema file and creates a number of XML files that comply with the schema. It can read XML annotations which provide
+benerator configuration in the XML schema file. It is invoked from the command line and has the following parameter order:</p>
+<div class="highlight"><pre><span></span><code>createxml &lt;schemaUri&gt; &lt;root-element&gt; &lt;filename-pattern&gt; &lt;file-count&gt; <span class="o">[</span>&lt;properties file name<span class="o">(</span>s<span class="o">)</span>&gt;<span class="o">]</span>
+</code></pre></div>
+<p>Their meaning is as follows:</p>
+<ul>
+<li>
+<p>schemaUri: the location (typically file name) of the XML schema file</p>
+</li>
+<li>
+<p>root-element: the XML element of the schema file that should be used as root of the generated XML file(s)</p>
+</li>
+<li>
+<p>filename-pattern: the naming pattern to use for the generated XML files. It has the form of a java.text.MessageFormat pattern and takes the number
+  of the generated file as parameter {0}.</p>
+</li>
+<li>
+<p>file-count: the number of XML files to generate</p>
+</li>
+<li>
+<p>properties file name(s): an optional (space-separated) list of properties files to include in the generation process</p>
+</li>
+</ul>
+<p>Under Windows, an example call would be:</p>
+<div class="highlight"><pre><span></span><code>createxml myschema.xsd product-list products-<span class="o">{</span><span class="m">0</span><span class="o">}</span>.xml <span class="m">10000</span> perftest.properties
+</code></pre></div>
+<p>or, on Unix and Mac OS X systems,</p>
+<div class="highlight"><pre><span></span><code>sh myschema.xsd product-list products-<span class="o">{</span><span class="m">0</span><span class="o">}</span>.xml <span class="m">10000</span> perftest.properties
+</code></pre></div>
+<p>for generation 10,000 XML files that comply with the XML Schema definition in file <code>myschema.xsd</code> and have product-list as root element. The files will be
+named <code>products-1.xml</code>, <code>products-2.xml</code>, <code>products-3.xml</code>, ...</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="rapiddwellerscript.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: rapiddwellerScript" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              rapiddwellerScript
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="domains.html" class="md-footer__link md-footer__link--next" aria-label="Next: Domains" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Domains
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2006 - 2022 rapiddweller GmbH & Volker Bergmann
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/rapiddweller" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/rapiddweller/" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/intent/follow?screen_name=rapiddweller" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["search.suggest", "search.highlight", "search.share", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.top"], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="js/termynal.js"></script>
+      
+        <script src="js/custom.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="js/tablesort.js"></script>
+      
+    
+  </body>
+</html>

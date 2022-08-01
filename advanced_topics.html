@@ -1,0 +1,1857 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This document is supposed to become a complete summary of everything you need to know of Benerator usage, use it efficiently and extend it as you need. This reference is under construction and will update from time to time. Feel free to contribute your ideas in our repo at https://github.com/rapiddweller/rapiddweller-benerator-ce/.">
+      
+      
+        <meta name="author" content="rapiddweller GmbH & Volker Bergmann">
+      
+      
+        <link rel="canonical" href="https://docs.benerator.de/advanced_topics.html">
+      
+      <link rel="icon" href="assets/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Advanced Topics - rapiddweller Benerator</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/termynal.css">
+    
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="rapiddweller" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#advanced-topics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="rapiddweller Benerator" class="md-header__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            rapiddweller Benerator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Advanced Topics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="rapiddweller Benerator" class="md-nav__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    rapiddweller Benerator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction_to_benerator.html" class="md-nav__link">
+        Goals and Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="the_benerator_project_wizard.html" class="md-nav__link">
+        The Benerator Project Wizard
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quick_tour_through_the_descriptor_file_format.html" class="md-nav__link">
+        Quick tour through the descriptor file format
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_generation_concepts.html" class="md-nav__link">
+        Data Generation Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_anonymization_concepts.html" class="md-nav__link">
+        Data Anonymization Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="regular_expression_support.html" class="md-nav__link">
+        Regular Expression Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_file_processing.html" class="md-nav__link">
+        CSV File Generation/Anonymization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xml_file_processing.html" class="md-nav__link">
+        XML File Processing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distribution.html" class="md-nav__link">
+        Distribution Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_relational_databases.html" class="md-nav__link">
+        Using Relational Databases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="message_queue_access.html" class="md-nav__link">
+        Message Queue Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kafka_access.html" class="md-nav__link">
+        Kafka Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="environment_files.html" class="md-nav__link">
+        Environment Files
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Advanced Topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="advanced_topics.html" class="md-nav__link md-nav__link--active">
+        Advanced Topics
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#javabeans-and-the-benerator-context" class="md-nav__link">
+    JavaBeans and the Benerator Context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-java-classes" class="md-nav__link">
+    Importing Java classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Importing Java classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step-instruction-importing-custom-java-classes-jar" class="md-nav__link">
+    Step-by-step instruction: Importing Custom Java classes (JAR)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-imports" class="md-nav__link">
+    Domain imports
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-up-servicesobjects-via-jndi" class="md-nav__link">
+    Looking up services/objects via JNDI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calculating-global-sums" class="md-nav__link">
+    Calculating global sums
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#querying-data-from-a-system-to-variables" class="md-nav__link">
+    Querying data from a system to variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-memstore" class="md-nav__link">
+    The MemStore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    Datasets
+  </a>
+  
+    <nav class="md-nav" aria-label="Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#region-nesting" class="md-nav__link">
+    Region nesting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chaining-generators" class="md-nav__link">
+    Chaining generators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invoking-benerator-programmatically" class="md-nav__link">
+    Invoking Benerator programmatically
+  </a>
+  
+    <nav class="md-nav" aria-label="Invoking Benerator programmatically">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#invoking-benerator-as-a-whole" class="md-nav__link">
+    Invoking Benerator as a whole
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-benerator-generate-data-and-invoke-a-custom-class-with-it" class="md-nav__link">
+    Making Benerator generate data and invoke a custom class with it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-generators-defined-in-a-descriptor-file" class="md-nav__link">
+    Using generators defined in a descriptor file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    Tasks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#staging" class="md-nav__link">
+    Staging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-data-structures" class="md-nav__link">
+    Template data structures
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-arrays" class="md-nav__link">
+    Generating arrays
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoped-generation" class="md-nav__link">
+    Scoped Generation
+  </a>
+  
+    <nav class="md-nav" aria-label="Scoped Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-implicit-scope" class="md-nav__link">
+    Default (implicit) scope
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicit-scope" class="md-nav__link">
+    Explicit scope
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-scope" class="md-nav__link">
+    Global scope
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composite-data-generation" class="md-nav__link">
+    Composite Data Generation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composite-data-iteration" class="md-nav__link">
+    Composite Data Iteration
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="generating_unique_data.html" class="md-nav__link">
+        Generating Unique Data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scripting.html" class="md-nav__link">
+        Scripting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rapiddwellerscript.html" class="md-nav__link">
+        rapiddwellerScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="command_line_tools.html" class="md-nav__link">
+        Command Line Tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="domains.html" class="md-nav__link">
+        Domains
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="component_reference.html" class="md-nav__link">
+        Component Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_db_sanity.html" class="md-nav__link">
+        Using DB Sanity
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maven_benerator_plugin.html" class="md-nav__link">
+        Maven Benerator Plugin
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extending_benerator.html" class="md-nav__link">
+        Extending Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_benerator_as_load_generator.html" class="md-nav__link">
+        Using Benerator as Load Generator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting.html" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="monitoring_benerator.html" class="md-nav__link">
+        Monitoring Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance_tuning.html" class="md-nav__link">
+        Benerator Performance Tuning
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migrating_benerator_projects.html" class="md-nav__link">
+        Migrating Benerator Projects
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#javabeans-and-the-benerator-context" class="md-nav__link">
+    JavaBeans and the Benerator Context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-java-classes" class="md-nav__link">
+    Importing Java classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Importing Java classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step-instruction-importing-custom-java-classes-jar" class="md-nav__link">
+    Step-by-step instruction: Importing Custom Java classes (JAR)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-imports" class="md-nav__link">
+    Domain imports
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-up-servicesobjects-via-jndi" class="md-nav__link">
+    Looking up services/objects via JNDI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calculating-global-sums" class="md-nav__link">
+    Calculating global sums
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#querying-data-from-a-system-to-variables" class="md-nav__link">
+    Querying data from a system to variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-memstore" class="md-nav__link">
+    The MemStore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    Datasets
+  </a>
+  
+    <nav class="md-nav" aria-label="Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#region-nesting" class="md-nav__link">
+    Region nesting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chaining-generators" class="md-nav__link">
+    Chaining generators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invoking-benerator-programmatically" class="md-nav__link">
+    Invoking Benerator programmatically
+  </a>
+  
+    <nav class="md-nav" aria-label="Invoking Benerator programmatically">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#invoking-benerator-as-a-whole" class="md-nav__link">
+    Invoking Benerator as a whole
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-benerator-generate-data-and-invoke-a-custom-class-with-it" class="md-nav__link">
+    Making Benerator generate data and invoke a custom class with it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-generators-defined-in-a-descriptor-file" class="md-nav__link">
+    Using generators defined in a descriptor file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    Tasks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#staging" class="md-nav__link">
+    Staging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-data-structures" class="md-nav__link">
+    Template data structures
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-arrays" class="md-nav__link">
+    Generating arrays
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoped-generation" class="md-nav__link">
+    Scoped Generation
+  </a>
+  
+    <nav class="md-nav" aria-label="Scoped Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-implicit-scope" class="md-nav__link">
+    Default (implicit) scope
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicit-scope" class="md-nav__link">
+    Explicit scope
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-scope" class="md-nav__link">
+    Global scope
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composite-data-generation" class="md-nav__link">
+    Composite Data Generation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composite-data-iteration" class="md-nav__link">
+    Composite Data Iteration
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="advanced-topics">Advanced Topics</h1>
+<h2 id="javabeans-and-the-benerator-context">JavaBeans and the Benerator Context</h2>
+<p>You can instantiate JavaBeans by an intuitive syntax like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;helper&quot;</span> <span class="na">class=</span><span class="s">&quot;com.my.Helper&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;min&quot;</span> <span class="na">value=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;max&quot;</span> <span class="na">value=</span><span class="s">&quot;23&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></div>
+<p>The <em>class</em> attribute denotes which JavaBean class to instantiate (by the default constructor). The enclosed property tags cause the JavaBean's
+properties and attributes to be set to appropriate values. Benerator converts common types automatically. If Benerator cannot perform conversion of a
+custom type, you can define a custom ConverterManager setup (see rd-lib-common). Date and time formatting is supported according to ISO 8601 Conventions.</p>
+<p>Objects are made available by exposing them in a context. The id attribute defines the name with which an object can be found, e.g. for a 'source'
+or 'ref' attribute of another element's setup.</p>
+<p>So the example above creates an instance of a DBSystem JavaBean class, setting its properties to values for connecting a database. The object is
+retrievable by the context with the id 'db'.</p>
+<div class="admonition note">
+<p class="admonition-title">Note<p>The class DBSystem implements the interface 'System' which provides (among other features) meta information about the entities (tables)
+contained in the database.</p>
+</p>
+</div>
+<p>You can create references to other objects declared before by a 'ref'-attribute in the bean declaration. The following example shows this for a task
+setup, but this can be applied to beans and consumers as well.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may implement the System interface for connecting to other system types like SAP or Siebel systems.</p>
+</div>
+<p>JavaBeans may refer each other (see <code>proxy.target</code>) and may have collection or attribute properties (see <code>log_csv.components</code>) as shown in the following
+example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;csv&quot;</span> <span class="na">class=</span><span class="s">&quot;CSVEntityExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;uri&quot;</span> <span class="na">value=</span><span class="s">&quot;target/customers.csv&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;columns&quot;</span> <span class="na">value=</span><span class="s">&quot;salutation,first_name,last_name&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;proxy&quot;</span> <span class="na">class=</span><span class="s">&quot;shop.MyProxy&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;target&quot;</span> <span class="na">ref=</span><span class="s">&quot;csv&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;log_csv&quot;</span> <span class="na">class=</span><span class="s">&quot;ConsumerChain&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;components&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">&quot;LoggingConsumer&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;idref</span> <span class="na">bean=</span><span class="s">&quot;proxy&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></div>
+<p>You can use all inline construction styles in a spec attribute, too. </p>
+<p>You can invoke methods on beans using rapiddwellerScript:</p>
+<p><code>&lt;execute&gt;myBean.init(47 + 11)&lt;/execute&gt;</code></p>
+<h2 id="importing-java-classes">Importing Java classes</h2>
+<p>Benerator provides an import facility similar to the Java language. You can import classes, packages and domains.</p>
+<p>So, instead of using the fully qualified name:</p>
+<p><code>&lt;bean id="special" class="com.my.SpecialGenerator" /&gt;</code></p>
+<p>you can import the class and use the local name:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;import</span> <span class="na">class=</span><span class="s">&quot;com.my.SpecialGenerator&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;special&quot;</span> <span class="na">class=</span><span class="s">&quot;com.my.SpecialGenerator&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>The following alternative works as well and imports all classes of the com.my package:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;import</span> <span class="na">class=</span><span class="s">&quot;com.my.*&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;special&quot;</span> <span class="na">class=</span><span class="s">&quot;com.my.SpecialGenerator&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h3 id="step-by-step-instruction-importing-custom-java-classes-jar">Step-by-step instruction: Importing Custom Java classes (JAR)</h3>
+<p>Precondition: Verified local benerator installation (cp. <a href="installation.html">Installation</a>). </p>
+<p>In this example, two jars from maven central are used for demo purposes: </p>
+<ol>
+<li>Download following jars locally</li>
+<li>https://repo1.maven.org/maven2/org/apache/commons/commons-text/1.9/commons-text-1.9.jar</li>
+<li>
+<p>https://repo1.maven.org/maven2/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar</p>
+</li>
+<li>
+<p>Move the jars into the <code>lib\</code> folder of your benerator installation
+   e.g. ( e.g. <code>C:\Program Files\Development\rapiddweller-benerator-ce\lib\</code>). Avoid creating 
+   any subfolder(s) in the <code>lib\</code> directory and place the jar file(s) in the lib folders root level. </p>
+</li>
+<li>
+<p>Given the custom libraries are provided in your ben lib folder, or you added them to the classpath
+    of your Java Virtual Machine (JVM), the following benerator script shows you the available 
+    instantiation options:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;setup&gt;</span>
+
+    <span class="cm">&lt;!-- Use direct reference (OPTION A) --&gt;</span>
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;optionA&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;column&quot;</span> 
+                   <span class="na">type=</span><span class="s">&quot;string&quot;</span> 
+                   <span class="na">script=</span><span class="s">&quot;org.apache.commons.text.WordUtils.swapCase(&#39;A: benerator is a GREAT universal data tool&#39;)&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/generate&gt;</span>
+
+    <span class="cm">&lt;!-- Import multiple classes from custom jar (OPTION B) --&gt;</span>
+    <span class="nt">&lt;import</span> <span class="na">class=</span><span class="s">&quot;org.apache.commons.text.WordUtils&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="cm">&lt;!-- Import multiple classes from custom jar with wildcard (OPTION C) --&gt;</span>
+     <span class="nt">&lt;import</span> <span class="na">class=</span><span class="s">&quot;org.apache.commons.text.*&quot;</span><span class="nt">/&gt;</span> 
+
+    <span class="cm">&lt;!-- Use OPTION B/C in BENERATION --&gt;</span>
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;optionBC&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;column&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">script=</span><span class="s">&quot;WordUtils.swapCase(&#39;B/C: benerator is a GREAT universal data tool&#39;)&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/generate&gt;</span>
+
+    <span class="cm">&lt;!-- Instantiate single class as bean (OPTION D) --&gt;</span>
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;customUtil&quot;</span> <span class="na">class=</span><span class="s">&quot;org.apache.commons.text.WordUtils&quot;</span><span class="nt">&gt;</span>
+        <span class="cm">&lt;!-- Allows to define properties for your constructor as below if required --&gt;</span>
+        <span class="cm">&lt;!--  &lt;property name=&quot;myProperty&quot; value=&quot;12345&quot;/&gt; --&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+
+    <span class="cm">&lt;!-- Use OPTION D in BENERATION --&gt;</span>
+    <span class="nt">&lt;generate</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span> <span class="na">type=</span><span class="s">&quot;optionB&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;column&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">script=</span><span class="s">&quot;customUtil.swapCase(&#39;D: benerator is a GREAT universal data tool&#39;)&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/generate&gt;</span>
+
+<span class="nt">&lt;/setup&gt;</span>
+</code></pre></div>
+<h3 id="domain-imports">Domain imports</h3>
+<p>Domains can be imported as well. For the built-in Benerator domains, only the domain name is necessary, for custom domains, the fully qualified name
+    of the domain's top-level package. For a built-in domain:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;import</span> <span class="na">domains=</span><span class="s">&quot;person&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;personGen&quot;</span> <span class="na">class=</span><span class="s">&quot;PersonGenerator&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>For a custom domain:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;import</span> <span class="na">domain=</span><span class="s">&quot;com.my&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;myGen&quot;</span> <span class="na">class=</span><span class="s">&quot;MyGenerator&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h2 id="looking-up-servicesobjects-via-jndi">Looking up services/objects via JNDI</h2>
+<p>Benerator provides an <code>InitialContext</code> class in the JNDI platform package. It can be used to locate objects and make them available in Benerator:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;import</span> <span class="na">platforms=</span><span class="s">&quot;jndi&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;ctx&quot;</span> <span class="na">class=</span><span class="s">&quot;InitialContext&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;factory&quot;</span> <span class="na">value=</span><span class="s">&quot;...&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;url&quot;</span> <span class="na">value=</span><span class="s">&quot;...&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;user&quot;</span> <span class="na">value=</span><span class="s">&quot;...&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;password&quot;</span> <span class="na">value=</span><span class="s">&quot;...&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;ejb&quot;</span> <span class="na">spec=</span><span class="s">&quot;ctx.lookup(&#39;cons&#39;)&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h2 id="calculating-global-sums">Calculating global sums</h2>
+<p>Sometimes you need to calculate the total sum of one field over all generated instances, e.g. for calculating checksums. The AddingConsumer is there
+to help you with this task. Instantiate it as <code>&lt;bean&gt;</code>, specifying the field name to add and the number type to use, then use it as consumer and
+finally query its 'sum' property value with a script expression:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;adder&quot;</span> <span class="na">spec=</span><span class="s">&quot;new AddingConsumer(&#39;_txn_amount_&#39;, &#39;long&#39;)&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;deb_transactions&quot;</span> <span class="na">count=</span><span class="s">&quot;100&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter, adder&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;_txn_amount_&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span> <span class="na">min=</span><span class="s">&quot;1&quot;</span> <span class="na">max=</span><span class="s">&quot;100&quot;</span> <span class="na">distribution=</span><span class="s">&quot;random&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+
+<span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;trailer_record&quot;</span> <span class="na">count=</span><span class="s">&quot;1&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;total&quot;</span> <span class="na">script=</span><span class="s">&quot;adder.sum&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<h2 id="querying-data-from-a-system-to-variables">Querying data from a system to variables</h2>
+<p>Querying is discussed in <strong><a href="data_generation_concepts.html##querying-information-from-a-system">Data Generation Concepts</a></strong>.</p>
+<p>Benerator supports to store multiple values in <strong><a href="data_generation_concepts.html#variables">Variables</a></strong> at runtime 
+that can be accessed array-like to use the data for multiple attributes i.e. fulfill multi-field constraints. </p>
+<p>Given a variable named <code>productInfo</code> 
+and a selector that queries 3 values (e.g. <code>select ean_code,product_name,product_no from ...</code> ) from a product database<br />
+the values are accessed by <code>productInfo[0]</code>, <code>productInfo[1]</code>, <code>productInfo[2]</code> using the <code>script</code> element. </p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;shop&quot;</span> <span class="na">count=</span><span class="s">&quot;10&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;country&quot;</span> <span class="na">values=</span><span class="s">&quot;DE,AT,CH&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;product&quot;</span> <span class="na">count=</span><span class="s">&quot;100&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">&quot;productInfo&quot;</span>
+                  <span class="na">source=</span><span class="s">&quot;db&quot;</span>
+                  <span class="na">selector=</span><span class="s">&quot;{ftl: select ean_code,product_name,product_no from db_product where country=&#39;${shop.country}&#39;}}&quot;</span> 
+                  <span class="na">cyclic=</span><span class="s">&quot;true&quot;</span>  
+        <span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;ean_code&quot;</span> 
+                   <span class="na">script=</span><span class="s">&quot;productInfo[0]&quot;</span><span class="nt">/&gt;</span>                
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;product_name&quot;</span> 
+                   <span class="na">script=</span><span class="s">&quot;productInfo[1]&quot;</span><span class="nt">/&gt;</span>                
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;product_no&quot;</span> 
+                   <span class="na">script=</span><span class="s">&quot;productInfo[2]&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/generate&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Set <strong>cyclic="true"</strong> if not enough products for the given country value are available in your dataset.</p>
+</div>
+<h2 id="the-memstore">The MemStore</h2>
+<p>The MemStore is a simple implementation of the StorageSystem interface which allows yo to store entity data in RAM and perform simple queries on them.
+This is useful in cases where you need to generate data where there are internal dependencies but no database is involved, e.g. generating an XML file
+with products and orders.</p>
+<p>A MemStore is declared with a <code>&lt;memstore&gt;</code> element:</p>
+<p><code>&lt;memstore id="store"/&gt;</code></p>
+<p>You can use it as a consumer for storing data (in this case products):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;product&quot;</span> <span class="na">count=</span><span class="s">&quot;10&quot;</span> <span class="na">consumer=</span><span class="s">&quot;store,ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">pattern=</span><span class="s">&quot;[A-Z][a-z]{4,12}&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>Afterwards you can query the generated products for referencing them in generated orders:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;order&quot;</span> <span class="na">count=</span><span class="s">&quot;10&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">&quot;product&quot;</span> <span class="na">source=</span><span class="s">&quot;store&quot;</span> <span class="na">type=</span><span class="s">&quot;product&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;product_id&quot;</span> <span class="na">script=</span><span class="s">&quot;product.id&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that you can <strong>only</strong> query for entities – if you need a single attribute of an entity, 
+you must first use a variable to get the entity and afterwards retrieve the required attribute by script.</p>
+</div>
+<p>You can use a distribution:</p>
+<p><code>&lt;variable name="product" source="store" type="product" distribution="random"/&gt;</code></p>
+<p>A simple form of query is supported by a <code>selector</code> element. Its content must be a script expression that serves as a filter. The expression is
+consecutively evaluated on each element (as candidate) and has to return <code>true</code> if the candidate is accepted, otherwise <code>false</code>. </p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p><strong>IMPORTANT</strong>: The script can only access each candidate by using the keyword <strong>_candidate</strong>.</p>
+</div>
+<p>As an example, here is a query which only returns products whose name starts with '<strong>A</strong>':</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">&quot;product&quot;</span> <span class="na">source=</span><span class="s">&quot;store&quot;</span> <span class="na">type=</span><span class="s">&quot;product&quot;</span> <span class="na">selector=</span><span class="s">&quot;_candidate.name.startsWith(&#39;A&#39;)&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h2 id="datasets">Datasets</h2>
+<p>You can define datasets and combine them with supersets. This mechanism lets you also define parallel and overlapping hierarchies of nested datasets.</p>
+<p>Definition of hierarchies is separated from the definition of dataset values for a concrete topic. So you can define a dataset grouping for regions,
+mapping continents, countries, states and departments and apply this grouping to define and combine sets of e.g. cities, person names or products.</p>
+<p>We will apply the mechanism here for cities in geographical regions. You can find the example files in the distribution's directory demo/dataset/</p>
+<p>A dataset is identified by a code. For a country, its ISO code is an appropriate choice, but you are free to define and choose what is useful for your
+application.</p>
+<p>Assume you wanted to process some American countries: US (USA), CA (Canada), MX (Mexico), BR (Brazil), AR (Argentina)</p>
+<p>You could group them geographically (North America vs. South America) or by language (Latin America vs. Anglo America). You could do both in parallel
+by defining area sets in a file area.set.properties :</p>
+<div class="highlight"><pre><span></span><code><span class="na">latin_america</span><span class="o">=</span><span class="s">MX,BR,AR</span><span class="w"></span>
+<span class="na">anglo_america</span><span class="o">=</span><span class="s">US,CA</span><span class="w"></span>
+<span class="na">north_america</span><span class="o">=</span><span class="s">US,CA,MX</span><span class="w"></span>
+<span class="na">south_america</span><span class="o">=</span><span class="s">BR,AR</span><span class="w"></span>
+<span class="na">america</span><span class="o">=</span><span class="s">north_america,south_america</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="" src="assets/grafik15.png" /></p>
+<p>The simple datasets would be defined in CSV files:</p>
+<p><code>cities_US.csv</code>:</p>
+<div class="highlight"><pre><span></span><code>San Francisco
+
+Los Angeles
+
+New York
+</code></pre></div>
+<p><code>cities_CA.csv</code>:</p>
+<div class="highlight"><pre><span></span><code>Ottawa
+
+Toronto
+
+cities_MX.csv
+
+Mexico
+
+Villahermosa
+
+cities_BR.csv
+
+Sao Pãolo
+
+Brasilia
+
+cities_AR.csv
+
+Buenos Aires
+
+Rosario
+</code></pre></div>
+<p>You can now use this setup to generate city names for any of the specified regions. For North American cities you could specify</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;echo</span> <span class="na">message=</span><span class="s">&quot;north american cities:&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;city&quot;</span> <span class="na">consumer=</span><span class="s">&quot;exporter&quot;</span> <span class="na">count=</span><span class="s">&quot;10&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">unique=</span><span class="s">&quot;true&quot;</span>
+               <span class="na">source=</span><span class="s">&quot;city_{0}.csv&quot;</span> <span class="na">encoding=</span><span class="s">&quot;UTF-8&quot;</span>
+               <span class="na">dataset=</span><span class="s">&quot;north_america&quot;</span> <span class="na">nesting=</span><span class="s">&quot;area&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>and generate the output:</p>
+<p>north american cities:</p>
+<div class="highlight"><pre><span></span><code>city<span class="o">[</span><span class="nv">name</span><span class="o">=</span>Mexico<span class="o">]</span>
+city<span class="o">[</span><span class="nv">name</span><span class="o">=</span>Los Angeles<span class="o">]</span>
+city<span class="o">[</span><span class="nv">name</span><span class="o">=</span>San Francisco<span class="o">]</span>
+city<span class="o">[</span><span class="nv">name</span><span class="o">=</span>New York<span class="o">]</span>
+city<span class="o">[</span><span class="nv">name</span><span class="o">=</span>Villahermosa<span class="o">]</span>
+city<span class="o">[</span><span class="nv">name</span><span class="o">=</span>Ottawa<span class="o">]</span>
+city<span class="o">[</span><span class="nv">name</span><span class="o">=</span>Toronto<span class="o">]</span>
+</code></pre></div>
+<h3 id="region-nesting">Region nesting</h3>
+<p>Benerator comes with a predefined nesting definition for geographical datasets, called 'region':</p>
+<div class="highlight"><pre><span></span><code><span class="na">europe</span><span class="o">=</span><span class="s">western_europe,central_europe,</span><span class="w"></span>
+<span class="na">southern_europe,eastern_europe,northern_europe</span><span class="o">=</span><span class="w"></span>
+<span class="na">western_europe</span><span class="o">=</span><span class="s">PT,ES,AD,FR,MC</span><span class="w"></span>
+<span class="na">central_europe</span><span class="o">=</span><span class="s">BE,NL,LU,DE,CH,AT,LI</span><span class="w"></span>
+<span class="na">southern_europe</span><span class="o">=</span><span class="s">IT,SM,GR,CY,TR</span><span class="w"></span>
+<span class="na">eastern_europe</span><span class="o">=</span><span class="s">AL,SI,CZ,HU,PL,RU,RO,BG,HR,BA,EE,LT,LV,SK,UA</span><span class="w"></span>
+<span class="na">northern_europe</span><span class="o">=</span><span class="s">UK,IE,DK,SE,NO,FI,IS</span><span class="w"></span>
+<span class="na">near_east</span><span class="o">=</span><span class="s">AF,IR,IL,JO,KZ,PK,QA,SA,AE</span><span class="w"></span>
+<span class="na">africa</span><span class="o">=</span><span class="s">EG,GH,KE,ZA</span><span class="w"></span>
+<span class="na">north_america</span><span class="o">=</span><span class="s">US,CA</span><span class="w"></span>
+<span class="na">central_america</span><span class="o">=</span><span class="s">MX,BS</span><span class="w"></span>
+<span class="na">america</span><span class="o">=</span><span class="s">north_america,central_america,south_america</span><span class="w"></span>
+<span class="na">south_america</span><span class="o">=</span><span class="s">AR,BR,EC</span><span class="w"></span>
+<span class="na">asia</span><span class="o">=</span><span class="s">JP,IN,ID,KR,KP,MY,SG,TW,TH</span><span class="w"></span>
+<span class="na">australia</span><span class="o">=</span><span class="s">AU,NZ</span><span class="w"></span>
+</code></pre></div>
+<h2 id="chaining-generators">Chaining generators</h2>
+<p>Generators can be chained, composed, or reused in different contexts. You can do so by instantiating a generator as JavaBean and referring it in
+properties of other JavaBean-instantiated generators or specifying it as <code>source</code> attribute like an importer.</p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- creates a text generator /--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;textGen&quot;</span> <span class="na">class=</span><span class="s">&quot;RegexStringGenerator&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;pattern&quot;</span> <span class="na">value=</span><span class="s">&quot;([a-z]{3,8}[ ])*[a-z]{3,8}\.&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+
+<span class="cm">&lt;!-- wraps the text generator and creates messages /--&gt;</span>
+<span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;message&quot;</span> <span class="na">count=</span><span class="s">&quot;10&quot;</span> <span class="na">consumer=</span><span class="s">&quot;LoggingConsumer&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;text&quot;</span> <span class="na">source=</span><span class="s">&quot;textGen&quot;</span> <span class="na">converter=</span><span class="s">&quot;MessageConverter&quot;</span> <span class="na">pattern=</span><span class="s">&quot;Message: &#39;&#39;{0}&#39;&#39;&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<h2 id="invoking-benerator-programmatically">Invoking Benerator programmatically</h2>
+<p>For integrating Benerator with other applications, you can invoke it programmatically in a Java application too.</p>
+<h3 id="invoking-benerator-as-a-whole">Invoking Benerator as a whole</h3>
+<p>For executing descriptor files do the following:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// create an instance of the Descriptor runner specifying the descriptor file</span><span class="w"></span>
+<span class="n">DescriptorRunner</span><span class="w"> </span><span class="n">runner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DescriptorRunner</span><span class="p">(</span><span class="s">&quot;path/to/file/benerator.xml&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">BeneratorContext</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runner</span><span class="p">.</span><span class="na">getContext</span><span class="p">();</span><span class="w"></span>
+<span class="c1">// use the BeneratorContext to set locale, file encoding, ... as you need</span><span class="w"></span>
+<span class="n">context</span><span class="p">.</span><span class="na">setValidate</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="n">runner</span><span class="p">.</span><span class="na">run</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
+<h3 id="making-benerator-generate-data-and-invoke-a-custom-class-with-it">Making Benerator generate data and invoke a custom class with it</h3>
+<p>If you want to use Benerator for feeding a custom class with generated data, implement the Consumer interface in a way that connects to your program,
+instantiate it and register it with the BeneratorContext:</p>
+<div class="highlight"><pre><span></span><code><span class="n">DescriptorRunner</span><span class="w"> </span><span class="n">runner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DescriptorRunner</span><span class="p">(</span><span class="s">&quot;path/to/file/benerator.xml&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">BeneratorContext</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runner</span><span class="p">.</span><span class="na">getContext</span><span class="p">();</span><span class="w"></span>
+<span class="n">context</span><span class="p">.</span><span class="na">setValidate</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="n">MyConsumer</span><span class="w"> </span><span class="n">myConsumer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyConsumer</span><span class="p">();</span><span class="w"></span>
+<span class="n">context</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;myConsumer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">myConsumer</span><span class="p">);</span><span class="w"> </span><span class="c1">// add a custom Consumer</span><span class="w"></span>
+<span class="n">runner</span><span class="p">.</span><span class="na">run</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
+<p>A simplistic implementation could simply write entities to the console, e.g.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">MyConsumer</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AbstractConsumer</span><span class="err">`</span><span class="o">&lt;</span><span class="n">Entity</span><span class="o">&gt;</span><span class="err">`</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">List</span><span class="err">`</span><span class="o">&lt;</span><span class="n">Entity</span><span class="o">&gt;</span><span class="err">`</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="err">`</span><span class="o">&lt;</span><span class="n">Entity</span><span class="o">&gt;</span><span class="err">`</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startConsuming</span><span class="p">(</span><span class="n">Entity</span><span class="w"> </span><span class="n">entity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">      </span><span class="n">products</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">entity</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="using-generators-defined-in-a-descriptor-file">Using generators defined in a descriptor file</h3>
+<p>You can define data generation in a Benerator descriptor file, make Benerator configure the generator and hand it out to your application.</p>
+<p>First, define a descriptor file, e.g.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;setup&gt;</span>
+
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;address&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;city&quot;</span> <span class="na">values=</span><span class="s">&quot;&#39;Munich&#39;, &#39;New York&#39;, &#39;Tokyo&#39;&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/generate&gt;</span>
+
+<span class="nt">&lt;/setup&gt;</span>
+</code></pre></div>
+<p>Then you can get the address generator from Benerator by calling:</p>
+<div class="highlight"><pre><span></span><code><span class="n">BeneratorContext</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BeneratorContext</span><span class="p">();</span><span class="w"></span>
+<span class="n">Generator</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DescriptorBasedGenerator</span><span class="p">(</span><span class="s">&quot;benerator.xml&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;address&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">);</span><span class="w"></span>
+<span class="n">generator</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="n">context</span><span class="p">);</span><span class="w"></span>
+<span class="n">ProductWrapper</span><span class="w"> </span><span class="n">wrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProductWrapper</span><span class="p">();</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">generator</span><span class="p">.</span><span class="na">generate</span><span class="p">(</span><span class="n">wrapper</span><span class="p">));</span><span class="w"></span>
+<span class="n">generator</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
+<h2 id="tasks">Tasks</h2>
+<p>In many cases, data generation based on the descriptor file format may be too complex and a script based generation too slow.</p>
+<p>In these cases you can provide a custom class that implements the com.rapiddweller.task.Task interface and can be invoked from the Benerator
+descriptor file. For example, you could write a Task implementation that calls business logic for triggering complex operations on business objects.</p>
+<p>Such a class can be instantiated and invoked with a similar syntax like any JavaBean, e.g.:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;run-task</span> <span class="na">class=</span><span class="s">&quot;com.my.SpecialTask&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;uri&quot;</span> <span class="na">value=</span><span class="s">&quot;base.csv&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;db&quot;</span> <span class="na">ref=</span><span class="s">&quot;db&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/run-task&gt;</span>
+</code></pre></div>
+<p>You can instantiate and initialize a task like a <code>&lt;bean&gt;</code> 
+(see '<a href="advanced_topics.html#javabeans-and-the-benerator-context">JavaBeans and the Benerator Context</a>'). Tasks can be executed in pages, ensuring that
+the total number of execution over all threads is the page size. For this, The element run-task also supports the attributes</p>
+<ul>
+<li>
+<p>count : the total number of times the Task is executed (defaults to 1)</p>
+</li>
+<li>
+<p>pageSize : the number of invocations to execute together (defaults to 1), e.g. for grouping pageSize invocations to a single transaction</p>
+</li>
+<li>
+<p>pager: injects a class (implementing the PageListener interface) to perform custom paging operations (like flushing data to file or database)</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;run-task</span> <span class="na">class=</span><span class="s">&quot;my.SpecialTask&quot;</span> <span class="na">count=</span><span class="s">&quot;1000&quot;</span> <span class="na">pageSize=</span><span class="s">&quot;100&quot;</span> <span class="na">pager=</span><span class="s">&quot;my.PagingStrategy&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;message&quot;</span> <span class="na">value=</span><span class="s">&quot;I&#39;m special&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/run-task&gt;</span>
+</code></pre></div>
+<h2 id="staging">Staging</h2>
+<p>Combining scripting and property files, you get a staging mechanism. A typical example would be to use different setups for developing data generation
+on a local system and using it to produce mass data on a test environment. The basic approach is to extract variable properties to properties files,
+e.g. development.properties:</p>
+<div class="highlight"><pre><span></span><code><span class="na">user_count</span><span class="o">=</span><span class="s">100</span><span class="w"></span>
+<span class="na">db_batch</span><span class="o">=</span><span class="s">false</span><span class="w"></span>
+<span class="na">pageSize</span><span class="o">=</span><span class="s">1</span><span class="w"></span>
+<span class="na">db_uri</span><span class="o">=</span><span class="s">jdbc:oracle:thin:@10.37.129.4:1521:XE</span><span class="w"></span>
+<span class="na">db_driver</span><span class="o">=</span><span class="s">oracle.jdbc.driver.OracleDriver</span><span class="w"></span>
+<span class="na">db_user</span><span class="o">=</span><span class="s">{user.name}</span><span class="w"></span>
+<span class="na">db_password</span><span class="o">=</span><span class="s">{user.name}</span><span class="w"></span>
+<span class="na">db_schema</span><span class="o">=</span><span class="s">{user.name}</span><span class="w"></span>
+</code></pre></div>
+<p>and <code>perftest.properties</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="na">user_count</span><span class="o">=</span><span class="s">1000000</span><span class="w"></span>
+<span class="na">db_batch</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
+<span class="na">pageSize</span><span class="o">=</span><span class="s">1000</span><span class="w"></span>
+<span class="na">db_uri</span><span class="o">=</span><span class="s">jdbc:oracle:thin:@134.53.26.183:1521:MYAPP</span><span class="w"></span>
+<span class="na">db_driver</span><span class="o">=</span><span class="s">oracle.jdbc.driver.OracleDriver</span><span class="w"></span>
+<span class="na">db_user</span><span class="o">=</span><span class="s">myapp</span><span class="w"></span>
+<span class="na">db_password</span><span class="o">=</span><span class="s">myapp</span><span class="w"></span>
+<span class="na">db_schema</span><span class="o">=</span><span class="s">myapp</span><span class="w"></span>
+</code></pre></div>
+<p>You can then decide which configuration to use by setting a stage setting as Java virtual machine parameter, e.g. write</p>
+<p><code>&lt;mvn benerator:generate -Dstage=development/&gt;</code></p>
+<h2 id="template-data-structures">Template data structures</h2>
+<p>You can use DbUnit import files for replicating entity graph structures many times on each generated object. Say, for each customer in a tested online
+shop, a default order structure should be created. You would then define the order structure in a DbUnit file.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dataset&gt;</span>
+    <span class="nt">&lt;db_order_item</span> <span class="na">order_id=</span><span class="s">&quot;{db_order.id}&quot;</span> <span class="na">number_of_items=</span><span class="s">&quot;2&quot;</span> <span class="na">product_ean_code=</span><span class="s">&quot;8076800195057&quot;</span> <span class="na">total_price=</span><span class="s">&quot;2.40&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;db_order_item</span> <span class="na">order_id=</span><span class="s">&quot;{db_order.id}&quot;</span> <span class="na">number_of_items=</span><span class="s">&quot;1&quot;</span> <span class="na">product_ean_code=</span><span class="s">&quot;8006550301040&quot;</span> <span class="na">total_price=</span><span class="s">&quot;8.70&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/dataset&gt;</span>
+</code></pre></div>
+<p>and then create an order for each customer that imports its sub structure from the DbUnit file:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;db_order&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;customer_id&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;iterate</span> <span class="na">type=</span><span class="s">&quot;db_order_item&quot;</span> <span class="na">source=</span><span class="s">&quot;demo/shop/default_order.dbunit.xml&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;order_fk&quot;</span> <span class="na">script=</span><span class="s">&quot;db_order.id&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/iterate&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>Of course, you have to care for appropriate ids yourself.</p>
+<h2 id="generating-arrays">Generating arrays</h2>
+<p>Instead of entity data, you can generate arrays using type="array" for declaring the generated type and <code>&lt;value&gt;</code>
+elements for configuring the generated components:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;array&quot;</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;value</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">pattern=</span><span class="s">&quot;[A-Z]{5}&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;value</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">min=</span><span class="s">&quot;1&quot;</span> <span class="na">max=</span><span class="s">&quot;42&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>This is useful for special consumers that require array types, e.g. for generating parameters for the JavaInvoker which calls Java methods.</p>
+<h2 id="scoped-generation">Scoped Generation</h2>
+<p>All nested generator components have a scope which influences its life cycle: When generation in a scope is finished, its sub components are reset
+before the next invocation.</p>
+<h3 id="default-implicit-scope">Default (implicit) scope</h3>
+<p>As an example, assume you are generating data for a shop application which takes orders composed of order items. Each order and order item must have
+its unique id, but the order_item should have a sequence number which represents its position number within its associated order:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">name=</span><span class="s">&quot;the_order&quot;</span> <span class="na">type=</span><span class="s">&quot;order&quot;</span> <span class="na">count=</span><span class="s">&quot;2&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">generator=</span><span class="s">&quot;IncrementalIdGenerator&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;generate</span> <span class="na">name=</span><span class="s">&quot;the_item&quot;</span> <span class="na">type=</span><span class="s">&quot;order_item&quot;</span> <span class="na">minCount=</span><span class="s">&quot;1&quot;</span> <span class="na">maxCount=</span><span class="s">&quot;3&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">generator=</span><span class="s">&quot;IncrementalIdGenerator&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;order_id&quot;</span> <span class="na">script=</span><span class="s">&quot;the_order.id&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;item_no&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">distribution=</span><span class="s">&quot;increment&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;product&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">pattern=</span><span class="s">&quot;[A-Z][a-z]{3,8}&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;count&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">min=</span><span class="s">&quot;1&quot;</span> <span class="na">max=</span><span class="s">&quot;3&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/generate&gt;</span>
+
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>When running this descriptor, the output is (after indenting and formatting):</p>
+<div class="highlight"><pre><span></span><code>order<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">1</span><span class="o">]</span>
+order_item<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">item_no</span><span class="o">=</span><span class="m">1</span>, <span class="nv">product</span><span class="o">=</span>Pgbxll, <span class="nv">count</span><span class="o">=</span><span class="m">2</span><span class="o">]</span>
+order_item<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">item_no</span><span class="o">=</span><span class="m">2</span>, <span class="nv">product</span><span class="o">=</span>Pmce, <span class="nv">count</span><span class="o">=</span><span class="m">1</span><span class="o">]</span>order<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">2</span><span class="o">]</span>
+order_item<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">3</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">item_no</span><span class="o">=</span><span class="m">1</span>, <span class="nv">product</span><span class="o">=</span>Entlkzkjv, <span class="nv">count</span><span class="o">=</span><span class="m">2</span><span class="o">]</span>
+order_item<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">4</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">item_no</span><span class="o">=</span><span class="m">2</span>, <span class="nv">product</span><span class="o">=</span>Jgqp, <span class="nv">count</span><span class="o">=</span><span class="m">3</span><span class="o">]</span>
+</code></pre></div>
+<p>This exhibits the behaviour with default (implicit) scope, which is tied to the owner of a component. In this case, the scope of the item_no component
+is the order_item entity: When one generation loop of „the_item“ is through, the contained component generators are reset before running the next
+loop (belonging to a new instance of 'the_order').</p>
+<h3 id="explicit-scope">Explicit scope</h3>
+<p>To understand explicit scoping, let us first extend the previous example, assuming that each single product instance ordered is shipped in an own
+package, which shall be tracked. Thus, you would add a sub <code>&lt;generate&gt;</code> for the packages:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">name=</span><span class="s">&quot;the_order&quot;</span> <span class="na">type=</span><span class="s">&quot;order&quot;</span> <span class="na">count=</span><span class="s">&quot;2&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">generator=</span><span class="s">&quot;IncrementalIdGenerator&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;generate</span> <span class="na">name=</span><span class="s">&quot;the_item&quot;</span> <span class="na">type=</span><span class="s">&quot;order_item&quot;</span> <span class="na">minCount=</span><span class="s">&quot;1&quot;</span> <span class="na">maxCount=</span><span class="s">&quot;3&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">generator=</span><span class="s">&quot;IncrementalIdGenerator&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;order_id&quot;</span> <span class="na">script=</span><span class="s">&quot;the_order.id&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;item_no&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">distribution=</span><span class="s">&quot;increment&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;product&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">pattern=</span><span class="s">&quot;[A-Z][a-z]{3,8}&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;count&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">min=</span><span class="s">&quot;1&quot;</span> <span class="na">max=</span><span class="s">&quot;3&quot;</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;package&quot;</span> <span class="na">count=</span><span class="s">&quot;{the_item.count}&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">generator=</span><span class="s">&quot;IncrementalIdGenerator&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;order_id&quot;</span> <span class="na">script=</span><span class="s">&quot;the_order.id&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;order_pkg_no&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">distribution=</span><span class="s">&quot;increment&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/generate&gt;</span>
+
+    <span class="nt">&lt;/generate&gt;</span>
+
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>Running this yields the output:</p>
+<div class="highlight"><pre><span></span><code>order<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">1</span><span class="o">]</span>
+order_item<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">item_no</span><span class="o">=</span><span class="m">1</span>, <span class="nv">product</span><span class="o">=</span>Pgbxll, <span class="nv">count</span><span class="o">=</span><span class="m">2</span><span class="o">]</span>
+package<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">order_pkg_no</span><span class="o">=</span><span class="m">1</span><span class="o">]</span>
+package<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">order_pkg_no</span><span class="o">=</span><span class="m">2</span><span class="o">]</span>
+order_item<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">item_no</span><span class="o">=</span><span class="m">2</span>, <span class="nv">product</span><span class="o">=</span>Pmce, <span class="nv">count</span><span class="o">=</span><span class="m">1</span><span class="o">]</span>
+package<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">3</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">order_pkg_no</span><span class="o">=</span><span class="m">1</span><span class="o">]</span>
+order<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">2</span><span class="o">]</span>
+order_item<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">3</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">item_no</span><span class="o">=</span><span class="m">1</span>, <span class="nv">product</span><span class="o">=</span>Entlkzkjv, <span class="nv">count</span><span class="o">=</span><span class="m">2</span><span class="o">]</span>
+package<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">4</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">order_pkg_no</span><span class="o">=</span><span class="m">1</span><span class="o">]</span>
+order_item<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">4</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">item_no</span><span class="o">=</span><span class="m">2</span>, <span class="nv">product</span><span class="o">=</span>Jgqp, <span class="nv">count</span><span class="o">=</span><span class="m">3</span><span class="o">]</span>
+package<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">5</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">order_pkg_no</span><span class="o">=</span><span class="m">1</span><span class="o">]</span>
+package<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">6</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">order_pkg_no</span><span class="o">=</span><span class="m">2</span><span class="o">]</span>
+</code></pre></div>
+<p>OK, we see that this adds <code>&lt;count&gt;</code> packages to each order_item and the order_pkg_no numbering begins with 1 for each order_item..</p>
+<p>Now suppose that the package number should be a sequence which is unique for a complete order, not just an order_item – this is where the package
+number generation needs a different scope, the one of the order, telling Benerator to apply the same lifecycle to the packages as to the components of
+the order:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">name=</span><span class="s">&quot;the_order&quot;</span> <span class="na">type=</span><span class="s">&quot;order&quot;</span> <span class="na">count=</span><span class="s">&quot;2&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">generator=</span><span class="s">&quot;IncrementalIdGenerator&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;generate</span> <span class="na">name=</span><span class="s">&quot;the_item&quot;</span> <span class="na">type=</span><span class="s">&quot;order_item&quot;</span> <span class="na">minCount=</span><span class="s">&quot;1&quot;</span> <span class="na">maxCount=</span><span class="s">&quot;3&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">generator=</span><span class="s">&quot;IncrementalIdGenerator&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;order_id&quot;</span> <span class="na">script=</span><span class="s">&quot;the_order.id&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;item_no&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">distribution=</span><span class="s">&quot;increment&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;product&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">pattern=</span><span class="s">&quot;[A-Z][a-z]{3,8}&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;count&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">min=</span><span class="s">&quot;1&quot;</span> <span class="na">max=</span><span class="s">&quot;3&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;package&quot;</span> <span class="na">count=</span><span class="s">&quot;{the_item.count}&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">generator=</span><span class="s">&quot;IncrementalIdGenerator&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;order_id&quot;</span> <span class="na">script=</span><span class="s">&quot;the_order.id&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;order_pkg_no&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">distribution=</span><span class="s">&quot;increment&quot;</span> <span class="na">scope=</span><span class="s">&quot;the_order&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/generate&gt;</span>
+    <span class="nt">&lt;/generate&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>yielding the desired result:</p>
+<div class="highlight"><pre><span></span><code>order<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">1</span><span class="o">]</span>
+order_item<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">item_no</span><span class="o">=</span><span class="m">1</span>, <span class="nv">product</span><span class="o">=</span>Pgbxll, <span class="nv">count</span><span class="o">=</span><span class="m">2</span><span class="o">]</span>
+package<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">order_pkg_no</span><span class="o">=</span><span class="m">1</span><span class="o">]</span>
+package<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">order_pkg_no</span><span class="o">=</span><span class="m">2</span><span class="o">]</span>
+order_item<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">item_no</span><span class="o">=</span><span class="m">2</span>, <span class="nv">product</span><span class="o">=</span>Pmce, <span class="nv">count</span><span class="o">=</span><span class="m">1</span><span class="o">]</span>
+package<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">3</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">1</span>, <span class="nv">order_pkg_no</span><span class="o">=</span><span class="m">3</span><span class="o">]</span>
+
+order<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">2</span><span class="o">]</span>
+order_item<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">3</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">item_no</span><span class="o">=</span><span class="m">1</span>, <span class="nv">product</span><span class="o">=</span>Entlkzkjv, <span class="nv">count</span><span class="o">=</span><span class="m">2</span><span class="o">]</span>
+package<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">4</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">order_pkg_no</span><span class="o">=</span><span class="m">1</span><span class="o">]</span>
+order_item<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">4</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">item_no</span><span class="o">=</span><span class="m">2</span>, <span class="nv">product</span><span class="o">=</span>Jgqp, <span class="nv">count</span><span class="o">=</span><span class="m">3</span><span class="o">]</span>
+package<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">5</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">order_pkg_no</span><span class="o">=</span><span class="m">2</span><span class="o">]</span>
+package<span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="m">6</span>, <span class="nv">order_id</span><span class="o">=</span><span class="m">2</span>, <span class="nv">order_pkg_no</span><span class="o">=</span><span class="m">3</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="global-scope">Global scope</h3>
+<p>Using <code>scope="/"</code>, any component can be configured to have global scope which means that it is never reset. This can also be used as a performance
+improvement for resource-heavy database queries combined with a caching distribution.</p>
+<h2 id="composite-data-generation">Composite Data Generation</h2>
+<p>For databases, flat data generation is used: Each generated entity stands for itself and is persisted without a context. Nesting <code>&lt;generate&gt;</code> elements
+only correspond to a concept of loop and sub-loop, not to a hierarchical nesting of data. First, the top-level element is created and sent to its
+consumer(s) then its child elements are generated and sent to their consumer(s). It is up to the consumer(s) to create and track context and interpret
+the generated data in a hierarchical manner.</p>
+<p>In cases of intrinsically hierarchical data (mongoDB or XML), a root data entity needs to be generated in a composite manner and processed
+differently: All nested elements are generated until the full tree is built and then the root element is sent to the consumer (and only this element).
+The consumer can then scan through the entity tree and do its job.</p>
+<p>This is what the <code>&lt;part&gt;</code> element has been introduced for. It takes the same parameters as the <code>&lt;generate&gt;</code> element, but does not call a consumer with
+the generated data, but puts them into a collection that is set as the parent entity's property.</p>
+<p>For example,</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&#39;user&#39;</span> <span class="na">minCount=</span><span class="s">&#39;100&#39;</span> <span class="na">consumer=</span><span class="s">&#39;db&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;name&#39;</span> <span class="na">type=</span><span class="s">&#39;string&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;age&#39;</span> <span class="na">type=</span><span class="s">&#39;int&#39;</span> <span class="na">min=</span><span class="s">&#39;18&#39;</span> <span class="na">max=</span><span class="s">&#39;78&#39;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;part</span> <span class="na">name=</span><span class="s">&#39;addresses&#39;</span> <span class="na">container=</span><span class="s">&#39;list&#39;</span> <span class="na">count=</span><span class="s">&#39;2&#39;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;street&#39;</span> <span class="na">pattern=</span><span class="s">&#39;[A-Z][a-z]{4} Street&#39;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&#39;houseNo&#39;</span> <span class="na">type=</span><span class="s">&#39;int&#39;</span> <span class="na">min=</span><span class="s">&#39;2&#39;</span> <span class="na">max=</span><span class="s">&#39;9&#39;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/part&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>generates 100 user entities, of which each one has an 'address' component, which is a list of 2 address entities.</p>
+<p>Supported settings for the part's container attribute are:</p>
+<ul>
+<li>
+<p>list</p>
+</li>
+<li>
+<p>set</p>
+</li>
+<li>
+<p>array</p>
+</li>
+</ul>
+<p>The default is <code>list</code>.</p>
+<h2 id="composite-data-iteration">Composite Data Iteration</h2>
+<p>Using a data source which provides hierarchical data, nested collection components (like <code>user.addresses</code> in the previous example) can be iterated
+explicitly, specifying the root component as <strong>source</strong> and providing the component <strong>name</strong>.</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="environment_files.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Environment Files" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Environment Files
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="generating_unique_data.html" class="md-footer__link md-footer__link--next" aria-label="Next: Generating Unique Data" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Generating Unique Data
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2006 - 2022 rapiddweller GmbH & Volker Bergmann
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/rapiddweller" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/rapiddweller/" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/intent/follow?screen_name=rapiddweller" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["search.suggest", "search.highlight", "search.share", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.top"], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="js/termynal.js"></script>
+      
+        <script src="js/custom.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="js/tablesort.js"></script>
+      
+    
+  </body>
+</html>

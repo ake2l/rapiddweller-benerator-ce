@@ -1,0 +1,1594 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This document is supposed to become a complete summary of everything you need to know of Benerator usage, use it efficiently and extend it as you need. This reference is under construction and will update from time to time. Feel free to contribute your ideas in our repo at https://github.com/rapiddweller/rapiddweller-benerator-ce/.">
+      
+      
+        <meta name="author" content="rapiddweller GmbH & Volker Bergmann">
+      
+      
+        <link rel="canonical" href="https://docs.benerator.de/domains.html">
+      
+      <link rel="icon" href="assets/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Domains - rapiddweller Benerator</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/termynal.css">
+    
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="rapiddweller" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#domains" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="rapiddweller Benerator" class="md-header__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            rapiddweller Benerator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Domains
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="rapiddweller Benerator" class="md-nav__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    rapiddweller Benerator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction_to_benerator.html" class="md-nav__link">
+        Goals and Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="the_benerator_project_wizard.html" class="md-nav__link">
+        The Benerator Project Wizard
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quick_tour_through_the_descriptor_file_format.html" class="md-nav__link">
+        Quick tour through the descriptor file format
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_generation_concepts.html" class="md-nav__link">
+        Data Generation Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_anonymization_concepts.html" class="md-nav__link">
+        Data Anonymization Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="regular_expression_support.html" class="md-nav__link">
+        Regular Expression Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_file_processing.html" class="md-nav__link">
+        CSV File Generation/Anonymization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xml_file_processing.html" class="md-nav__link">
+        XML File Processing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distribution.html" class="md-nav__link">
+        Distribution Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_relational_databases.html" class="md-nav__link">
+        Using Relational Databases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="message_queue_access.html" class="md-nav__link">
+        Message Queue Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kafka_access.html" class="md-nav__link">
+        Kafka Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="environment_files.html" class="md-nav__link">
+        Environment Files
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced_topics.html" class="md-nav__link">
+        Advanced Topics
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="generating_unique_data.html" class="md-nav__link">
+        Generating Unique Data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scripting.html" class="md-nav__link">
+        Scripting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rapiddwellerscript.html" class="md-nav__link">
+        rapiddwellerScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="command_line_tools.html" class="md-nav__link">
+        Command Line Tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Domains
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="domains.html" class="md-nav__link md-nav__link--active">
+        Domains
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#person-domain" class="md-nav__link">
+    person domain
+  </a>
+  
+    <nav class="md-nav" aria-label="person domain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#persongenerator" class="md-nav__link">
+    PersonGenerator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persongenerator-properties" class="md-nav__link">
+    PersonGenerator Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#person-class" class="md-nav__link">
+    Person Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-countries" class="md-nav__link">
+    Supported countries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#address-domain" class="md-nav__link">
+    Address domain
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#net-domain" class="md-nav__link">
+    net domain
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organization-domain" class="md-nav__link">
+    organization domain
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finance-domain" class="md-nav__link">
+    finance domain
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-domain" class="md-nav__link">
+    product domain
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#br-domain" class="md-nav__link">
+    br domain
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#us-domain" class="md-nav__link">
+    us domain
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="component_reference.html" class="md-nav__link">
+        Component Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_db_sanity.html" class="md-nav__link">
+        Using DB Sanity
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maven_benerator_plugin.html" class="md-nav__link">
+        Maven Benerator Plugin
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extending_benerator.html" class="md-nav__link">
+        Extending Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_benerator_as_load_generator.html" class="md-nav__link">
+        Using Benerator as Load Generator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting.html" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="monitoring_benerator.html" class="md-nav__link">
+        Monitoring Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance_tuning.html" class="md-nav__link">
+        Benerator Performance Tuning
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migrating_benerator_projects.html" class="md-nav__link">
+        Migrating Benerator Projects
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#person-domain" class="md-nav__link">
+    person domain
+  </a>
+  
+    <nav class="md-nav" aria-label="person domain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#persongenerator" class="md-nav__link">
+    PersonGenerator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persongenerator-properties" class="md-nav__link">
+    PersonGenerator Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#person-class" class="md-nav__link">
+    Person Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-countries" class="md-nav__link">
+    Supported countries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#address-domain" class="md-nav__link">
+    Address domain
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#net-domain" class="md-nav__link">
+    net domain
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organization-domain" class="md-nav__link">
+    organization domain
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finance-domain" class="md-nav__link">
+    finance domain
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-domain" class="md-nav__link">
+    product domain
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#br-domain" class="md-nav__link">
+    br domain
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#us-domain" class="md-nav__link">
+    us domain
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="domains">Domains</h1>
+<p>Benerator domains are a vehicle for defining, bundling and reusing domain specific data generation, e.g. for personal data, addresses, internet,
+banking, telecom. They may be localized to specific languages and be grouped to hierarchical datasets, e.g. for continents, countries and regions.</p>
+<p>Benerator comes packaged with several domains that have simple implementation of specific data generation and may serve as a base for deriving own
+specific data generation domains:</p>
+<ul>
+<li>
+<p><strong>person</strong>: Data related to a person</p>
+</li>
+<li>
+<p><strong>address</strong>: Data related to contacting a person by post</p>
+</li>
+<li>
+<p><strong>net</strong>: Internet and network related data</p>
+</li>
+<li>
+<p><strong>finance</strong>: finance data</p>
+</li>
+<li>
+<p><strong>organization</strong>: Organization data</p>
+</li>
+<li>
+<p><strong>product</strong>: Product-related data</p>
+</li>
+</ul>
+<h2 id="person-domain">person domain</h2>
+<p>The person domain has three major components:</p>
+<ul>
+<li>
+<p>PersonGenerator: Generates Person beans</p>
+</li>
+<li>
+<p>AcademicTitleGenerator: Generates academic titles</p>
+</li>
+<li>
+<p>NobilityTitleGenerator: Generates nobility titles</p>
+</li>
+<li>
+<p>GivenNameGenerator: Generates given names</p>
+</li>
+<li>
+<p>FamilyNameGenerator: Generates family names</p>
+</li>
+<li>
+<p>BirthDateGenerator: Generates birth dates</p>
+</li>
+<li>
+<p>GenderGenerator: Generates Gender values</p>
+</li>
+<li>
+<p>EmailAddressGenerator: Generates Email addresses</p>
+</li>
+<li>
+<p>GenderConverter: Converts Gender values to predefined strings</p>
+</li>
+<li>
+<p>TIN: Marks a Java attribute or property as a European Tax Identification Number</p>
+</li>
+<li>
+<p>TINGenerator: Creates European Tax Identification Numbers</p>
+</li>
+<li>
+<p>TINValidator: Validates European Tax Identification Numbers</p>
+</li>
+</ul>
+<p><img alt="" src="assets/grafik16.png" /></p>
+<h3 id="persongenerator">PersonGenerator</h3>
+<p>Creates Person beans to be used for prototype-based data generation. It can be configured with dataset and locale property. The generated Person
+JavaBeans exhibits the properties <em>salutation</em>, <em>title</em> (both locale-dependent), <em>givenName</em>, <em>familyName</em> (both dataset-dependent), <em>gender</em>, <em>birthDate</em>, <em>age</em>. If
+the chosen dataset definition provides name weights, benerator generates person names according to their statistical probability. Of course, gender,
+salutation and givenName are consistent.</p>
+<p>You can use the PersonGenerator like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;import</span> <span class="na">domains=</span><span class="s">&quot;person&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;user&quot;</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">&quot;person&quot;</span> <span class="na">generator=</span><span class="s">&quot;PersonGenerator&quot;</span> <span class="na">dataset=</span><span class="s">&quot;FR&quot;</span> <span class="na">locale=</span><span class="s">&quot;fr&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;salutation&quot;</span> <span class="na">source=</span><span class="s">&quot;person.salutation&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">script=</span><span class="s">&quot;{person.givenName +&#39; &#39;+ person.familyName}}&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>to get output similar to this:</p>
+<div class="highlight"><pre><span></span><code>user[salutation=Mr, name=David Morel]
+user[salutation=Mr, name=Robert Robert]
+user[salutation=Mr, name=Eric Morel]
+user[salutation=Mr, name=Patrick Lefebvre]
+user[salutation=Mme, name=Helene Fournier]
+</code></pre></div>
+<h3 id="persongenerator-properties">PersonGenerator Properties</h3>
+<p>The PersonGenerator can be configured with several properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dataset</td>
+<td>Either a region name or the two-letter-ISO-code of a country, e.g. US for the USA. See '<a href="advanced_topics.html#region-nesting">Advanced Topics &gt; Region nesting</a>'</td>
+<td>The user's default country</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>Two-letter-ISO-code of the language in which to create salutation and titles, e.g. en for English</td>
+<td>The user's default language</td>
+</tr>
+<tr>
+<td>minAgeYears</td>
+<td>The minimum age of generated persons</td>
+<td>15</td>
+</tr>
+<tr>
+<td>maxAgeYears</td>
+<td>The maximum age of generated persons</td>
+<td>105</td>
+</tr>
+<tr>
+<td>femaleQuota</td>
+<td>The quota of generated women (1 → 100%)</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>nobleQuota</td>
+<td>The quota of generated noble persons (1 → 100%)</td>
+<td>0.005</td>
+</tr>
+</tbody>
+</table>
+<h3 id="person-class">Person Class</h3>
+<p>The Person class has the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>property name</th>
+<th>type</th>
+<th>property description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>salutation</td>
+<td>String</td>
+<td>Salutation (e.g. Mr/Mrs)</td>
+</tr>
+<tr>
+<td>academicTitle</td>
+<td>String</td>
+<td>Academic title (e.g. Dr)</td>
+</tr>
+<tr>
+<td>nobilityTitle</td>
+<td>String</td>
+<td>Nobility title (like Duke)</td>
+</tr>
+<tr>
+<td>givenName</td>
+<td>String</td>
+<td>Given name ('first name' in western countries)</td>
+</tr>
+<tr>
+<td>secondGivenName</td>
+<td>String</td>
+<td>An eventual second given name</td>
+</tr>
+<tr>
+<td>familyName</td>
+<td>String</td>
+<td>Family name ('surname' in western countries)</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>Gender</td>
+<td>Gender (MALE or FEMALE)</td>
+</tr>
+<tr>
+<td>birthDate</td>
+<td>Date</td>
+<td>Birth date</td>
+</tr>
+<tr>
+<td>age</td>
+<td>Integer</td>
+<td>actual age</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>eMail address</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>Locale</td>
+<td>Language of the person instance (used e.g. for salutation)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="supported-countries">Supported countries</h3>
+<table>
+<thead>
+<tr>
+<th>country</th>
+<th>code</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Austria</td>
+<td>AT</td>
+<td>most common 120 given names with absolute weight, most common 40 family names with absolute weight</td>
+</tr>
+<tr>
+<td>Australia</td>
+<td>AU</td>
+<td>most common 40 given names (unweighted), most common 20 family names with absolute weight</td>
+</tr>
+<tr>
+<td>Brazil</td>
+<td>BR</td>
+<td>most common 100 given names (unweighted), most common 29 family names (unweighted)</td>
+</tr>
+<tr>
+<td>Canada</td>
+<td>CA</td>
+<td>most common 80 given names (unweighted), most common 20 family names (unweighted). No coupling between given name locale and family name locale</td>
+</tr>
+<tr>
+<td>Switzerland</td>
+<td>CH</td>
+<td>most common 30 given names with absolute weight, most common 20 family names with absolute weight</td>
+</tr>
+<tr>
+<td>Czech Republic</td>
+<td>CZ</td>
+<td>most common 20 given names with absolute weight, most common 20 family names with absolute weight. Female surnames are supported.</td>
+</tr>
+<tr>
+<td>Spain</td>
+<td>ES</td>
+<td>most common 40 given names (unweighted), most common 40 family names with absolute weight</td>
+</tr>
+<tr>
+<td>Finland</td>
+<td>FI</td>
+<td>most common 785 given names (unweighted), most common 448 family names (unweighted)</td>
+</tr>
+<tr>
+<td>France</td>
+<td>FR</td>
+<td>most common 100 given names (unweighted), most common 25 family names with relative weight</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>DE</td>
+<td>most common 1998 given names with absolute weight, most common 3421 family names with absolute weight2</td>
+</tr>
+<tr>
+<td>Israel</td>
+<td>IL</td>
+<td>264 given names (unweighted), most common 30 family names with relative weight</td>
+</tr>
+<tr>
+<td>India</td>
+<td>IN</td>
+<td>most common 155 given names (unweighted), most common 50 family names (unweighted)</td>
+</tr>
+<tr>
+<td>Italy</td>
+<td>IT</td>
+<td>most common 60 given names (unweighted), most common 20 family names (unweighted)</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>JP</td>
+<td>Kanji letters. Most common 109 given names (unweighted), most common 50 family names with absolute weight</td>
+</tr>
+<tr>
+<td>Netherlands</td>
+<td>NL</td>
+<td>3228 given names (unweighted), most common 10 family names with absolute weight</td>
+</tr>
+<tr>
+<td>Norway</td>
+<td>NO</td>
+<td>most common 300 given names (unweighted), most common 100 family names with absolute weight</td>
+</tr>
+<tr>
+<td>Poland</td>
+<td>PL</td>
+<td>most common 67 given names with absolute weight, most common 20,000 family names with absolute weight. Female surnames are supported.</td>
+</tr>
+<tr>
+<td>Russia</td>
+<td>RU</td>
+<td>Cyrillic letters. Most common 33 given names with relative weight, most common 20 family names with relative weight. Female surnames are supported.</td>
+</tr>
+<tr>
+<td>Sweden</td>
+<td>SE</td>
+<td>779 given names (unweighted), most common 22 family names with relative weight</td>
+</tr>
+<tr>
+<td>Turkey</td>
+<td>TR</td>
+<td>1077 given names (unweighted), 37 family names (unweighted)</td>
+</tr>
+<tr>
+<td>United Kingdom</td>
+<td>GB</td>
+<td>most common 20 given (unweighted), most common 25 family names (unweighted)</td>
+</tr>
+<tr>
+<td>USA</td>
+<td>US</td>
+<td>most common 600 given names and most common 1000 family names both with absolute weight</td>
+</tr>
+</tbody>
+</table>
+<p>Your use-cases are more sophisticated and require additional countries, cities or valid addresses down to 
+street level and number, check our <a href="https://www.benerator.de/">Benerator Editions</a> or feel 
+free to contact us for assistance: <strong><a href="mailto:team@rapiddweller.com">team@rapiddweller.com</a></strong>.</p>
+<h2 id="address-domain">Address domain</h2>
+<ul>
+<li>
+<p><strong>AddressGenerator</strong>: Generates addresses that match simple validity checks: The City exists, the ZIP code matches and the phone number area codes
+  are right. The street names are random, so most addresses will not stand validation of real existence.</p>
+</li>
+<li>
+<p><strong>PhoneNumberGenerator</strong>: Generates landline telephone numbers for a country</p>
+</li>
+<li>
+<p><strong>MobilePhoneNumberGenerator</strong>: Generates mobile phone numbers for a country</p>
+</li>
+<li>
+<p><strong>CountryGenerator</strong>: Generates countries</p>
+</li>
+<li>
+<p><strong>CountryCode2</strong>: Annotation that marks a Java attribute or property as ISO-3166-1 alpha-2 code</p>
+</li>
+<li>
+<p><strong>CountryCode2Validator</strong>: Java Bean Validation ConstraintValidator for ISO-3166-1 alpha-2 codes</p>
+</li>
+<li>
+<p><strong>CityGenerator</strong>: Generates Cities for a given country</p>
+</li>
+<li>
+<p><strong>StreetNameGenerator</strong>: Generates street names for a given country</p>
+</li>
+<li>
+<p><strong>PostalCodeValidator</strong>: Validates if a given postal code is valid in a given country</p>
+</li>
+</ul>
+<p><img alt="" src="assets/grafik17.png" /></p>
+<p>The following countries are supported:</p>
+<table>
+<thead>
+<tr>
+<th>country</th>
+<th>code</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USA</td>
+<td>US</td>
+<td>Valid ZIP codes and area codes, no assurance that the street exists in this city.</td>
+</tr>
+<tr>
+<td>United Kingdom</td>
+<td>GB</td>
+<td>Valid area codes, no postcodes, no assurance that the street exists in this city or the local phone number has the appropriate length. Contributions are welcome</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>DE</td>
+<td>Valid ZIP codes and area codes, no assurance that the street exists in this city or the local phone number has the appropriate length</td>
+</tr>
+<tr>
+<td>Switzerland</td>
+<td>CH</td>
+<td>Valid ZIP codes and area codes, no assurance that the street exists in this city or the local phone number has the appropriate length</td>
+</tr>
+<tr>
+<td>Brazil</td>
+<td>BR</td>
+<td>Valid ZIP codes and area codes, no assurance that the street exists in this city or the local phone number has the appropriate length</td>
+</tr>
+</tbody>
+</table>
+<h2 id="net-domain">net domain</h2>
+<p>The net domain provides the</p>
+<ul>
+<li><strong>DomainGenerator</strong>, which generates Internet domain names</li>
+</ul>
+<h2 id="organization-domain">organization domain</h2>
+<p>Provides the following generators:</p>
+<ul>
+<li>
+<p><strong>CompanyNameGenerator</strong>, a generator for company names.</p>
+</li>
+<li>
+<p><strong>DepartmentNameGenerator</strong>, a generator for department names</p>
+</li>
+</ul>
+<p><img alt="" src="assets/grafik18.png" /></p>
+<p>If you use the CompanyNameGenerator like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;import</span> <span class="na">domains=</span><span class="s">&quot;organization&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;company&quot;</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">generator=</span><span class="s">&quot;CompanyNameGenerator&quot;</span> <span class="na">dataset=</span><span class="s">&quot;DE&quot;</span> <span class="na">locale=</span><span class="s">&quot;de_DE&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>you get output like this:</p>
+<div class="highlight"><pre><span></span><code>company[name=Belanda Aktiengesellschaft &amp;amp; Co. KG]
+company[name=MyWare Technologies GmbH]
+company[name=WebBox AG]
+company[name=Altis AG]
+company[name=Ernst Fischer Technik GmbH]
+</code></pre></div>
+<p>Company names can be generated for the following countries:</p>
+<table>
+<thead>
+<tr>
+<th>country</th>
+<th>code</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Germany</td>
+<td>DE</td>
+<td>none</td>
+</tr>
+<tr>
+<td>USA</td>
+<td>US</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p>The Generator creates objects of type CompanyName, consisting of <strong>shortName</strong>, <strong>sector</strong>, <strong>location</strong> and <strong>
+legalForm</strong> information. You can make use of the object as a whole which is converted to a string automatically using the '<strong>fullName</strong>' version as
+shown in the example above. But you can also make direct use of the basic properties:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;import</span> <span class="na">domains=</span><span class="s">&quot;organization&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;company&quot;</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">&quot;c&quot;</span> <span class="na">generator=</span><span class="s">&quot;CompanyNameGenerator&quot;</span> <span class="na">dataset=</span><span class="s">&quot;DE&quot;</span> <span class="na">locale=</span><span class="s">&quot;de_DE&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">script=</span><span class="s">&quot;c.shortName + &#39; &#39; + c.legalForm&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<h2 id="finance-domain">finance domain</h2>
+<p>Generates and validates finance related data:</p>
+<p>The following classes are provided:</p>
+<ul>
+<li>
+<p><strong>BankAccountGenerator</strong>: Generates BankAccount JavaBeans</p>
+</li>
+<li>
+<p><strong>BankAccountValidator</strong>: Validates BankAccount JavaBeans</p>
+</li>
+<li>
+<p><strong>CreditCardNumberGenerator</strong>: Generates strings which represent credit card numbers</p>
+</li>
+<li>
+<p><strong>CreditCardNumberValidator</strong>: Validates strings as credit card numbers</p>
+</li>
+<li>
+<p><strong>IBAN</strong>: Annotation for Java Bean Validation, marking a Java attribute/property as IBAN</p>
+</li>
+<li>
+<p><strong>IBANValidator</strong>: Validates strings with IBANs</p>
+</li>
+</ul>
+<h2 id="product-domain">product domain</h2>
+<p>The product package provides you with Generator classes for EAN codes:</p>
+<ul>
+<li>
+<p><strong>EAN8Generator</strong>: Generates 8-digit EAN codes</p>
+</li>
+<li>
+<p><strong>EAN8</strong>: Annotation that marks a Java attribute or property as 8-digit-EAN for bean validation</p>
+</li>
+<li>
+<p><strong>EAN8Validator</strong>: Validates 8-digit EAN codes</p>
+</li>
+<li>
+<p><strong>EAN13Generator</strong>: Generates 13-digit EAN codes</p>
+</li>
+<li>
+<p><strong>EAN13</strong>: Annotation that marks a Java attribute or property as 13-digit-EAN for bean validation</p>
+</li>
+<li>
+<p><strong>EAN13Validator</strong>: Validates 13-digit EAN codes</p>
+</li>
+<li>
+<p><strong>EANGenerator</strong>: Generates both 8-digit and 13-digit EAN codes</p>
+</li>
+<li>
+<p><strong>EAN</strong>: Annotation that marks a Java attribute or property as an EAN for bean validation</p>
+</li>
+<li>
+<p><strong>EANValidator</strong>: Validates 8- and 13-digit-EAN codes</p>
+</li>
+</ul>
+<p>Each generator has a property <strong>'unique'</strong>: If set to true the generator assures that no two identical EAN codes are generated.</p>
+<h2 id="br-domain">br domain</h2>
+<p>Provides classes specific to Brazil:</p>
+<ul>
+<li>
+<p><strong>CPNJ</strong>: Annotation to mark a Java attribute or property as a CPNJ (Cadastro Nacional da Pessoa Jurídica)</p>
+</li>
+<li>
+<p><strong>CPNJGenerator</strong>: Generates CPNJs</p>
+</li>
+<li>
+<p><strong>CPNJValidator</strong>: Validates CPNJs and can be used as Benerator validator and as ConstraintValidator in Java Bean Validation (JSR 303)</p>
+</li>
+<li>
+<p><strong>CPF</strong>: Annotation to mark a Java attribute or property as a CPF (Cadastro de Pessoa Fisica)</p>
+</li>
+<li>
+<p><strong>CPFGenerator</strong>: Generates CPFs</p>
+</li>
+<li>
+<p><strong>CPFValidator</strong>: Validates CPFs</p>
+</li>
+</ul>
+<h2 id="us-domain">us domain</h2>
+<p>Provides classes specific for the United States of America:</p>
+<ul>
+<li>
+<p><strong>SSN</strong>: Annotation to mark a Java attribute or property as a Social Security Number</p>
+</li>
+<li>
+<p><strong>SSNGenerator</strong>: Generates Social Security Numbers</p>
+</li>
+<li>
+<p><strong>SSNValidator</strong>: Validates Social Security Numbers and can be used as Benerator validator and as ConstraintValidator in Java Bean Validation (JSR
+  303)</p>
+</li>
+</ul>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="command_line_tools.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Command Line Tools" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Command Line Tools
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="component_reference.html" class="md-footer__link md-footer__link--next" aria-label="Next: Component Reference" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Component Reference
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2006 - 2022 rapiddweller GmbH & Volker Bergmann
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/rapiddweller" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/rapiddweller/" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/intent/follow?screen_name=rapiddweller" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["search.suggest", "search.highlight", "search.share", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.top"], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="js/termynal.js"></script>
+      
+        <script src="js/custom.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="js/tablesort.js"></script>
+      
+    
+  </body>
+</html>

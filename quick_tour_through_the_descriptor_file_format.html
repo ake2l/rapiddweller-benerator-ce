@@ -1,0 +1,1654 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This document is supposed to become a complete summary of everything you need to know of Benerator usage, use it efficiently and extend it as you need. This reference is under construction and will update from time to time. Feel free to contribute your ideas in our repo at https://github.com/rapiddweller/rapiddweller-benerator-ce/.">
+      
+      
+        <meta name="author" content="rapiddweller GmbH & Volker Bergmann">
+      
+      
+        <link rel="canonical" href="https://docs.benerator.de/quick_tour_through_the_descriptor_file_format.html">
+      
+      <link rel="icon" href="assets/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Quick tour through the descriptor file format - rapiddweller Benerator</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/termynal.css">
+    
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="rapiddweller" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quick-tour-through-the-descriptor-file-format" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="rapiddweller Benerator" class="md-header__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            rapiddweller Benerator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quick tour through the descriptor file format
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="rapiddweller Benerator" class="md-nav__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    rapiddweller Benerator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction_to_benerator.html" class="md-nav__link">
+        Goals and Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="the_benerator_project_wizard.html" class="md-nav__link">
+        The Benerator Project Wizard
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Quick tour through the descriptor file format
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="quick_tour_through_the_descriptor_file_format.html" class="md-nav__link md-nav__link--active">
+        Quick tour through the descriptor file format
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    &lt;setup&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benerator-properties" class="md-nav__link">
+    benerator properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#include" class="md-nav__link">
+    &lt;include&gt;
+  </a>
+  
+    <nav class="md-nav" aria-label="&lt;include&gt;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inclusion-of-properties-files" class="md-nav__link">
+    Inclusion of properties files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-invocation-of-descriptor-files" class="md-nav__link">
+    Sub-Invocation of descriptor files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-settings" class="md-nav__link">
+    Global settings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    &lt;import&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate" class="md-nav__link">
+    &lt;generate&gt;
+  </a>
+  
+    <nav class="md-nav" aria-label="&lt;generate&gt;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constant" class="md-nav__link">
+    "constant"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#values" class="md-nav__link">
+    "values"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-generation-by-regular-expression" class="md-nav__link">
+    "pattern": Generation by Regular Expression
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iterate" class="md-nav__link">
+    &lt;iterate&gt;
+  </a>
+  
+    <nav class="md-nav" aria-label="&lt;iterate&gt;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#offset" class="md-nav__link">
+    "offset"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    &lt;echo&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beep" class="md-nav__link">
+    &lt;beep/&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comment" class="md-nav__link">
+    &lt;comment&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execute-typeshell" class="md-nav__link">
+    &lt;execute type="shell"&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wait" class="md-nav__link">
+    &lt;wait&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error" class="md-nav__link">
+    &lt;error&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    &lt;if&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    &lt;while&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id-generating-unique-identifiers" class="md-nav__link">
+    &lt;id&gt; - Generating unique identifiers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-conventions" class="md-nav__link">
+    Naming Conventions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_generation_concepts.html" class="md-nav__link">
+        Data Generation Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_anonymization_concepts.html" class="md-nav__link">
+        Data Anonymization Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="regular_expression_support.html" class="md-nav__link">
+        Regular Expression Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_file_processing.html" class="md-nav__link">
+        CSV File Generation/Anonymization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xml_file_processing.html" class="md-nav__link">
+        XML File Processing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distribution.html" class="md-nav__link">
+        Distribution Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_relational_databases.html" class="md-nav__link">
+        Using Relational Databases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="message_queue_access.html" class="md-nav__link">
+        Message Queue Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kafka_access.html" class="md-nav__link">
+        Kafka Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="environment_files.html" class="md-nav__link">
+        Environment Files
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced_topics.html" class="md-nav__link">
+        Advanced Topics
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="generating_unique_data.html" class="md-nav__link">
+        Generating Unique Data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scripting.html" class="md-nav__link">
+        Scripting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rapiddwellerscript.html" class="md-nav__link">
+        rapiddwellerScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="command_line_tools.html" class="md-nav__link">
+        Command Line Tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="domains.html" class="md-nav__link">
+        Domains
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="component_reference.html" class="md-nav__link">
+        Component Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_db_sanity.html" class="md-nav__link">
+        Using DB Sanity
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maven_benerator_plugin.html" class="md-nav__link">
+        Maven Benerator Plugin
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extending_benerator.html" class="md-nav__link">
+        Extending Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_benerator_as_load_generator.html" class="md-nav__link">
+        Using Benerator as Load Generator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting.html" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="monitoring_benerator.html" class="md-nav__link">
+        Monitoring Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance_tuning.html" class="md-nav__link">
+        Benerator Performance Tuning
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migrating_benerator_projects.html" class="md-nav__link">
+        Migrating Benerator Projects
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    &lt;setup&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benerator-properties" class="md-nav__link">
+    benerator properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#include" class="md-nav__link">
+    &lt;include&gt;
+  </a>
+  
+    <nav class="md-nav" aria-label="&lt;include&gt;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inclusion-of-properties-files" class="md-nav__link">
+    Inclusion of properties files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-invocation-of-descriptor-files" class="md-nav__link">
+    Sub-Invocation of descriptor files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-settings" class="md-nav__link">
+    Global settings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    &lt;import&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate" class="md-nav__link">
+    &lt;generate&gt;
+  </a>
+  
+    <nav class="md-nav" aria-label="&lt;generate&gt;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constant" class="md-nav__link">
+    "constant"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#values" class="md-nav__link">
+    "values"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-generation-by-regular-expression" class="md-nav__link">
+    "pattern": Generation by Regular Expression
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iterate" class="md-nav__link">
+    &lt;iterate&gt;
+  </a>
+  
+    <nav class="md-nav" aria-label="&lt;iterate&gt;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#offset" class="md-nav__link">
+    "offset"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    &lt;echo&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beep" class="md-nav__link">
+    &lt;beep/&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comment" class="md-nav__link">
+    &lt;comment&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execute-typeshell" class="md-nav__link">
+    &lt;execute type="shell"&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wait" class="md-nav__link">
+    &lt;wait&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error" class="md-nav__link">
+    &lt;error&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    &lt;if&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    &lt;while&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id-generating-unique-identifiers" class="md-nav__link">
+    &lt;id&gt; - Generating unique identifiers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-conventions" class="md-nav__link">
+    Naming Conventions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="quick-tour-through-the-descriptor-file-format">Quick tour through the descriptor file format</h1>
+<h2 id="setup"><code>&lt;setup&gt;</code></h2>
+<p>The benerator configuration file is XML based. An XML schema is provided. The document root is a setup element:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;setup</span> <span class="na">xmlns=</span><span class="s">&quot;https://www.benerator.de/schema/2.0.0&quot;</span>
+       <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+       <span class="na">xsi:schemaLocation=</span><span class="s">&quot;https://www.benerator.de/schema/2.0.0 https://www.benerator.de/schema/rapiddweller-benerator-ce-2.0.0.xsd&quot;</span><span class="nt">&gt;</span>
+    <span class="cm">&lt;!-- content here --&gt;</span>
+<span class="nt">&lt;/setup&gt;</span>
+</code></pre></div>
+<p>benerator descriptor files are supposed to be named <code>benerator.xml</code> or end with the suffix <code>.ben.xml</code>.</p>
+<h2 id="benerator-properties">benerator properties</h2>
+<p>Several global benerator properties allow for customization of its behavior:</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>default setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>defaultEncoding</td>
+<td>the default file encoding to use for reading and writing text files</td>
+<td>the system's file encoding</td>
+</tr>
+<tr>
+<td>defaultLineSeparator</td>
+<td>the line separator to use by default</td>
+<td>the system's line separator</td>
+</tr>
+<tr>
+<td>defaultTimeZone</td>
+<td>The time zone to use</td>
+<td>The system's time zone</td>
+</tr>
+<tr>
+<td>defaultLocale</td>
+<td>The locale to use if none has been specified explicitly</td>
+<td>The system's language code, e.g. 'de'</td>
+</tr>
+<tr>
+<td>defaultDataset</td>
+<td>The dataset to use if none has been specified explicitly</td>
+<td>The system's country's two-letter ISO code, e.g. 'US'</td>
+</tr>
+<tr>
+<td>defaultPageSize</td>
+<td>the number of entities to create in one 'run', typically a transaction</td>
+<td>1</td>
+</tr>
+<tr>
+<td>defaultScript</td>
+<td>The default script engine to use for evaluating script expressions</td>
+<td>ben (rapiddwellerScript)</td>
+</tr>
+<tr>
+<td>defaultNull</td>
+<td>tells if nullable attribute should always be generated as null by default</td>
+<td>true</td>
+</tr>
+<tr>
+<td>defaultSeparator</td>
+<td>the default column separator to use for csv files</td>
+<td>,</td>
+</tr>
+<tr>
+<td>defaultErrorHandler</td>
+<td>the default error handling mechanism to use</td>
+<td>fatal</td>
+</tr>
+<tr>
+<td>validate</td>
+<td>Boolean flag to turn off validation (e.g. of XML validity and type definition consistency).</td>
+<td>true</td>
+</tr>
+<tr>
+<td>maxCount</td>
+<td>limits the maximum cardinality of all entity and association generations. If set to 0, cardinalities will not be limited.</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>defaultOneToOne</td>
+<td>When set to to Benerator assumes each relation is one-to-one.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>acceptUnknownSimpleTypes</td>
+<td>When set to true, Benerator accepts unknown simple data types from its DescriptorProviders, relying on the user to choose the correct data type when generating.</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p>You can configure them in the <code>&lt;setup&gt;</code> element, e.g.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;setup</span> <span class="na">xmlns=</span><span class="s">...</span>
+        <span class="na">defaultencoding=</span><span class="s">&quot;utf-8&quot;</span>
+        <span class="na">defaultPageSize=</span><span class="s">&quot;1000&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
+<h2 id="include"><code>&lt;include&gt;</code></h2>
+<h3 id="inclusion-of-properties-files">Inclusion of properties files</h3>
+<p>An alternative way to specify the Benerator properties from the previous chapter is to specify them in a properties
+file, e.g.</p>
+<div class="highlight"><pre><span></span><code><span class="na">context.defaultEncoding</span><span class="o">=</span><span class="s">UTF-8</span><span class="w"></span>
+<span class="na">context.defaultPageSize</span><span class="o">=</span><span class="s">1000</span><span class="w"></span>
+</code></pre></div>
+<p>and include the properties file in the benerator descriptor file:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;include</span> <span class="na">uri=</span><span class="s">&quot;my.properties&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>This way you can easily use different settings in different environments (see '<a href="advanced_topics.html#staging">Staging</a>').</p>
+<p>File entries that do not begin with 'benerator“ are simply put into the generation context and can be used to configure
+generation behavior.</p>
+<h3 id="sub-invocation-of-descriptor-files">Sub-Invocation of descriptor files</h3>
+<p>Besides properties files, Benerator descriptor files can be included too, e.g.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;include</span> <span class="na">uri=</span><span class="s">&quot;subgeneration.ben.xml&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h2 id="global-settings">Global settings</h2>
+<p>benerator supports global settings. They can be evaluated using script expressions, e.g. {user_count}. This way,
+different types of settings may be evaluated:</p>
+<ul>
+<li>
+<p>system environment</p>
+</li>
+<li>
+<p>Java virtual machine parameters</p>
+</li>
+<li>
+<p>context variables</p>
+</li>
+</ul>
+<p>A setting is explicitly defined using a setting element:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&quot;threshold&quot;</span> <span class="na">value=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h2 id="import"><code>&lt;import&gt;</code></h2>
+<p>Benerator has lots of plugin interfaces but is agnostic of most implementors. So you need to explicitly import what you
+need.</p>
+<p>The following packages are imported by default (providing, for example, the ConsoleExporter):</p>
+<table>
+<thead>
+<tr>
+<th>com.rapiddweller.benerator.consumer</th>
+<th>General-purpose consumer classes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>com.rapiddweller.benerator.primitive</td>
+<td>Generators for primitive data types</td>
+</tr>
+<tr>
+<td>com.rapiddweller.benerator.primitive.datetime</td>
+<td>Generators for date, time and timestamp data</td>
+</tr>
+<tr>
+<td>com.rapiddweller.benerator.distribution.sequence</td>
+<td>Distributions of 'Sequence' type</td>
+</tr>
+<tr>
+<td>com.rapiddweller.benerator.distribution.function</td>
+<td>Distributions of 'Function' type</td>
+</tr>
+<tr>
+<td>com.rapiddweller.benerator.distribution.cumulative</td>
+<td>Distributions of type 'CumulativeDistributionFunction'</td>
+</tr>
+<tr>
+<td>com.rapiddweller.benerator.sample</td>
+<td>Generator components that use sample sets or seeds</td>
+</tr>
+<tr>
+<td>com.rapiddweller.model.consumer</td>
+<td>ConsoleExporter and LoggingConsumer</td>
+</tr>
+<tr>
+<td>com.rapiddweller.common.converter</td>
+<td>Converter components from rd-lib-common</td>
+</tr>
+<tr>
+<td>com.rapiddweller.common.format</td>
+<td>Format components from rd-lib-common</td>
+</tr>
+<tr>
+<td>com.rapiddweller.common.validator</td>
+<td>Validator components from rd-lib-common</td>
+</tr>
+<tr>
+<td>com.rapiddweller.platform.fixedwidth</td>
+<td>Fixed column width file importer and exporter</td>
+</tr>
+<tr>
+<td>com.rapiddweller.platform.csv</td>
+<td>CSV file importer and exporter</td>
+</tr>
+<tr>
+<td>com.rapiddweller.platform.dbunit</td>
+<td>DbUnit file importer and exporter</td>
+</tr>
+<tr>
+<td>com.rapiddweller.platform.xls</td>
+<td>Excel(TM) Sheet importer and exporter</td>
+</tr>
+</tbody>
+</table>
+<p>Benerator extensions can be bundled as domains (logical extensions) or platforms (technical extensions). You can export
+different bundles as comma-separated lists:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;import</span> <span class="na">domains=</span><span class="s">&quot;address, net&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;import</span> <span class="na">domains=</span><span class="s">&quot;organization&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;import</span> <span class="na">platforms=</span><span class="s">&quot;csv, db&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>Imports must be the first elements used in a descriptor file.</p>
+<p>When using a Benerator plugin or another library, you need to make sure that Benerator finds its binary. There are three
+alternatives:</p>
+<ol>
+<li>
+<p>Putting the associated jar file(s) into the lib folder of your Benerator installation. This way it is available for
+   all data generation projects on your machine. If you work in a team where everyone is familiar with Benerator and the
+   toolset is not based on Maven, this is generally the preferred approach.</p>
+</li>
+<li>
+<p>Create a subfolder named lib under the data generation project folder and put the jar file(s) there. When
+   distributing the project to be executed on machines with plain Benerator installations, distribute the full folder
+   content including the lib subfolder.</p>
+</li>
+<li>
+<p>When using Maven to run Benerator, simply create the necessary Maven dependencies and Maven will acquire all needed
+   libraries dynamically. Read more about this in '<a href="maven_benerator_plugin.html">Maven Benerator Plugin</a>'</p>
+</li>
+</ol>
+<h2 id="generate"><code>&lt;generate&gt;</code></h2>
+<p><code>&lt;generate&gt;</code> elements are used to generate data from scratch. There are lots of configuration options. The minimal
+configuration specifies the type of data to be generated. For now, all generated data are 'entities' (composite data).</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;Person&quot;</span> <span class="na">count=</span><span class="s">&quot;10&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>This will make Benerator generate 10 'Person' Entities and send them to a ConsoleExporter that prints out the persons to
+the console. But what is a Person? Benerator will figure it out by itself if it knows e.g. a database with a 'PERSON'
+table, an XML schema with a 'Person' element, or any other 'DescriptorProvider'. Benerator will generate database-valid
+or XML-Schema-valid data automatically. More about this later.</p>
+<p>Let us start without DescriptorProviders, manually putting together what we need.</p>
+<p>Entities consist of members, e.g. <code>&lt;attribute&gt;</code>s, <code>&lt;id&gt;</code>s or <code>&lt;reference&gt;</code>s. I will concentrate on attributes in the
+following sections and explain ids and references later.</p>
+<h3 id="constant">"constant"</h3>
+<p>The simplest way to define data generation is using the same value for all generated data:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;Person&quot;</span> <span class="na">count=</span><span class="s">&quot;10&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;active&quot;</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>So we define, that all Person entities are generated with an 'active' attribute of type 'boolean' that is set to 'true'.</p>
+<h3 id="values">"values"</h3>
+<p>Attributes may be randomly set from a list of comma-separated values</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;Person&quot;</span> <span class="na">count=</span><span class="s">&quot;10&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;firstName&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">values=</span><span class="s">&quot;&#39;Alice&#39;,&#39;Bob&#39;,&#39;Charly&#39;&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;rank&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">values=</span><span class="s">&quot;1,2,3&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>So we define, that Person entities have a 'firstName' attribute that is 'Alice', 'Bob' or 'Charly' and a rank of 1, 2 or
+3. Note that string literals must be 'quoted', while number or Boolean literals do not.</p>
+<h3 id="pattern-generation-by-regular-expression">"pattern": Generation by Regular Expression</h3>
+<p>String attribute generation can be configured using the "pattern" attribute with a regular expression, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;Person&quot;</span> <span class="na">count=</span><span class="s">&quot;10&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;salutation&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">pattern=</span><span class="s">&quot;(Mr|Mrs)&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;postalCode&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">pattern=</span><span class="s">&quot;[1-9][0-9]{4}&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>You can find a detailed description of Benerator's regular expression support
+in <a href="regular_expression_support.html">Regular Expression Support</a>.</p>
+<h2 id="iterate"><code>&lt;iterate&gt;</code></h2>
+<p>The <code>&lt;iterate&gt;</code> element is used to iterate through pre-existing data, e.g. in a data file or database. The general form
+is</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;iterate</span> <span class="na">type=</span><span class="s">&quot;Person&quot;</span> <span class="na">source=</span><span class="s">&quot;persons.csv&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>which iterates through all Persons defined in a CSV-file called 'persons.csv'.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, iteration goes once from beginning to the end. Consider using the parameter <code>cyclic="true"</code> for iterating
+  repeatedly and check this manual for applying distributions or filter the data to iterate through. Learn more in
+  <a href="using_relational_databases.html#determining-attribute-values-by-a-database-query">Relational Databases-&gt;Determining attribute values</a></p>
+</div>
+<h3 id="offset">"offset"</h3>
+<p>In whatever type of data generation or iteration, an <strong>offset</strong> can be applied to skip the heading entries of a data
+source, e.g.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;iterate</span> <span class="na">type=</span><span class="s">&quot;Person&quot;</span> <span class="na">source=</span><span class="s">&quot;persons.csv&quot;</span> <span class="na">offset=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>leaves out the first ten entries of the <code>persons.csv</code> file.</p>
+<h2 id="echo"><code>&lt;echo&gt;</code></h2>
+<p>The meaning of the <code>&lt;echo&gt;</code> element is similar to the echo command in batch files: Simply writing information to the
+console to inform the user what is happening, e.g.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;echo&gt;</span>Running...<span class="nt">&lt;/echo&gt;</span>
+</code></pre></div>
+<p>For Mac OS X users there is a nice extra feature: When using <strong><code>type='speech'</code></strong>, Benerator uses Mac OS X's speech
+facility to speak the text. When executed on other operating systems, the text is only printed to the console:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;echo</span> <span class="na">type=</span><span class="s">&quot;speech&quot;</span><span class="nt">&gt;</span>Generation Finished<span class="nt">&lt;/echo&gt;</span>
+</code></pre></div>
+<h2 id="beep"><code>&lt;beep/&gt;</code></h2>
+<p>makes Benerator emit a short beep</p>
+<h2 id="comment"><code>&lt;comment&gt;</code></h2>
+<p>The <code>&lt;comment&gt;</code> element also prints output, not to the console, but to a logger. Thus you have the option of configuring
+whether to ignore the output or where to send it to.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;comment&gt;</span>`Here we reach the critical part...`<span class="nt">&lt;/comment&gt;</span>
+</code></pre></div>
+<p>Using XML comments <code>&lt;!-- --&gt;</code> instead of comment descriptors would make it harder for you to comment out larger portions
+of a file for testing and debugging.</p>
+<h2 id="execute-typeshell"><code>&lt;execute type="shell"&gt;</code></h2>
+<p>The <code>&lt;execute&gt;</code> element serves to execute different kinds of code. One option is the execution of shell commands:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;execute</span> <span class="na">type=</span><span class="s">&quot;shell&quot;</span><span class="nt">&gt;</span>start-database.sh<span class="nt">&lt;/execute&gt;</span>
+</code></pre></div>
+<p>The program output is printed to the console.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that some windows shell commands are only available in the command-line interpreter. In order to invoke them, you
+  need to call cmd /C, e.g.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;execute</span> <span class="na">type=</span><span class="s">&quot;shell&quot;</span><span class="nt">&gt;</span>cmd /C type myGeneratedFile.csv<span class="nt">&lt;/execute&gt;</span>
+</code></pre></div>
+<p>You can use <code>&lt;execute&gt;</code> for invoking scripts too (SQL, rapiddwellerScript, JavaScript, FreeMarker and more), but that
+will be explained later.</p>
+<h2 id="wait"><code>&lt;wait&gt;</code></h2>
+<p>The <code>&lt;wait&gt;</code> element makes Benerator wait for a fixed or a random amount of time.</p>
+<p>A fixed amount of time is useful, e.g. for waiting until a system is initialized:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;wait</span> <span class="na">duration=</span><span class="s">&quot;20000&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>The duration is the time in milliseconds.</p>
+<p>Random periods of wait time are useful when using Benerator to simulate client activity on a system. For this, you can
+nest <code>&lt;wait&gt;</code> elements in <code>&lt;generate&gt;</code> elements. More about this later.</p>
+<h2 id="error"><code>&lt;error&gt;</code></h2>
+<p>You can make Benerator signal an error with a message and code:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;error</span> <span class="na">code=</span><span class="s">&quot;-3&quot;</span><span class="nt">&gt;</span>An error has occured<span class="nt">&lt;/error&gt;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If Benerator is not configured to do otherwise, it prints out the error message, cancels execution, finishes the process
+  and returns the exit code to the operating system. If no exit code is specified, Benerator uses -1.</p>
+</div>
+<h2 id="if"><code>&lt;if&gt;</code></h2>
+<p>Evaluates a script expression and executes sub-elements depending on the result.</p>
+<p>Either a decision to execute something or not:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&quot;com.rapiddweller.common.SystemInfo.isWindows()&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;echo&gt;</span>Running under Windows<span class="nt">&lt;/echo&gt;</span>
+<span class="nt">&lt;/if&gt;</span>
+</code></pre></div>
+<p>or a decision between alternatives:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&quot;com.rapiddweller.common.SystemInfo.isWindows()&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;then&gt;</span>
+        <span class="nt">&lt;execute</span> <span class="na">type=</span><span class="s">&quot;shell&quot;</span><span class="nt">&gt;</span>cmd /C type export.csv<span class="nt">&lt;/execute&gt;</span>
+    <span class="nt">&lt;/then&gt;</span>
+    <span class="nt">&lt;else&gt;</span>
+        <span class="nt">&lt;execute</span> <span class="na">type=</span><span class="s">&quot;shell&quot;</span><span class="nt">&gt;</span>cat export.csv<span class="nt">&lt;/execute&gt;</span>
+    <span class="nt">&lt;/else&gt;</span>
+<span class="nt">&lt;/if&gt;</span>
+</code></pre></div>
+<p>A typical application of the <code>&lt;if&gt;</code> element is to check if a required configuration is defined, and if not, to fall back
+to a default...:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&quot;!context.contains(&#39;stage&#39;)&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;echo&gt;</span>No stage defined, falling back to &#39;dev&#39;<span class="nt">&lt;/echo&gt;</span>
+    <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&quot;stage&quot;</span> <span class="na">value=</span><span class="s">&quot;dev&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/if&gt;</span>
+</code></pre></div>
+<p>...or to report an error:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&quot;com.rapiddweller.common.SystemInfo.isWindows()&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;error&gt;</span>No stage has been set<span class="nt">&lt;/error&gt;</span>
+<span class="nt">&lt;/if&gt;</span>
+</code></pre></div>
+<h2 id="while"><code>&lt;while&gt;</code></h2>
+<p>The <code>&lt;while&gt;</code> element executes sub elements as long as a boolean 'test' expression resolves to <strong>true</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;test&quot;</span> <span class="na">count=</span><span class="s">&quot;10&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;identifier&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;while</span> <span class="na">test=</span><span class="s">&quot;this.identifier == 5&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;echo&gt;</span>add 10 to this.identifier<span class="nt">&lt;/echo&gt;</span>
+        <span class="nt">&lt;execute</span> <span class="na">type=</span><span class="s">&quot;ben&quot;</span><span class="nt">&gt;</span>this.identifier = this.identifier + 10<span class="nt">&lt;/execute&gt;</span>
+        <span class="nt">&lt;wait</span> <span class="na">duration=</span><span class="s">&quot;1000&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/while&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<h2 id="id-generating-unique-identifiers"><code>&lt;id&gt;</code> - Generating unique identifiers</h2>
+<p>For marking an entity member as an identifier, it is declared with an <code>&lt;id&gt;</code> element, e.g.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;identifier&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>There are several special id generators available. If you do not specify one explicitly, Benerator takes the
+IncrementalIdGenerator.</p>
+<p>For explicitly choosing or initializing an id generator, use the generator attribute, e.g.:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;identifier&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span> <span class="na">generator=</span><span class="s">&quot;new IncrementalIdGenerator(100)&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>for using an IncrementalIdGenerator, that starts with the value 100.</p>
+<p>See <a href="component_reference.html#common-id-generators">Common ID Generators</a> for a complete ID generator reference and
+<a href="using_relational_databases.html">Using Relational Databases</a> for database-related id generators.</p>
+<p>Instead of using a generator, you can as well use other <code>&lt;attribute&gt;</code>-like features, e.g. scripts:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span> <span class="na">script=</span><span class="s">&quot;parent.id&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h2 id="naming-conventions">Naming Conventions</h2>
+<p>For automatic support of special file content, the following naming conventions apply:</p>
+<table>
+<thead>
+<tr>
+<th>File Name</th>
+<th>File Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*.ben.xml</td>
+<td>benerator descriptor file</td>
+</tr>
+<tr>
+<td>*.dbunit.xml</td>
+<td>DbUnit data field</td>
+</tr>
+<tr>
+<td>*.csv</td>
+<td>CSV file with data of simple type</td>
+</tr>
+<tr>
+<td>*.ent.csv</td>
+<td>CSV file with entity data</td>
+</tr>
+<tr>
+<td>*.wgt.csv</td>
+<td>CSV file with weighted data of simple type</td>
+</tr>
+<tr>
+<td>*.fcw</td>
+<td>Fixed column width files with entity data</td>
+</tr>
+<tr>
+<td>*.set.properties</td>
+<td>Dataset nesting definition</td>
+</tr>
+</tbody>
+</table>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="the_benerator_project_wizard.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: The Benerator Project Wizard" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              The Benerator Project Wizard
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="data_generation_concepts.html" class="md-footer__link md-footer__link--next" aria-label="Next: Data Generation Concepts" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Data Generation Concepts
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2006 - 2022 rapiddweller GmbH & Volker Bergmann
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/rapiddweller" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/rapiddweller/" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/intent/follow?screen_name=rapiddweller" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["search.suggest", "search.highlight", "search.share", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.top"], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="js/termynal.js"></script>
+      
+        <script src="js/custom.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="js/tablesort.js"></script>
+      
+    
+  </body>
+</html>

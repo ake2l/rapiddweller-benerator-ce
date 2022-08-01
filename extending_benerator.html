@@ -1,0 +1,1475 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This document is supposed to become a complete summary of everything you need to know of Benerator usage, use it efficiently and extend it as you need. This reference is under construction and will update from time to time. Feel free to contribute your ideas in our repo at https://github.com/rapiddweller/rapiddweller-benerator-ce/.">
+      
+      
+        <meta name="author" content="rapiddweller GmbH & Volker Bergmann">
+      
+      
+        <link rel="canonical" href="https://docs.benerator.de/extending_benerator.html">
+      
+      <link rel="icon" href="assets/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Extending Benerator - rapiddweller Benerator</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/termynal.css">
+    
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="rapiddweller" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#extending-benerator" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="rapiddweller Benerator" class="md-header__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            rapiddweller Benerator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Extending Benerator
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="rapiddweller Benerator" class="md-nav__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    rapiddweller Benerator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction_to_benerator.html" class="md-nav__link">
+        Goals and Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="the_benerator_project_wizard.html" class="md-nav__link">
+        The Benerator Project Wizard
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quick_tour_through_the_descriptor_file_format.html" class="md-nav__link">
+        Quick tour through the descriptor file format
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_generation_concepts.html" class="md-nav__link">
+        Data Generation Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_anonymization_concepts.html" class="md-nav__link">
+        Data Anonymization Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="regular_expression_support.html" class="md-nav__link">
+        Regular Expression Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_file_processing.html" class="md-nav__link">
+        CSV File Generation/Anonymization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xml_file_processing.html" class="md-nav__link">
+        XML File Processing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distribution.html" class="md-nav__link">
+        Distribution Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_relational_databases.html" class="md-nav__link">
+        Using Relational Databases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="message_queue_access.html" class="md-nav__link">
+        Message Queue Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kafka_access.html" class="md-nav__link">
+        Kafka Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="environment_files.html" class="md-nav__link">
+        Environment Files
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced_topics.html" class="md-nav__link">
+        Advanced Topics
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="generating_unique_data.html" class="md-nav__link">
+        Generating Unique Data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scripting.html" class="md-nav__link">
+        Scripting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rapiddwellerscript.html" class="md-nav__link">
+        rapiddwellerScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="command_line_tools.html" class="md-nav__link">
+        Command Line Tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="domains.html" class="md-nav__link">
+        Domains
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="component_reference.html" class="md-nav__link">
+        Component Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_db_sanity.html" class="md-nav__link">
+        Using DB Sanity
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maven_benerator_plugin.html" class="md-nav__link">
+        Maven Benerator Plugin
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Extending Benerator
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="extending_benerator.html" class="md-nav__link md-nav__link--active">
+        Extending Benerator
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#custom-generators" class="md-nav__link">
+    Custom Generators
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generator-interface" class="md-nav__link">
+    Generator Interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generator-states" class="md-nav__link">
+    Generator States
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helper-classes-for-custom-generators" class="md-nav__link">
+    Helper classes for custom Generators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-freemarker-methods" class="md-nav__link">
+    Custom FreeMarker methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-sequences" class="md-nav__link">
+    Custom Sequences
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-weightfunctions" class="md-nav__link">
+    Custom WeightFunctions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applying-a-weight-function" class="md-nav__link">
+    Applying a Weight Function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-converters" class="md-nav__link">
+    Custom Converters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-validators" class="md-nav__link">
+    Custom Validators
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Validators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javaxvalidationconstraintvalidator" class="md-nav__link">
+    javax.validation.ConstraintValidator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comrapiddwellercommonvalidator" class="md-nav__link">
+    com.rapiddweller.common.Validator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-both-interfaces" class="md-nav__link">
+    Implementing both interfaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-consumers" class="md-nav__link">
+    Custom Consumers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-entitysources" class="md-nav__link">
+    Custom EntitySources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-tasks" class="md-nav__link">
+    Custom Tasks
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_benerator_as_load_generator.html" class="md-nav__link">
+        Using Benerator as Load Generator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting.html" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="monitoring_benerator.html" class="md-nav__link">
+        Monitoring Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance_tuning.html" class="md-nav__link">
+        Benerator Performance Tuning
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migrating_benerator_projects.html" class="md-nav__link">
+        Migrating Benerator Projects
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#custom-generators" class="md-nav__link">
+    Custom Generators
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generator-interface" class="md-nav__link">
+    Generator Interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generator-states" class="md-nav__link">
+    Generator States
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helper-classes-for-custom-generators" class="md-nav__link">
+    Helper classes for custom Generators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-freemarker-methods" class="md-nav__link">
+    Custom FreeMarker methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-sequences" class="md-nav__link">
+    Custom Sequences
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-weightfunctions" class="md-nav__link">
+    Custom WeightFunctions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applying-a-weight-function" class="md-nav__link">
+    Applying a Weight Function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-converters" class="md-nav__link">
+    Custom Converters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-validators" class="md-nav__link">
+    Custom Validators
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Validators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javaxvalidationconstraintvalidator" class="md-nav__link">
+    javax.validation.ConstraintValidator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comrapiddwellercommonvalidator" class="md-nav__link">
+    com.rapiddweller.common.Validator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-both-interfaces" class="md-nav__link">
+    Implementing both interfaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-consumers" class="md-nav__link">
+    Custom Consumers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-entitysources" class="md-nav__link">
+    Custom EntitySources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-tasks" class="md-nav__link">
+    Custom Tasks
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="extending-benerator">Extending Benerator</h1>
+<p>Benerator can be customized in many ways. It provides Service Provider Interfaces which you can implement in Java for introducing own behavior. These
+are</p>
+<ul>
+<li>
+<p><strong>Generator</strong> generates attribute data or entities with specific characteristics</p>
+</li>
+<li>
+<p><strong>Sequence</strong> lets you define your own random or sequence algorithms</p>
+</li>
+<li>
+<p><strong>WeightFunction</strong> allows you to provide a weight function that determines the probability of a certain value.</p>
+</li>
+<li>
+<p><strong>CumulativeDistributionFunction</strong> allows you to provide a weight function that determines the probability of a certain value.</p>
+</li>
+<li>
+<p><strong>Converter</strong> converts data of one type to another and can be used to support custom data classes, data formats or message formats.</p>
+</li>
+<li>
+<p><strong>Validator</strong> validates previously defined data and tells if it is valid. This is useful for low-knowledge data generation where you have e.g. a
+  validation library or system but little knowledge how to construct valid data. In this case, you can generate random data and let the validator
+  decide, which to accept.</p>
+</li>
+<li>
+<p><strong>Consumer</strong> receives the generated data and is typically used to store it in a file or system.</p>
+</li>
+<li>
+<p><strong>EntitySource</strong> allows the user to import predefined entity data, e.g. from files with custom data formats.</p>
+</li>
+<li>
+<p><strong>DescriptorProvider</strong> reads metadata from systems or files and provides them as Benerator descriptors. You can define an own DescriptorProvider for
+  e.g. importing generation characteristics from annotations in an XMI file.</p>
+</li>
+<li>
+<p><strong>StorageSystem</strong> provides access to a system for storing and querying data. This would be the interface to implement for connecting to your
+  application, e.g. SAP, Siebel or a custom one.</p>
+</li>
+<li>
+<p><strong>Task</strong> is an interface for executing custom Java code.</p>
+</li>
+</ul>
+<p>You can as well plug into the script frameworks that you are binding. So, for FreeMarker, you can implement custom methods in Java and call them from
+the Benerator generation process.</p>
+<h2 id="custom-generators">Custom Generators</h2>
+<h3 id="generator-interface">Generator Interface</h3>
+<p><strong>com.rapiddweller.benerator.Generator</strong> is the basic Generator interface. It has the following methods:</p>
+<ul>
+<li>
+<p><strong>Class<code>&lt;E&gt;</code> getGeneratedType()</strong>: Tells the framework of which Java class the generated values are.</p>
+</li>
+<li>
+<p><strong>void init(GeneratorContext context)</strong>: This is called to complete a Generators configuration and initialize it. If the configuration is not
+  alright, the init() method is expected to throw an InvalidGeneratorSetupException. If the method finishes without exception, the generator has to be
+  in state running. The next invocation of generate() is expected to return a valid product.</p>
+</li>
+<li>
+<p><strong>boolean wasInitialized()</strong>: Tells, if the init() method has already been called. Since Benerator massively uses generator chaining and nesting,
+  this is useful to avoid double initialization for each generator instance.</p>
+</li>
+<li>
+<p><strong>ProductWrapper<code>&lt;E&gt;</code> generate(ProductWrapper<code>&lt;E&gt;</code> wrapper)</strong>: Generates an instance of the generic type E and uses the wrapper provided by the
+  caller to return it to the client. If the method is called in an inappropriate state (
+  created or closed), it throws an IllegalGeneratorStateException. If the generator is not available anymore, the method returns null.</p>
+</li>
+<li>
+<p><strong>void reset()</strong>: Resets the generator to the initial state. When called, the Generator is expected to act as if '
+  restarted'. After invocation the state has to be available.</p>
+</li>
+<li>
+<p><strong>void close()</strong>: Closes the generator. After invocation the state is unavailable.</p>
+</li>
+<li>
+<p><strong>boolean isThreadSafe()</strong>: Tells if the Generator class can safely be called concurrently by multiple threads.</p>
+</li>
+<li>
+<p><strong>boolean isParallelizable()</strong>: Tells if the Generator can be cloned and each instance be executed with a dedicated single thread.</p>
+</li>
+</ul>
+<h3 id="generator-states">Generator States</h3>
+<p>Generators have the following life cycle:</p>
+<ul>
+<li>
+<p><strong>created</strong>: The generator is under construction. This may take several steps, since generators need to be JavaBeans. When setup is done, a
+  Generator must be initialized by calling its init() method.</p>
+</li>
+<li>
+<p><strong>running</strong>: Generator construction is done and the generator is available. The user may use the Generator calling the generate() method.</p>
+</li>
+<li>
+<p><strong>closed</strong>: The Generator may become unavailable automatically if its value space is depleted or manually when close()
+  has been invoked. The Generator may be reset to the running state again by calling reset() . When being closed, the generator must be in a state in
+  which it can be safely garbage collected.</p>
+</li>
+</ul>
+<h3 id="helper-classes-for-custom-generators">Helper classes for custom Generators</h3>
+<p>It is recommendable to make your custom generator extend one of the following classes:</p>
+<ul>
+<li>
+<p><strong>AbstractGenerator</strong>: Implements state handling</p>
+</li>
+<li>
+<p><strong>UnsafeGenerator</strong>: Implements state handling and declares to be neither thread-safe nor parallelizable</p>
+</li>
+<li>
+<p><strong>ThreadSafeGenerator</strong>: Implements state handling and declare to be thread-safe and parallelizable</p>
+</li>
+</ul>
+<p>When deriving a custom generator, prefer delegation to inheritance. This simplifies code maintenance and life cycle handling. Abstract Generator
+implementations which already implement delegate handling are provided by the following classes:</p>
+<ul>
+<li>
+<p><strong>GeneratorWrapper</strong>: Wraps another generator of different product types</p>
+</li>
+<li>
+<p><strong>GeneratorProxy</strong>: Wraps another generator of the same product type</p>
+</li>
+<li>
+<p><strong>MultiGeneratorWrapper</strong>: Wraps multiple other generators, e.g. for composing their products, or arbitrarily choosing one of them for data
+  generationGeneratorWrapper for wrapping a single delegate generator of different product type.</p>
+</li>
+</ul>
+<h2 id="custom-freemarker-methods">Custom FreeMarker methods</h2>
+<p>You can define custom functions in Java which will be called by FreeMarker, e.g. a helloWorld function which could be used like this:</p>
+<p><code>&lt;attribute name="greeting" script="{helloWorld(Volker)}"/&gt;</code></p>
+<p>See the FreeMarker documentation at http://freemarker.sourceforge.net/docs/pgui_datamodel_method.html for some more details. The Java implementation
+of the class could be something similar to this:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorldMethod</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">TemplateMethodModel</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="kd">public</span><span class="w"> </span><span class="n">TemplateModel</span><span class="w"> </span><span class="nf">exec</span><span class="p">(</span><span class="n">List</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">TemplateModelException</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleString</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>A descriptor file would need to instantiate the class, before it can be called:</p>
+<p><code>&lt;bean id="helloWorld" class="HelloWorldMethod" /&gt;</code></p>
+<p>Unfortunately, anything you provide in the method call will be converted to a List of Strings, so date or number formatting may be necessary on the
+descriptor side and String parsing on the Java Method side. If the result type of the method is not a SimpleString the same conversions will be done.
+so you might need to use strange expressions, e.g. for a method that sums up dates and returns a date:</p>
+<p><code>&lt;attribute name="lastupdatedtime" script="${dateSum(deal.created_time?string('yyyy-MM-dd'), deallog._delay)?string('yyyy-MM-dd')}"/&gt;</code></p>
+<h2 id="custom-sequences">Custom Sequences</h2>
+<p>Since a Sequence's primary concern is number generation, a Sequence implementor can focus on number generation. By intheriting from the class
+Sequence, one inherits the data redistribution feature defined in this class and only needs to implement</p>
+<p><code>&lt;T extends Number&gt;</code> Generator<code>&lt;T&gt;</code> createGenerator(Class<code>&lt;T&gt;</code> numberType, T min, T max, T granularity, boolean unique);</p>
+<p>The method needs to be implemented in a way that it creates and returns a new Generator component, which generates numbers of the given numberType
+with a numerical value of at least min and at most max and a granularity, such that each generated value x is x = min + n * granularity, with n being
+an integral number. If the caller of this method indicated that it requires unique number generation and the Sequence is not capable of generating
+unique numbers, the method is requires to throw a <code>com.rapiddweller.ConfigurationError</code>.</p>
+<h2 id="custom-weightfunctions">Custom WeightFunctions</h2>
+<p>A WeightFunction specifies a probability density for a numeric parameter. If applied to a number generator it will generate numbers with the same
+probability density. When applied to collections or arrays, the function will evaluate to the probability of an element by its index number.</p>
+<p>For defining your own WeightFunction, you just need to implement the WeightFunction interface:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">WeightFunction</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Distribution</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">value</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">param</span><span class="p">);}</span><span class="w"></span>
+</code></pre></div>
+<p>Attention: Take into account, that the parameter may become zero: When using the Function for weighing the entries of an import file or a list, the
+function will be called with zero-based indexes as argument. So, if you want to use a 10,000-element CSV-file weighted by a custom WeightFunction, it
+must be able to produce useful values from 0 to 9,999.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GaussianFunction</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">rapiddweller</span><span class="p">.</span><span class="na">benerator</span><span class="p">.</span><span class="na">distribution</span><span class="p">.</span><span class="na">AbstractWeightFunction</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">average</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">deviation</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">scale</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">GaussianFunction</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">average</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">deviation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">average</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">average</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">deviation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">deviation</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">deviation</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">value</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">param</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">average</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">deviation</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h2 id="applying-a-weight-function">Applying a Weight Function</h2>
+<p>You can weigh any arbitrary imported or numeric data by a Weight Function. A Weight Function is defined by a class that implements the interface
+<code>com.rapiddweller.model.function.WeightFunction</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">WeightFunction</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Weight</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="kt">double</span><span class="w"> </span><span class="nf">value</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">param</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>When using a weight function, Benerator will serve data items in random order and as often as implied by the function value. Benerator automatically
+evaluates the full applicable number range (as defined by numerical min/max or number of objects to choose from) and normalize the weights. There is
+no need to provide a pre-normalized distribution function. You may define custom Weight Functions by implementing the WeightFunction interface.</p>
+<h2 id="custom-converters">Custom Converters</h2>
+<p>Custom Converters can be used for supporting custom data types or specific data formats. The Converter interface has the following methods:</p>
+<ul>
+<li>
+<p><strong>Class<code>&lt;S&gt;</code> getSourceType()</strong>: Returns the Java class whose instances can be converted</p>
+</li>
+<li>
+<p><strong>Class<code>&lt;T&gt;</code> getTargetType()</strong>: Returns the Java class to which objects are converted</p>
+</li>
+<li>
+<p><strong>T convert(S sourceValue)</strong>: Converts a sourceValue of type S to an object of type T</p>
+</li>
+<li>
+<p><strong>boolean isThreadSafe()</strong>: Tells if a converter can be executed with several concurrent threads</p>
+</li>
+<li>
+<p><strong>boolean isParallelizable()</strong>: Tells if a converter can be cloned and each clone can run with a single dedicated thread</p>
+</li>
+</ul>
+<p>These classes are useful parent classes for a custom Converter implementation:</p>
+<ul>
+<li>
+<p>UnsafeConverter: Declares to be neither thread-safe nor parallelizable</p>
+</li>
+<li>
+<p>ThreadSafeConverter: Declares being thread-safe and parallelizable</p>
+</li>
+</ul>
+<p>Beyond this, a custom Converter should</p>
+<ul>
+<li>
+<p>provide a public default (no-arg) constructor</p>
+</li>
+<li>
+<p>exhibit each relevant property by a public set-method</p>
+</li>
+</ul>
+<h2 id="custom-validators">Custom Validators</h2>
+<p>A validator must implement at least one of these two interfaces:</p>
+<ul>
+<li>
+<p>javax.validation.ConstraintValidator (as of JSR 303 - Bean Validation)</p>
+</li>
+<li>
+<p>com.rapiddweller.common.Validator</p>
+</li>
+</ul>
+<p>Beyond this, a custom validator should</p>
+<ul>
+<li>
+<p>provide a public default (no-arg) constructor</p>
+</li>
+<li>
+<p>make each relevant property configurable by a set-method</p>
+</li>
+</ul>
+<h3 id="javaxvalidationconstraintvalidator">javax.validation.ConstraintValidator</h3>
+<p>For implementing ConstraintValidators, see the Bean Validation documentation.</p>
+<h3 id="comrapiddwellercommonvalidator">com.rapiddweller.common.Validator</h3>
+<p>For implementing the <code>com.rapiddweller.common.Validator</code> interface, a custom validator must implement the method boolean valid(E object) method
+returning <code>true</code> for a valid object, <code>false</code> for an invalid one.</p>
+<p>It is recommended to inherit a custom Validator from the class com.rapiddweller.common.validator.AbstractValidator. If the Validator interface will
+change in future versions, the AbstractValidator will try to compensate for implementations of the old interface. Thus, a simple validator
+implementation which checks that an object is not null would be:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NotNullValidator</span><span class="err">`</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="err">`</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">rapiddweller</span><span class="p">.</span><span class="na">common</span><span class="p">.</span><span class="na">validator</span><span class="p">.</span><span class="na">AbstractValidator</span><span class="err">`</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="err">`</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">valid</span><span class="p">(</span><span class="n">E</span><span class="w"> </span><span class="n">object</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">object</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="implementing-both-interfaces">Implementing both interfaces</h3>
+<p>If you inherit a custom Validator from <code>com.rapiddweller.common.validator.bean.AbstractConstraintValidator</code>, it implements both interfaces.</p>
+<h2 id="custom-consumers">Custom Consumers</h2>
+<p>A Consumer is the final destination that receives the data generated by Benerator. It implements the Consumer interface with the following methods:</p>
+<ul>
+<li>
+<p><strong>startConsumption(ProductWrapper<code>&lt;E&gt;</code> object)</strong> starts processing of a data object (usually an Entity)</p>
+</li>
+<li>
+<p><strong>finishConsumption(ProductWrapper<code>&lt;E&gt;</code> object)</strong> finishes processing of a data object.</p>
+</li>
+<li>
+<p><strong>flush()</strong> forces the consumer to forward or persist its data.</p>
+</li>
+<li>
+<p><strong>close()</strong> closes the consumer</p>
+</li>
+</ul>
+<p>Consumers must be thread-safe.</p>
+<p>Beyond this, it should</p>
+<ul>
+<li>
+<p>provide a public default (no-arg) constructor</p>
+</li>
+<li>
+<p>make each relevant property configurable by a set-method</p>
+</li>
+</ul>
+<p>If your data format and generation supports nesting, the methods startConsuming() and finishConsuming() are called in a hierarchical manner. So, if A
+contains B, the invocation sequence is:</p>
+<p>startConsuming(A)</p>
+<p>startConsuming(B)</p>
+<p>finishConsuming(B)</p>
+<p>finishConsuming(A)</p>
+<p>For non-hierarchical processing you only need to implement the startConsuming() with data processing logic.</p>
+<h2 id="custom-entitysources">Custom EntitySources</h2>
+<p>For defining a custom EntitySource you need to implement two methods:</p>
+<ul>
+<li>
+<p>Class<code>&lt;Entity&gt;</code> getType(): Must return Entity.class</p>
+</li>
+<li>
+<p>DataIterator<code>&lt;E&gt;</code> iterator(): Must return a DataIterator which iterates over entities. If the iterator requires resource allocation, it should free
+  its resources on close() invocation.</p>
+</li>
+</ul>
+<p>Beyond this, a custom EntitySource should</p>
+<ul>
+<li>
+<p>provide a public default (no-arg) constructor</p>
+</li>
+<li>
+<p>make each relevant property configurable by a set-method</p>
+</li>
+</ul>
+<h2 id="custom-tasks">Custom Tasks</h2>
+<p>For executing custom Java code, the most efficient choice is to write a JavaBean class that implements the interface com.rapiddweller.task.Task.</p>
+<p>The Task interface consists of callback interfaces for execution logic and lifecycle management.</p>
+<ul>
+<li>
+<p><strong>String getTaskName()</strong>: returns a task name for tracking execution. On parallel execution, the framework appends a number to identify each
+  instance.</p>
+</li>
+<li>
+<p><strong>TaskResult execute(Context context, ErrorHandler errorHandler)</strong>: implements the core functionality of the task. Tasks may be called several times
+  subsequently and the task uses return valueto indicate whether it is running, has just finished or is unavailable.</p>
+</li>
+<li>
+<p><strong>void pageFinished()</strong>: is called by the framework to inform the task that a 'page' of user-defined size has finished. This can be used, e.g. for
+  grouping several execute() steps to one transaction.</p>
+</li>
+<li>
+<p><strong>void close()</strong>: is called by the framework to make the task close all resources and prepare to be garbage-collected.</p>
+</li>
+<li>
+<p><strong>boolean isParallelizable()</strong>: Tells if the task can be executed in several threads concurrently. This is not used in Benerator.</p>
+</li>
+<li>
+<p><strong>boolean isThreadSafe()</strong>: Tells if it is possible to create clones of the task and execute each clone in a dedicated single thread. This is not
+  used in Benerator.</p>
+</li>
+</ul>
+<p>Benerator provides several implementations of the Task interface which are useful as parent class for custom implementations:</p>
+<ul>
+<li>
+<p>AbstractTask is a simple abstract implementation that provides useful default implementations for the lifecycle-related methods.</p>
+</li>
+<li>
+<p>TaskProxy can be used to wrap another Task object with a custom proxy and add extra functionality.</p>
+</li>
+<li>
+<p>RunnableTask can be used to wrap an object that implements the Runnable interface.</p>
+</li>
+</ul>
+<p>A task has access to all Java objects and entities in the context and may arbitrarily add own objects (e.g. for messaging between different tasks). A
+common usage pattern is to share e.g. a transactional database by the context, have every thread store objects in it and then use the pager to commit
+the transaction.</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="maven_benerator_plugin.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Maven Benerator Plugin" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Maven Benerator Plugin
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="using_benerator_as_load_generator.html" class="md-footer__link md-footer__link--next" aria-label="Next: Using Benerator as Load Generator" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Using Benerator as Load Generator
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2006 - 2022 rapiddweller GmbH & Volker Bergmann
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/rapiddweller" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/rapiddweller/" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/intent/follow?screen_name=rapiddweller" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["search.suggest", "search.highlight", "search.share", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.top"], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="js/termynal.js"></script>
+      
+        <script src="js/custom.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="js/tablesort.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1351 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This document is supposed to become a complete summary of everything you need to know of Benerator usage, use it efficiently and extend it as you need. This reference is under construction and will update from time to time. Feel free to contribute your ideas in our repo at https://github.com/rapiddweller/rapiddweller-benerator-ce/.">
+      
+      
+        <meta name="author" content="rapiddweller GmbH & Volker Bergmann">
+      
+      
+        <link rel="canonical" href="https://docs.benerator.de/xml_file_processing.html">
+      
+      <link rel="icon" href="assets/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>XML File Processing - rapiddweller Benerator</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/termynal.css">
+    
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="rapiddweller" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#generating-xml-files" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="rapiddweller Benerator" class="md-header__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            rapiddweller Benerator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              XML File Processing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="rapiddweller Benerator" class="md-nav__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    rapiddweller Benerator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction_to_benerator.html" class="md-nav__link">
+        Goals and Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="the_benerator_project_wizard.html" class="md-nav__link">
+        The Benerator Project Wizard
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quick_tour_through_the_descriptor_file_format.html" class="md-nav__link">
+        Quick tour through the descriptor file format
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_generation_concepts.html" class="md-nav__link">
+        Data Generation Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_anonymization_concepts.html" class="md-nav__link">
+        Data Anonymization Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="regular_expression_support.html" class="md-nav__link">
+        Regular Expression Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_file_processing.html" class="md-nav__link">
+        CSV File Generation/Anonymization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          XML File Processing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="xml_file_processing.html" class="md-nav__link md-nav__link--active">
+        XML File Processing
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#explicit-xml-construction" class="md-nav__link">
+    Explicit XML construction
+  </a>
+  
+    <nav class="md-nav" aria-label="Explicit XML construction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dbunitentityexporter" class="md-nav__link">
+    DbUnitEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xmlentityexporter" class="md-nav__link">
+    XMLEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-data-types-from-xml-schema-files" class="md-nav__link">
+    Using data types from XML schema files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implicit-schema-based-xml-definition" class="md-nav__link">
+    Implicit (schema-based) XML definition
+  </a>
+  
+    <nav class="md-nav" aria-label="Implicit (schema-based) XML definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-attribute-generation" class="md-nav__link">
+    Configuring Attribute Generation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-variables-in-xml-schema" class="md-nav__link">
+    Using &lt;variables&gt; in XML Schema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importing-properties-file-data" class="md-nav__link">
+    Importing Properties File Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-limitations" class="md-nav__link">
+    Current Limitations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distribution.html" class="md-nav__link">
+        Distribution Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_relational_databases.html" class="md-nav__link">
+        Using Relational Databases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="message_queue_access.html" class="md-nav__link">
+        Message Queue Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kafka_access.html" class="md-nav__link">
+        Kafka Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="environment_files.html" class="md-nav__link">
+        Environment Files
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced_topics.html" class="md-nav__link">
+        Advanced Topics
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="generating_unique_data.html" class="md-nav__link">
+        Generating Unique Data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scripting.html" class="md-nav__link">
+        Scripting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rapiddwellerscript.html" class="md-nav__link">
+        rapiddwellerScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="command_line_tools.html" class="md-nav__link">
+        Command Line Tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="domains.html" class="md-nav__link">
+        Domains
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="component_reference.html" class="md-nav__link">
+        Component Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_db_sanity.html" class="md-nav__link">
+        Using DB Sanity
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maven_benerator_plugin.html" class="md-nav__link">
+        Maven Benerator Plugin
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extending_benerator.html" class="md-nav__link">
+        Extending Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_benerator_as_load_generator.html" class="md-nav__link">
+        Using Benerator as Load Generator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting.html" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="monitoring_benerator.html" class="md-nav__link">
+        Monitoring Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance_tuning.html" class="md-nav__link">
+        Benerator Performance Tuning
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migrating_benerator_projects.html" class="md-nav__link">
+        Migrating Benerator Projects
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#explicit-xml-construction" class="md-nav__link">
+    Explicit XML construction
+  </a>
+  
+    <nav class="md-nav" aria-label="Explicit XML construction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dbunitentityexporter" class="md-nav__link">
+    DbUnitEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xmlentityexporter" class="md-nav__link">
+    XMLEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-data-types-from-xml-schema-files" class="md-nav__link">
+    Using data types from XML schema files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implicit-schema-based-xml-definition" class="md-nav__link">
+    Implicit (schema-based) XML definition
+  </a>
+  
+    <nav class="md-nav" aria-label="Implicit (schema-based) XML definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-attribute-generation" class="md-nav__link">
+    Configuring Attribute Generation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-variables-in-xml-schema" class="md-nav__link">
+    Using &lt;variables&gt; in XML Schema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importing-properties-file-data" class="md-nav__link">
+    Importing Properties File Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-limitations" class="md-nav__link">
+    Current Limitations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="generating-xml-files">Generating XML Files</h1>
+<p>Benerator offers several options to generate XML files.</p>
+<p>They come in two different flavors: </p>
+<ol>
+<li>Explicit XML construction: You manually compose and configure XML generation</li>
+<li>Implicit (schema-based) XML definition: You provide an XML Schema file and Benerator figures out the rest</li>
+</ol>
+<h2 id="explicit-xml-construction">Explicit XML construction</h2>
+<p>With explicit XML construction, you manually define data generation and nesting. 
+An XML consumer then simply outputs them as XML file.</p>
+<p>Two such XML consumers are provided with Benerator:</p>
+<ul>
+<li>DbUnitEntityExporter</li>
+<li>XMLEntityExporter</li>
+</ul>
+<p>Each one of both uses a fix defined format to render data as XML. 
+If both formats do not meet your needs, you can apply an XML 
+transformation afterwards, for example invoked with an <code>execute</code> directive:</p>
+<div class="highlight"><pre><span></span><code>&lt;execute type=&quot;shell&quot;&gt;tx-xml transactions.dbunit.xml tx-trans.xslt tx.xml&lt;/execute&gt;
+</code></pre></div>
+<h3 id="dbunitentityexporter">DbUnitEntityExporter</h3>
+<p>A consumer writes any created entity to a file in DbUnit XML format. 
+Use this if you only need a DbUnit file or want a simple,
+flat XML-based export for import in other tools. 
+See the '<a href="component_reference.html">Component Reference</a>' for more information.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;setup&gt;</span>
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;order&quot;</span> <span class="na">count=</span><span class="s">&quot;7&quot;</span> <span class="na">consumer=</span><span class="s">&quot;new DbUnitEntityExporter(&#39;tx.dbunit.xml&#39;)&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">tyoe=</span><span class="s">&quot;int&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;items&quot;</span> <span class="na">type=</span><span class="s">&quot;short&quot;</span> <span class="na">min=</span><span class="s">&quot;1&quot;</span> <span class="na">max=</span><span class="s">&quot;27&quot;</span> <span class="na">distribution=</span><span class="s">&quot;cumulated&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;price&quot;</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="na">min=</span><span class="s">&quot;0.ß1&quot;</span> <span class="na">max=</span><span class="s">&quot;100.00&quot;</span> <span class="na">increment=</span><span class="s">&quot;0.01&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;comment&quot;</span> <span class="na">pattern=</span><span class="s">&quot;[A-Z][a-z]{5,12}&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;ean_code&quot;</span> <span class="na">pattern=</span><span class="s">&quot;[0-9]{13}&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/generate&gt;</span>
+<span class="nt">&lt;/setup&gt;</span>
+</code></pre></div>
+<p>Running this setup creates an XML file like this:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;dataset&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;1&quot;</span> <span class="na">items=</span><span class="s">&quot;11&quot;</span> <span class="na">price=</span><span class="s">&quot;78.17&quot;</span> <span class="na">comment=</span><span class="s">&quot;Drwhcqpfbga&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;9919144617610&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;2&quot;</span> <span class="na">items=</span><span class="s">&quot;12&quot;</span> <span class="na">price=</span><span class="s">&quot;58.36&quot;</span> <span class="na">comment=</span><span class="s">&quot;Loxzhlvgs&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;6603356278824&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;3&quot;</span> <span class="na">items=</span><span class="s">&quot;15&quot;</span> <span class="na">price=</span><span class="s">&quot;19.41&quot;</span> <span class="na">comment=</span><span class="s">&quot;Lpphxx&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;6843307402222&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;4&quot;</span> <span class="na">items=</span><span class="s">&quot;18&quot;</span> <span class="na">price=</span><span class="s">&quot;62.45&quot;</span> <span class="na">comment=</span><span class="s">&quot;Gfotkrhegmbbx&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;8264224421213&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;5&quot;</span> <span class="na">items=</span><span class="s">&quot;10&quot;</span> <span class="na">price=</span><span class="s">&quot;12.08&quot;</span> <span class="na">comment=</span><span class="s">&quot;Sdhvne&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;5261265548872&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;6&quot;</span> <span class="na">items=</span><span class="s">&quot;18&quot;</span> <span class="na">price=</span><span class="s">&quot;27.81&quot;</span> <span class="na">comment=</span><span class="s">&quot;Svtrtrhlwmdu&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;3677815958330&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;7&quot;</span> <span class="na">items=</span><span class="s">&quot;17&quot;</span> <span class="na">price=</span><span class="s">&quot;75.28&quot;</span> <span class="na">comment=</span><span class="s">&quot;Helqgd&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;5931484187271&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/dataset&gt;</span>
+</code></pre></div>
+<p>Note that the DbUnit file format is limited to flat data structures.
+For nested XML elements use the following consumer:</p>
+<h3 id="xmlentityexporter">XMLEntityExporter</h3>
+<p>A consumer which is more powerful than the DbUnitEntityExporter: 
+It renders each simple-type entity attribute as an XML attribute 
+and each sub-entity as a nested XML element.
+See the <a href="component_reference.html">Component Reference</a> for more information.</p>
+<p>The example shows how to nest generation configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;setup&gt;</span>
+    <span class="nt">&lt;import</span> <span class="na">platforms=</span><span class="s">&quot;xml&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;xml&quot;</span> <span class="na">spec=</span><span class="s">&quot;new XMLEntityExporter(&#39;tx.xml&#39;)&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;orders&quot;</span> <span class="na">count=</span><span class="s">&quot;1&quot;</span> <span class="na">consumer=</span><span class="s">&quot;xml&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;order&quot;</span> <span class="na">count=</span><span class="s">&quot;7&quot;</span> <span class="na">consumer=</span><span class="s">&quot;xml&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;items&quot;</span> <span class="na">type=</span><span class="s">&quot;short&quot;</span> <span class="na">min=</span><span class="s">&quot;1&quot;</span> <span class="na">max=</span><span class="s">&quot;27&quot;</span> <span class="na">distribution=</span><span class="s">&quot;cumulated&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;price&quot;</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="na">min=</span><span class="s">&quot;0.01&quot;</span> <span class="na">max=</span><span class="s">&quot;100.00&quot;</span> <span class="na">granularity=</span><span class="s">&quot;0.01&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;comment&quot;</span> <span class="na">pattern=</span><span class="s">&quot;[A-Z][a-z]{5,12}&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;ean_code&quot;</span> <span class="na">pattern=</span><span class="s">&quot;[0-9]{13}&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/generate&gt;</span>
+    <span class="nt">&lt;/generate&gt;</span>
+<span class="nt">&lt;/setup&gt;</span>
+</code></pre></div>
+<p>for the following result:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;orders&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;1&quot;</span> <span class="na">items=</span><span class="s">&quot;11&quot;</span> <span class="na">price=</span><span class="s">&quot;77.99000000000001&quot;</span> <span class="na">comment=</span><span class="s">&quot;Rvjloach&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;9780700577140&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;2&quot;</span> <span class="na">items=</span><span class="s">&quot;22&quot;</span> <span class="na">price=</span><span class="s">&quot;62.13&quot;</span> <span class="na">comment=</span><span class="s">&quot;Ezviominvbvol&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;2224896066588&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;3&quot;</span> <span class="na">items=</span><span class="s">&quot;19&quot;</span> <span class="na">price=</span><span class="s">&quot;84.25&quot;</span> <span class="na">comment=</span><span class="s">&quot;Zkrryifmoo&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;1193496860138&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;4&quot;</span> <span class="na">items=</span><span class="s">&quot;12&quot;</span> <span class="na">price=</span><span class="s">&quot;72.53&quot;</span> <span class="na">comment=</span><span class="s">&quot;Ufecgkxxqyen&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;3292695014212&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;5&quot;</span> <span class="na">items=</span><span class="s">&quot;8&quot;</span> <span class="na">price=</span><span class="s">&quot;68.67&quot;</span> <span class="na">comment=</span><span class="s">&quot;Mrxisnwbdyoe&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;8835687800915&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;6&quot;</span> <span class="na">items=</span><span class="s">&quot;7&quot;</span> <span class="na">price=</span><span class="s">&quot;20.610000000000003&quot;</span> <span class="na">comment=</span><span class="s">&quot;Rdrutwfkpuly&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;4455177396063&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;order</span> <span class="na">id=</span><span class="s">&quot;7&quot;</span> <span class="na">items=</span><span class="s">&quot;12&quot;</span> <span class="na">price=</span><span class="s">&quot;24.630000000000003&quot;</span> <span class="na">comment=</span><span class="s">&quot;Puecbk&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;8930345219912&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/orders&gt;</span>
+</code></pre></div>
+<h3 id="using-data-types-from-xml-schema-files">Using data types from XML schema files</h3>
+<p>Including an XML schema in a classic descriptor file makes its data types available for explicit data generation.
+This can be used with the DbUnitExporter as well for the XmlExporter:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;include</span> <span class="na">uri=</span><span class="s">&quot;shop.xsd&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;product&quot;</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h2 id="implicit-schema-based-xml-definition">Implicit (schema-based) XML definition</h2>
+<p>This is the most powerful XML generation approach:
+An XML schema file is used as the central definition for data generation. 
+Benerator is able to automatically generate data purely based on a plain schema file, 
+but, of course, you will want more detailed control over data generation. 
+You get this by inserting generation descriptors in the well-known XML descriptor syntax. 
+This makes data generation almost as versatile as with the classic descriptor-file-based approach.
+More than that, you can generate an arbitrary number of XML files with one program call.</p>
+<p>Since XML schema offers a very wide range of options, Benerator concentrates on features 
+usually needed for data files but does not yet support the complete schema feature set.
+If you are interested in improvements, please email us at <a href="mailto:team@rapiddweller.com">team@rapiddweller.com</a>.</p>
+<h3 id="introduction">Introduction</h3>
+<p>For the first trials, use a simple XML Schema file. We are beginning without annotations and save the following XML Schema with the name
+<code>transactions.xsd</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;xs:schema</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> 
+           <span class="na">xmlns:ben=</span><span class="s">&quot;https://www.benerator.de/schema/benerator-2.1.0.xsd&quot;</span>
+           <span class="na">xmlns=</span><span class="s">&quot;https://www.benerator.de/shop-0.8.1.xsd&quot;</span>
+           <span class="na">targetNamespace=</span><span class="s">&quot;https://www.benerator.de/shop-0.8.1.xsd&quot;</span>
+           <span class="na">elementFormDefault=</span><span class="s">&quot;qualified&quot;</span><span class="nt">&gt;</span>`
+
+    <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;transactions&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;xs:complexType&gt;</span>
+            <span class="nt">&lt;xs:sequence&gt;</span>
+                <span class="nt">&lt;xs:element</span> <span class="na">ref=</span><span class="s">&quot;transaction&quot;</span> <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span> <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/xs:sequence&gt;</span>
+        <span class="nt">&lt;/xs:complexType&gt;</span>
+    <span class="nt">&lt;/xs:element&gt;</span>
+
+    <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;transaction&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;xs:complexType&gt;</span>
+            <span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:long&quot;</span> <span class="na">use=</span><span class="s">&quot;required&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;comment&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:string&quot;</span> <span class="na">use=</span><span class="s">&quot;required&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;ean_code&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:string&quot;</span> <span class="na">use=</span><span class="s">&quot;required&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;price&quot;</span> <span class="na">type=</span><span class="s">&quot;price-type&quot;</span> <span class="na">use=</span><span class="s">&quot;required&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;items&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/xs:complexType&gt;</span>
+    <span class="nt">&lt;/xs:element&gt;</span>
+
+    <span class="nt">&lt;xs:simpleType</span> <span class="na">name=</span><span class="s">&quot;price-type&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;xs:restriction</span> <span class="na">base=</span><span class="s">&quot;xs:decimal&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;xs:minInclusive</span> <span class="na">value=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;xs:totalDigits</span> <span class="na">value=</span><span class="s">&quot;8&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;xs:fractionDigits</span> <span class="na">value=</span><span class="s">&quot;2&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/xs:restriction&gt;</span>
+    <span class="nt">&lt;/xs:simpleType&gt;</span>
+
+<span class="nt">&lt;/xs:schema&gt;</span>
+</code></pre></div>
+<p>This defines an XML file format which has a <code>&lt;transactions&gt;</code> attribute as root element which contains an arbitrary number of <code>&lt;transaction&gt;</code> elements.
+Each <code>&lt;transaction&gt;</code> has the attributes 'id', 'comment', ean_code', 'price' and '
+items'. The 'price-type' specifies decimal values with a total of 8 digits, 2 of which are decimal digits.</p>
+<p>You can invoke XML file generation using Benerator directly or using the Maven Benerator Plugin. Let's call Benerator directly from the shell for now.
+Open a console, go to the directory which contains your schema file and invoke (under Windows):</p>
+<div class="highlight"><pre><span></span><code>createXML transactions.xsd transactions tx-<span class="o">{</span><span class="m">0</span><span class="o">}</span>.xml <span class="m">2</span>
+</code></pre></div>
+<p>On Unix systems type:</p>
+<div class="highlight"><pre><span></span><code>createXML transactions.xsd transactions tx-{0}.xml 2
+</code></pre></div>
+<p>This tells Benerator to generate 2 xml files named <code>tx-1.xml</code> and <code>tx-2.xml</code> based on the schema file <code>transactions.xsd</code> using the <code>transactions</code>
+element as root element.</p>
+<p>Open one of the generated files, and you will see the following content:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+
+<span class="nt">&lt;transactions</span> <span class="na">elementFormDefault=</span><span class="s">&quot;unqualified&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>So, what did Benerator do wrong? Nothing, it is a perfectly schema-valid document. Since minOccurs of the transaction ref is zero, Benerator takes the
+easy choice: Remember: One of Benerator's strengths is to configure the generation of valid data as easily as possible and in project stages as early as
+possible. With the chosen approach, you need to spend less time explicitly configuring element removal which is not yet supported by your
+application.</p>
+<p>For configuring the generation of <code>&lt;transaction&gt;</code> elements, you need to add an annotation to your schema. The <code>ref</code> configuration in the <code>sequence</code> is
+the right place to configure cardinalities of included sub elements:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;transactions&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;xs:complexType&gt;</span>
+        <span class="nt">&lt;xs:sequence</span> <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;xs:element</span> <span class="na">_ref=</span><span class="s">&quot;transaction&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;xs:annotation&gt;</span>
+                    <span class="nt">&lt;xs:appinfo&gt;</span>
+                        <span class="nt">&lt;ben:part</span> <span class="na">minCount=</span><span class="s">&quot;5&quot;</span> <span class="na">maxCount=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/xs:appinfo&gt;</span>
+                <span class="nt">&lt;/xs:annotation&gt;</span>
+            <span class="nt">&lt;/xs:element&gt;</span>
+        <span class="nt">&lt;/xs:sequence&gt;</span>
+    <span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</code></pre></div>
+<p>Run Benerator again, and you will notice, that Benerator generated files like the following, each containing 5 to 10 transactions:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;transactions</span> <span class="na">elementFormDefault=</span><span class="s">&quot;unqualified&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;4&quot;</span> <span class="na">comment=</span><span class="s">&quot;OBNBHQWMJYSPAHOCNBGDPGUXUQK&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;KJCDPUJNK&quot;</span> <span class="na">price=</span><span class="s">&quot;1&quot;</span> <span class="na">items=</span><span class="s">&quot;6&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;6&quot;</span> <span class="na">comment=</span><span class="s">&quot;UIXSXLGFBIRP&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;MW&quot;</span> <span class="na">price=</span><span class="s">&quot;3&quot;</span> <span class="na">items=</span><span class="s">&quot;7&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;4&quot;</span> <span class="na">comment=</span><span class="s">&quot;CRWGBGEKLRTZQADE&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;MXIESHSXQVLFJIBC&quot;</span> <span class="na">price=</span><span class="s">&quot;5&quot;</span> <span class="na">items=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;9&quot;</span> <span class="na">comment=</span><span class="s">&quot;FVBABHSYXZJHQYCVCWJ&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;FRPHJBOKUWHYKWHCWEIJBHVHIMV&quot;</span> <span class="na">price=</span><span class="s">&quot;1&quot;</span> <span class="na">items=</span><span class="s">&quot;9&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;9&quot;</span> <span class="na">comment=</span><span class="s">&quot;FZBNSLBEBZMTGPZJUG&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;MNYYPRKM&quot;</span> <span class="na">price=</span><span class="s">&quot;7&quot;</span> <span class="na">items=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;7&quot;</span> <span class="na">comment=</span><span class="s">&quot;KIWPOOHNV&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;CRXMHAGAC&quot;</span> <span class="na">price=</span><span class="s">&quot;3&quot;</span> <span class="na">items=</span><span class="s">&quot;7&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;9&quot;</span> <span class="na">comment=</span><span class="s">&quot;JETNYCMECHGUPSUKLKSEA&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;ICY&quot;</span> <span class="na">price=</span><span class="s">&quot;1&quot;</span> <span class="na">items=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/transactions&gt;</span>
+</code></pre></div>
+<p>Now we have <code>&lt;transactions&gt;</code>, but their attribute values are not necessarily meaningful for our application. We need to configure attribute
+generation, too. Note however, that Benerator understands the definition of custom data types like the 'price-type' and automatically generates valid
+data, though taking the easy way of defaulting to integral numbers.</p>
+<h3 id="configuring-attribute-generation">Configuring Attribute Generation</h3>
+<p>Now it is time to configure the attribute details. Let us start by declaring the <code>id</code> attribute as ID:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:long&quot;</span> <span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;xs:annotation&gt;</span>
+        <span class="nt">&lt;xs:appinfo&gt;</span>
+            <span class="nt">&lt;ben:id/&gt;</span>
+        <span class="nt">&lt;/xs:appinfo&gt;</span>
+    <span class="nt">&lt;/xs:annotation&gt;</span>
+<span class="nt">&lt;/xs:attribute&gt;</span>
+</code></pre></div>
+<p>BTW: The XML Schema type ID is not yet handled automatically. You need to add an explicit <code>&lt;ben:id/&gt;</code> annotation for generating unique identifiers of
+the desired type.</p>
+<p>Shorter random comments are generated based on a regular expression:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;comment&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:string&quot;</span> <span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;xs:annotation&gt;</span>
+        <span class="nt">&lt;xs:appinfo&gt;</span>
+            <span class="nt">&lt;ben:attribute</span> <span class="na">pattern=</span><span class="s">&quot;[A-Z][a-z]{5,12}&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/xs:appinfo&gt;</span>
+    <span class="nt">&lt;/xs:annotation&gt;</span>
+<span class="nt">&lt;/xs:attribute&gt;</span>
+</code></pre></div>
+<p>You can configure number generation for the <code>items</code> attribute by setting <code>min</code>, <code>max</code>, <code>resolution</code> and <code>distribution</code> values:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;items&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;xs:annotation&gt;</span>
+        <span class="nt">&lt;xs:appinfo&gt;</span>
+            <span class="nt">&lt;ben:attribute</span> <span class="na">type=</span><span class="s">&quot;short&quot;</span> <span class="na">min=</span><span class="s">&quot;1&quot;</span> <span class="na">max=</span><span class="s">&quot;27&quot;</span> <span class="na">distribution=</span><span class="s">&quot;cumulated&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/xs:appinfo&gt;</span>
+    <span class="nt">&lt;/xs:annotation&gt;</span>
+<span class="nt">&lt;/xs:attribute&gt;</span>
+</code></pre></div>
+<p>This makes benerator create <code>items</code> numbers from 1 to 27 with a cumulated distribution which has its maximum at 14.</p>
+<h3 id="using-variables-in-xml-schema">Using <code>&lt;variables&gt;</code> in XML Schema</h3>
+<p>Now for more complex data generation: You can use <code>&lt;variables&gt;</code> like in descriptor files. They need to be placed inside an <code>&lt;element&gt;</code>. Let us, for
+example, use a CSV file with product definitions, containing EAN and price for each article. First, the variable declaration:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;transaction&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;xs:annotation&gt;</span>
+        <span class="nt">&lt;xs:appinfo&gt;</span>
+            <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">&quot;product&quot;</span> <span class="na">source=</span><span class="s">&quot;products.ent.csv&quot;</span> <span class="na">distribution=</span><span class="s">&quot;random&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/xs:appinfo&gt;</span>
+<span class="nt">&lt;/xs:annotation&gt;</span>
+...
+</code></pre></div>
+<p>For each generation of a transaction, the <code>&lt;variable&gt;</code> is called to generate a new helper object, in this case providing a CSV data line with product
+data. The contents of this data are mapped using script expressions:</p>
+<div class="highlight"><pre><span></span><code>...
+
+<span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;ean_code&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:string&quot;</span> <span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;xs:annotation&gt;</span>
+        <span class="nt">&lt;xs:appinfo&gt;</span>
+            <span class="nt">&lt;ben:attribute</span> <span class="na">script=</span><span class="s">&quot;product.ean_code&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/xs:appinfo&gt;</span>
+    <span class="nt">&lt;/xs:annotation&gt;</span>
+<span class="nt">&lt;/xs:attribute&gt;</span>
+
+<span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;price&quot;</span> <span class="na">type=</span><span class="s">&quot;price-type&quot;</span> <span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;xs:annotation&gt;</span>
+        <span class="nt">&lt;xs:appinfo&gt;</span>
+            <span class="nt">&lt;ben:attribute</span> <span class="na">script=</span><span class="s">&quot;product.price&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/xs:appinfo&gt;</span>
+    <span class="nt">&lt;/xs:annotation&gt;</span>
+<span class="nt">&lt;/xs:attribute&gt;</span>
+</code></pre></div>
+<p>Using a CSV file with product definitions</p>
+<div class="highlight"><pre><span></span><code>ean_code,name,category_id,price,manufacturer
+8000353006386,Limoncello Liqueur,DRNK/ALCO,9.85,Luxardo
+3068320018430,Evian 1.0 l,DRNK/SOFT,1.95,Danone
+8076800000085,le Lasagnette,FOOD/MISC,0.89,Barilla
+7610400071680,Connaisseurs,FOOD/CONF,16.95,Lindt
+</code></pre></div>
+<p>we finally get a satisfactory result:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+    <span class="nt">&lt;transactions</span> <span class="na">elementFormDefault=</span><span class="s">&quot;unqualified&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;1&quot;</span> <span class="na">comment=</span><span class="s">&quot;Sczexyozcpc&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;8076800000085&quot;</span> <span class="na">price=</span><span class="s">&quot;0.89&quot;</span> <span class="na">items=</span><span class="s">&quot;9&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;2&quot;</span> <span class="na">comment=</span><span class="s">&quot;Nglija&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;8000353006386&quot;</span> <span class="na">price=</span><span class="s">&quot;9.85&quot;</span> <span class="na">items=</span><span class="s">&quot;11&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;3&quot;</span> <span class="na">comment=</span><span class="s">&quot;Miejztqhgaoc&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;7610400071680&quot;</span> <span class="na">price=</span><span class="s">&quot;16.95&quot;</span> <span class="na">items=</span><span class="s">&quot;14&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;4&quot;</span> <span class="na">comment=</span><span class="s">&quot;Tzoxzrupygjfi&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;8000353006386&quot;</span> <span class="na">price=</span><span class="s">&quot;9.85&quot;</span> <span class="na">items=</span><span class="s">&quot;11&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;5&quot;</span> <span class="na">comment=</span><span class="s">&quot;Sufqdrku&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;3068320018430&quot;</span> <span class="na">price=</span><span class="s">&quot;1.95&quot;</span> <span class="na">items=</span><span class="s">&quot;17&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;6&quot;</span> <span class="na">comment=</span><span class="s">&quot;Jbtqsft&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;8000353006386&quot;</span> <span class="na">price=</span><span class="s">&quot;9.85&quot;</span> <span class="na">items=</span><span class="s">&quot;14&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transaction</span> <span class="na">id=</span><span class="s">&quot;7&quot;</span> <span class="na">comment=</span><span class="s">&quot;Lvivruwwxmay&quot;</span> <span class="na">ean_code=</span><span class="s">&quot;8076800000085&quot;</span> <span class="na">price=</span><span class="s">&quot;0.89&quot;</span> <span class="na">items=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/transactions&gt;</span>
+</code></pre></div>
+<p>You might as well want to calculate the total price. You can easily do so using a script expression, e.g. <code>script="
+this.price * this.items"</code>. Note that the elements are evaluated and generated in the order in which they are declared, so the <code>total sum</code> field must be
+defined after the used terms <code>price</code> and <code>items</code>.</p>
+<h3 id="importing-properties-file-data">Importing Properties File Data</h3>
+<p>You can import settings from properties files by placing <code>&lt;include&gt;</code>s in the schema's root node annotation:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;xs:schema</span> <span class="err">...</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;xs:annotation&gt;</span>
+        <span class="nt">&lt;xs:appinfo&gt;</span>
+            <span class="nt">&lt;ben:include</span> <span class="na">uri=</span><span class="s">&quot;benerator.properties&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/xs:appinfo&gt;</span>
+    <span class="nt">&lt;/xs:annotation&gt;</span>
+    ...
+</code></pre></div>
+<h3 id="current-limitations">Current Limitations</h3>
+<p>The current XML schema limitations are:</p>
+<ul>
+<li>No support for recursion of the same element type, e.g. categories containing other categories</li>
+<li>No support for mixed content. Benerator is concerned with the generation of data structures, while mixed-type documents generally apply to natural-language documents.</li>
+<li>groups are not supported</li>
+<li>sequences may not have <code>maxOccurs &gt; 1</code></li>
+<li>namespace support is only rudimentary, problems may arise on different types with equal names</li>
+<li>schema <code>include</code> is not supported yet</li>
+<li>ids and idrefs are not resolved automatically</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Almost the full feature set of Benerator descriptor files is available for XML Schema-based file generation. 
+If you know the <a href="quick_tour_through_the_descriptor_file_format.html">Benerator descriptor file</a> syntax well, it is a straightforward and relatively simple process 
+to annotate XML Schema files. </p>
+<p>However, if you just need to export XML-formatted data and write your own XML parser for importing the data 
+somewhere else, you might prefer to use the <a href="component_reference.html#dbunitentityexporter">DbUnitEntityExporter</a> (flat structure) or 
+<a href="component_reference.html#xmlentityexporter">XMLEntityExporter</a> (hierarchical structure), possibly in combination with an XSL transformation.</p>
+<p>You can as well combine the approaches: Annotating the XML Schema with Benerator descriptors and using its 
+internal type definition in a Benerator setup with an <a href="component_reference.html#xmlentityexporter">XMLEntityExporter</a>.</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="data_file_processing.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: CSV File Generation/Anonymization" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              CSV File Generation/Anonymization
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="distribution.html" class="md-footer__link md-footer__link--next" aria-label="Next: Distribution Concepts" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Distribution Concepts
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2006 - 2022 rapiddweller GmbH & Volker Bergmann
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/rapiddweller" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/rapiddweller/" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/intent/follow?screen_name=rapiddweller" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["search.suggest", "search.highlight", "search.share", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.top"], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="js/termynal.js"></script>
+      
+        <script src="js/custom.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="js/tablesort.js"></script>
+      
+    
+  </body>
+</html>

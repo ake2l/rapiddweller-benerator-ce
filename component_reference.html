@@ -1,0 +1,3909 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This document is supposed to become a complete summary of everything you need to know of Benerator usage, use it efficiently and extend it as you need. This reference is under construction and will update from time to time. Feel free to contribute your ideas in our repo at https://github.com/rapiddweller/rapiddweller-benerator-ce/.">
+      
+      
+        <meta name="author" content="rapiddweller GmbH & Volker Bergmann">
+      
+      
+        <link rel="canonical" href="https://docs.benerator.de/component_reference.html">
+      
+      <link rel="icon" href="assets/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Component Reference - rapiddweller Benerator</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/termynal.css">
+    
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="rapiddweller" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#component-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="rapiddweller Benerator" class="md-header__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            rapiddweller Benerator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Component Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="rapiddweller Benerator" class="md-nav__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    rapiddweller Benerator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction_to_benerator.html" class="md-nav__link">
+        Goals and Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="the_benerator_project_wizard.html" class="md-nav__link">
+        The Benerator Project Wizard
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quick_tour_through_the_descriptor_file_format.html" class="md-nav__link">
+        Quick tour through the descriptor file format
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_generation_concepts.html" class="md-nav__link">
+        Data Generation Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_anonymization_concepts.html" class="md-nav__link">
+        Data Anonymization Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="regular_expression_support.html" class="md-nav__link">
+        Regular Expression Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_file_processing.html" class="md-nav__link">
+        CSV File Generation/Anonymization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xml_file_processing.html" class="md-nav__link">
+        XML File Processing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distribution.html" class="md-nav__link">
+        Distribution Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_relational_databases.html" class="md-nav__link">
+        Using Relational Databases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="message_queue_access.html" class="md-nav__link">
+        Message Queue Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kafka_access.html" class="md-nav__link">
+        Kafka Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="environment_files.html" class="md-nav__link">
+        Environment Files
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced_topics.html" class="md-nav__link">
+        Advanced Topics
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="generating_unique_data.html" class="md-nav__link">
+        Generating Unique Data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scripting.html" class="md-nav__link">
+        Scripting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rapiddwellerscript.html" class="md-nav__link">
+        rapiddwellerScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="command_line_tools.html" class="md-nav__link">
+        Command Line Tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="domains.html" class="md-nav__link">
+        Domains
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Component Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="component_reference.html" class="md-nav__link md-nav__link--active">
+        Component Reference
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generators" class="md-nav__link">
+    Generators
+  </a>
+  
+    <nav class="md-nav" aria-label="Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#domain-generators" class="md-nav__link">
+    Domain Generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-id-generators" class="md-nav__link">
+    Common Id Generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-related-generators" class="md-nav__link">
+    Database-related Generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simple-type-generators" class="md-nav__link">
+    simple type generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-date-time-generators" class="md-nav__link">
+    current date / time generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arbitrary-date-time-generators" class="md-nav__link">
+    arbitrary date / time generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-related-generators" class="md-nav__link">
+    file related generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-generators" class="md-nav__link">
+    State Generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seed-based-generators" class="md-nav__link">
+    Seed Based Generators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributions" class="md-nav__link">
+    Distributions
+  </a>
+  
+    <nav class="md-nav" aria-label="Distributions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-consumption" class="md-nav__link">
+    Memory consumption
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequences" class="md-nav__link">
+    Sequences
+  </a>
+  
+    <nav class="md-nav" aria-label="Sequences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#randomsequence" class="md-nav__link">
+    RandomSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cumulatedsequence" class="md-nav__link">
+    CumulatedSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stepsequence" class="md-nav__link">
+    StepSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#randomwalksequence" class="md-nav__link">
+    RandomWalkSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shufflesequence" class="md-nav__link">
+    ShuffleSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wedgesequence" class="md-nav__link">
+    WedgeSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitreversesequence" class="md-nav__link">
+    BitReverseSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expandsequence" class="md-nav__link">
+    ExpandSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#headsequence" class="md-nav__link">
+    HeadSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#literalsequence" class="md-nav__link">
+    LiteralSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weightednumbers" class="md-nav__link">
+    WeightedNumbers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fibonaccisequence" class="md-nav__link">
+    FibonacciSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#padovansequence" class="md-nav__link">
+    PadovanSequence
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weight-functions" class="md-nav__link">
+    Weight Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Weight Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gaussianfunction" class="md-nav__link">
+    GaussianFunction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponentialfunction" class="md-nav__link">
+    ExponentialFunction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discretefunction" class="md-nav__link">
+    DiscreteFunction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cumulativedistributionfunction" class="md-nav__link">
+    CumulativeDistributionFunction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponentialdensityintegral" class="md-nav__link">
+    ExponentialDensityIntegral
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#converters" class="md-nav__link">
+    Converters
+  </a>
+  
+    <nav class="md-nav" aria-label="Converters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#converter-setup" class="md-nav__link">
+    Converter Setup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-converters" class="md-nav__link">
+    Default Converters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-formats" class="md-nav__link">
+    Java Formats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validators" class="md-nav__link">
+    Validators
+  </a>
+  
+    <nav class="md-nav" aria-label="Validators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#domain-validators" class="md-nav__link">
+    Domain Validators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-validators" class="md-nav__link">
+    Common validators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    Tasks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consumers" class="md-nav__link">
+    Consumers
+  </a>
+  
+    <nav class="md-nav" aria-label="Consumers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loggingconsumer" class="md-nav__link">
+    LoggingConsumer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoleexporter" class="md-nav__link">
+    ConsoleExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javainvoker" class="md-nav__link">
+    JavaInvoker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbunitentityexporter" class="md-nav__link">
+    DbUnitEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xmlentityexporter" class="md-nav__link">
+    XMLEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#noconsumer" class="md-nav__link">
+    NoConsumer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scriptedentityexporter" class="md-nav__link">
+    ScriptedEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixedwidthentityexporter" class="md-nav__link">
+    FixedWidthEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xlsentityexporter" class="md-nav__link">
+    XLSEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csventityexporter" class="md-nav__link">
+    CSVEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqlentityexporter" class="md-nav__link">
+    SQLEntityExporter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entitysources-importers" class="md-nav__link">
+    EntitySources (Importers)
+  </a>
+  
+    <nav class="md-nav" aria-label="EntitySources (Importers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dbunitentitysource" class="md-nav__link">
+    DbUnitEntitySource
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csventitysource" class="md-nav__link">
+    CSVEntitySource
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixedcolumnwidthentitysource" class="md-nav__link">
+    FixedColumnWidthEntitySource
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xlsentitysource" class="md-nav__link">
+    XLSEntitySource
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benerator-utility-classes" class="md-nav__link">
+    Benerator Utility Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Benerator Utility Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#randomutil" class="md-nav__link">
+    RandomUtil
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rapiddweller-commons-library" class="md-nav__link">
+    rapiddweller Commons Library
+  </a>
+  
+    <nav class="md-nav" aria-label="rapiddweller Commons Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timeutil" class="md-nav__link">
+    TimeUtil
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#period" class="md-nav__link">
+    Period
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ioutil" class="md-nav__link">
+    IOUtil
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charutil" class="md-nav__link">
+    CharUtil
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_db_sanity.html" class="md-nav__link">
+        Using DB Sanity
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maven_benerator_plugin.html" class="md-nav__link">
+        Maven Benerator Plugin
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extending_benerator.html" class="md-nav__link">
+        Extending Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_benerator_as_load_generator.html" class="md-nav__link">
+        Using Benerator as Load Generator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting.html" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="monitoring_benerator.html" class="md-nav__link">
+        Monitoring Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance_tuning.html" class="md-nav__link">
+        Benerator Performance Tuning
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migrating_benerator_projects.html" class="md-nav__link">
+        Migrating Benerator Projects
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generators" class="md-nav__link">
+    Generators
+  </a>
+  
+    <nav class="md-nav" aria-label="Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#domain-generators" class="md-nav__link">
+    Domain Generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-id-generators" class="md-nav__link">
+    Common Id Generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-related-generators" class="md-nav__link">
+    Database-related Generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simple-type-generators" class="md-nav__link">
+    simple type generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-date-time-generators" class="md-nav__link">
+    current date / time generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arbitrary-date-time-generators" class="md-nav__link">
+    arbitrary date / time generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-related-generators" class="md-nav__link">
+    file related generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-generators" class="md-nav__link">
+    State Generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seed-based-generators" class="md-nav__link">
+    Seed Based Generators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributions" class="md-nav__link">
+    Distributions
+  </a>
+  
+    <nav class="md-nav" aria-label="Distributions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-consumption" class="md-nav__link">
+    Memory consumption
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequences" class="md-nav__link">
+    Sequences
+  </a>
+  
+    <nav class="md-nav" aria-label="Sequences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#randomsequence" class="md-nav__link">
+    RandomSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cumulatedsequence" class="md-nav__link">
+    CumulatedSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stepsequence" class="md-nav__link">
+    StepSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#randomwalksequence" class="md-nav__link">
+    RandomWalkSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shufflesequence" class="md-nav__link">
+    ShuffleSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wedgesequence" class="md-nav__link">
+    WedgeSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitreversesequence" class="md-nav__link">
+    BitReverseSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expandsequence" class="md-nav__link">
+    ExpandSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#headsequence" class="md-nav__link">
+    HeadSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#literalsequence" class="md-nav__link">
+    LiteralSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weightednumbers" class="md-nav__link">
+    WeightedNumbers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fibonaccisequence" class="md-nav__link">
+    FibonacciSequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#padovansequence" class="md-nav__link">
+    PadovanSequence
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weight-functions" class="md-nav__link">
+    Weight Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Weight Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gaussianfunction" class="md-nav__link">
+    GaussianFunction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponentialfunction" class="md-nav__link">
+    ExponentialFunction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discretefunction" class="md-nav__link">
+    DiscreteFunction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cumulativedistributionfunction" class="md-nav__link">
+    CumulativeDistributionFunction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponentialdensityintegral" class="md-nav__link">
+    ExponentialDensityIntegral
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#converters" class="md-nav__link">
+    Converters
+  </a>
+  
+    <nav class="md-nav" aria-label="Converters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#converter-setup" class="md-nav__link">
+    Converter Setup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-converters" class="md-nav__link">
+    Default Converters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-formats" class="md-nav__link">
+    Java Formats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validators" class="md-nav__link">
+    Validators
+  </a>
+  
+    <nav class="md-nav" aria-label="Validators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#domain-validators" class="md-nav__link">
+    Domain Validators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-validators" class="md-nav__link">
+    Common validators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    Tasks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consumers" class="md-nav__link">
+    Consumers
+  </a>
+  
+    <nav class="md-nav" aria-label="Consumers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loggingconsumer" class="md-nav__link">
+    LoggingConsumer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoleexporter" class="md-nav__link">
+    ConsoleExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javainvoker" class="md-nav__link">
+    JavaInvoker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbunitentityexporter" class="md-nav__link">
+    DbUnitEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xmlentityexporter" class="md-nav__link">
+    XMLEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#noconsumer" class="md-nav__link">
+    NoConsumer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scriptedentityexporter" class="md-nav__link">
+    ScriptedEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixedwidthentityexporter" class="md-nav__link">
+    FixedWidthEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xlsentityexporter" class="md-nav__link">
+    XLSEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csventityexporter" class="md-nav__link">
+    CSVEntityExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqlentityexporter" class="md-nav__link">
+    SQLEntityExporter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entitysources-importers" class="md-nav__link">
+    EntitySources (Importers)
+  </a>
+  
+    <nav class="md-nav" aria-label="EntitySources (Importers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dbunitentitysource" class="md-nav__link">
+    DbUnitEntitySource
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csventitysource" class="md-nav__link">
+    CSVEntitySource
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixedcolumnwidthentitysource" class="md-nav__link">
+    FixedColumnWidthEntitySource
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xlsentitysource" class="md-nav__link">
+    XLSEntitySource
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benerator-utility-classes" class="md-nav__link">
+    Benerator Utility Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Benerator Utility Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#randomutil" class="md-nav__link">
+    RandomUtil
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rapiddweller-commons-library" class="md-nav__link">
+    rapiddweller Commons Library
+  </a>
+  
+    <nav class="md-nav" aria-label="rapiddweller Commons Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timeutil" class="md-nav__link">
+    TimeUtil
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#period" class="md-nav__link">
+    Period
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ioutil" class="md-nav__link">
+    IOUtil
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charutil" class="md-nav__link">
+    CharUtil
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="component-reference">Component Reference</h1>
+<p>Benerator has lots of predefined generators which are available implicitly from the descriptor. Most of them only need
+to be created explicitly when using the Benerator API programmatically.</p>
+<h2 id="generators">Generators</h2>
+<h3 id="domain-generators">Domain Generators</h3>
+<p>For domain-specific generators (e.g. person, address, finance), see <strong><a href="domains.html">Domains</a></strong>.</p>
+<h3 id="common-id-generators">Common Id Generators</h3>
+<p>Benerator contains the following common predefined and platform-independent generators:</p>
+<ul>
+<li>
+<p><strong>IncrementalIdGenerator</strong>: Creates consecutive id values, starting with 1 by default.</p>
+</li>
+<li>
+<p><strong>UUIDGenerator</strong>: Creates UUIDs by the JDK class java.util.UUID</p>
+</li>
+<li>
+<p><strong>HibUUIDGenerator</strong>: Creates UUIDs like the Hibernate UUID key generator</p>
+</li>
+<li>
+<p><strong>LocalSequenceGenerator</strong>: Mimics the behavior of a (named) database sequence on a single client VM. Its property '
+  cached' (true by default) specifies if sequence value changes shall be persisted immediately or in the end.</p>
+</li>
+</ul>
+<h3 id="database-related-generators">Database-related Generators</h3>
+<p>See <strong><a href="using_relational_databases.html">Using Relational Databases</a></strong>.</p>
+<h3 id="simple-type-generators">simple type generators</h3>
+<ul>
+<li>
+<p><strong>CharacterGenerator</strong>: Generates random characters.</p>
+</li>
+<li>
+<p><strong>IncrementGenerator</strong>: Generates numbers starting with one and incrementing the number on each subsequent call</p>
+</li>
+<li>
+<p><strong>StringGenerator</strong>: Generates strings based on character set, prefix, suffix and length characteristics. This is the
+  typical component for generating code numbers. Properties: charSet (regular expression for a character class), locale,
+  unique, ordered, prefix, minInitial, suffix, minLength, maxLength, lengthGranularity, lengthDistribution</p>
+</li>
+<li>
+<p><strong>RegexStringGenerator</strong>: Generates strings that match a given regular expression. This is the typical component for
+  generating strings that are composed of different sub patterns. Properties: pattern (regular expression), unique,
+  ordered, locale, minLength, maxLength</p>
+</li>
+<li>
+<p><strong>MessageGenerator</strong>: Composes strings using a MessageFormat</p>
+</li>
+<li>
+<p><strong>LuhnGenerator</strong>: Generates Luhn-valid strings like credit card numbers</p>
+</li>
+</ul>
+<h3 id="current-date-time-generators">current date / time generators</h3>
+<ul>
+<li>
+<p><strong>CurrentDateGenerator</strong>: Generates java.util.Date objects that represent the current date</p>
+</li>
+<li>
+<p><strong>CurrentDateTimeGenerator</strong>: Generates java.util.Date objects that represent the current date and time</p>
+</li>
+<li>
+<p><strong>CurrentZonedDateTimeGenerator</strong>: Generates java.util.ZonedDateTime objects that represent the current date and time </p>
+</li>
+<li>
+<p><strong>CurrentMilliTimeGenerator</strong>: Generates long values that denote the number of milliseconds since 1970-01-01 00:00:00</p>
+</li>
+<li>
+<p><strong>CurrentNanoTimeGenerator</strong>: Generates long values that denote a number of milliseconds since an arbitrary point in
+  time (possible even in the future, so values may be negative)</p>
+</li>
+<li>
+<p><strong>CurrentTimeGenerator</strong>: Generates java.util.Date objects that represent the current time of the day</p>
+</li>
+</ul>
+<h3 id="arbitrary-date-time-generators">arbitrary date / time generators</h3>
+<ul>
+<li>
+<p><strong>DateGenerator</strong>: Generates date values that represent a certain time at a certain day based on a common Distribution</p>
+</li>
+<li>
+<p><strong>DayGenerator</strong>: Generates date values that represent „day“ dates – dates at midnight</p>
+</li>
+<li>
+<p><strong>DateTimeGenerator</strong>: Generates date values with date and time configurable independentlyIts properties are: minDate,
+  maxDate, dateGranularity, dateDistribution, minTime, maxTime, timeGranularity, timeDistribution. For a 9-to-5 datetime
+  on odd days in August 2010, configure</p>
+</li>
+<li>
+<p><strong>ZonedDateTimeGenerator</strong>: TODO</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;dtGen&quot;</span> <span class="na">class=</span><span class="s">&quot;DateTimeGenerator&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#39;minDate&#39;</span> <span class="na">value=</span><span class="s">&#39;2010-08-01&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#39;maxDate&#39;</span> <span class="na">value=</span><span class="s">&#39;2010-08-31&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#39;dateGranularity&#39;</span> <span class="na">value=</span><span class="s">&#39;00-00-02&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#39;dateDistribution&#39;</span> <span class="na">value=</span><span class="s">&#39;random&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#39;minTime&#39;</span> <span class="na">value=</span><span class="s">&#39;08:00:00&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#39;maxTime&#39;</span> <span class="na">value=</span><span class="s">&#39;17:00:00&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#39;timeGranularity&#39;</span> <span class="na">value=</span><span class="s">&#39;00:00:01&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#39;timeDistribution&#39;</span> <span class="na">value=</span><span class="s">&#39;random&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></div>
+<h3 id="file-related-generators">file related generators</h3>
+<ul>
+<li>
+<p><strong>FileGenerator</strong>: generates java.io.File objects representing files in a given directory structure</p>
+</li>
+<li>
+<p><strong>FileNameGenerator</strong>: generates file names representing files in a given directory structure</p>
+</li>
+<li>
+<p><strong>TextFileContentGenerator</strong>: provides text file contents as String</p>
+</li>
+<li>
+<p><strong>BinaryFileContentGenerator</strong>: provides binary file contents as byte[]</p>
+</li>
+</ul>
+<h3 id="state-generators">State Generators</h3>
+<ul>
+<li>
+<p><strong>StateGenerator</strong>: Generates states based on a state machine</p>
+</li>
+<li>
+<p><strong>StateTransitionGenerator</strong>: Like the StateGenerator, but generating Transition objects</p>
+</li>
+</ul>
+<h3 id="seed-based-generators">Seed Based Generators</h3>
+<ul>
+<li>
+<p><strong>SeedWordGenerator</strong>: Generates new words based on rules derived from a dictionary.</p>
+</li>
+<li>
+<p><strong>SeedSentenceGenerator</strong>: Generates sentences based on rules derived from a text file.</p>
+</li>
+</ul>
+<h2 id="distributions">Distributions</h2>
+<p>A Distribution describes stochastic properties for distributing the data that Benerator generates. You can use the
+predefined distributions or implement and introduce custom implementations. The most important types of distribution
+are <em>Sequence</em>, <em>WeightFunction</em> and _
+CumulativeDistributionFunction_.</p>
+<p>A Distribution implements a common concept for generating numbers or taking values from a data source and providing them
+in a rearranged order or distribution with similar semantics as the number generation feature.</p>
+<p>As an example, a 'Skip2' sequence might generate numbers with an increment of 2: 1, 3, 5, 7,… When it is used to
+redistribute given data item1, item2, item3, item4,... , it would provide the values item1, item3, ...</p>
+<p>While most Distribution components implement number generation as well data rearrangement, they are not required to
+support both concepts.</p>
+<p>All Distributions listed below are included in the default imports.</p>
+<h3 id="memory-consumption">Memory consumption</h3>
+<p>Distributions that are based on number generation may adopt data redistribution by simply loading all available data
+into a long list in RAM and then using their number generation feature to determine indices of the data to provide. If
+the data amount is large, you may get memory problems. In order to provide an easy start, Benerator reduces the default
+size of these lists to 100,000 elements, prints out an error message if the number is exceeded, but simply continues to
+work with the reduced amount of data. You can allow Benerator to use a larger cache by adding a benerator.cacheSize to
+your <strong>BENERATOR_OPTS</strong>, e.g.</p>
+<p><code>-Dbenerator.cacheSize=2000000</code></p>
+<p>If this makes you run into an OutOfMemoryError, check the 
+<a href="troubleshooting.html">Troubleshooting</a> section on how to allocate a larger Java heap in Benerator.</p>
+<h3 id="sequences">Sequences</h3>
+<p>Sequences reflect the idea of a mathematical sequence. They primarily focus in number generation, but they can be
+applied for data redistribution as well. Most sequences have a default instance which can be used by their literal,
+e.g. <code>distribution="random"</code> uses the <code>random</code> literal for the distribution defined in the class RandomSequence.</p>
+<h4 id="randomsequence">RandomSequence</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>RandomSequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Creates uniformly distributed random values</td>
+</tr>
+<tr>
+<td>Default Instance</td>
+<td>random</td>
+</tr>
+</tbody>
+</table>
+<h4 id="cumulatedsequence">CumulatedSequence</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>CumulatedSequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Creates random values with a bell-shape probability distribution</td>
+</tr>
+<tr>
+<td>Default Instance</td>
+<td>cumulated</td>
+</tr>
+</tbody>
+</table>
+<h4 id="stepsequence">StepSequence</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>StepSequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Depending on the settings of property 'delta', it starts with the min or max value of the specified range. With each further invocation, the 'increment' value is added. If addition makes the current value exceed the specified number range, the Sequence becomes unavailable. So the numbers provided are unique. Example: increment = -2, range=1..7: 7, 5, 3, 1</td>
+</tr>
+<tr>
+<td>Default Instances</td>
+<td>increment: Uses delta = 1 to create incremental values, e.g. 1, 2, 3,...</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>delta</td>
+<td>The difference between the next value and the previous one</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h4 id="randomwalksequence">RandomWalkSequence</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>RandomWalkSequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Starting with an → <strong>initial</strong> value, a random value between → <strong>minStep</strong> and → **</td>
+</tr>
+<tr>
+<td>maxStep** is added on each subsequent invocation</td>
+<td></td>
+</tr>
+<tr>
+<td>Default Instance</td>
+<td>randomWalk</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minStep</td>
+<td>The maximum delta between the next and the previous value</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>maxStep</td>
+<td>The maximum delta between the next and the previous value</td>
+<td>1</td>
+</tr>
+<tr>
+<td>initial</td>
+<td>If no initial value was configured explicitly, number generation starts with the min, max or medium value of the specified range – depending on the settings of minStep and maxStep</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<h4 id="shufflesequence">ShuffleSequence</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>ShuffleSequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Can be used to iterate quickly through a large number range with avoiding duplicate values. It starts from an offset of 0 and iterates the number range with a fix increment. After the range is covered, it increases the offset by one and reiterates the range. When the offset reaches the same value as the increment, it is set back to 0 again. For an increment of 3 in a range 1..7, the generated numbers would be 1, 4, 7, 2, 5, 3, 6, 1, 4, ...</td>
+</tr>
+<tr>
+<td>Default Instance</td>
+<td>shuffle</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>increment</td>
+<td>See the class description</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="wedgesequence">WedgeSequence</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>WedgeSequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Starting with first the lowest, then the highest available number, this alternatively provides increasing small numbers and decreasing large numbers until they converge in the middle and the Sequence becomes unavailable. So this generation is unique. For a number range 1..7, the generated numbers would be: 1, 7, 2, 6, 3, 5, 4.</td>
+</tr>
+<tr>
+<td>Default Instance</td>
+<td>wedge</td>
+</tr>
+</tbody>
+</table>
+<h4 id="bitreversesequence">BitReverseSequence</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>BitReverseSequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Creates numbers by continually increasing an internal counter and providing its value in bit-reversed order. This stops when each available number has been generated once, thus providing unique number generation. This comes close to a unique random distribution.</td>
+</tr>
+<tr>
+<td>Default Instance</td>
+<td>bitreverse</td>
+</tr>
+</tbody>
+</table>
+<h4 id="expandsequence">ExpandSequence</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>ExpandSequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Distributes numbers or data of unlimited volume in a unique or non-unique manner, by starting with a limited lower range and continuously expanding data region as data is generated. This comes close to a unique random distribution and can be used to iterate over very huge amounts of data.</td>
+</tr>
+<tr>
+<td>Default Instance</td>
+<td>expand</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cacheSize</td>
+<td>The maximum number of elements to keep in RAM at the same time</td>
+<td>100</td>
+</tr>
+<tr>
+<td>bucketSize</td>
+<td>The size of 'buckets' over which to distribute the iterated data. The smaller the number, the more buckets are used and the more erratic the generated data looks.</td>
+<td>10</td>
+</tr>
+<tr>
+<td>duplicationQuota</td>
+<td>The probability by which a data element will be reused in a later call</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h4 id="headsequence">HeadSequence</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>HeadSequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>When applied to a data source or generator, only the first few elements are provided. The number of elements is defined by the **</td>
+</tr>
+<tr>
+<td>size** property.</td>
+<td></td>
+</tr>
+<tr>
+<td>Default Instance</td>
+<td>head</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size</td>
+<td>The size of the buffer</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h4 id="literalsequence">LiteralSequence</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>LiteralSequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Defines a number sequence using a comma-separated list literal.</td>
+</tr>
+<tr>
+<td>Default Instance</td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spec</td>
+<td>A comma-separated list with all values in the order in which they shall be provided ,e.g. '2,3,5,7,11'</td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
+<h4 id="weightednumbers">WeightedNumbers</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>WeightedNumbers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Creates numbers based on a weighted-number literal , e.g. '1^70, 3^30' for generating 70% '1' values and 30% '3' values. This is a convenient and simple approach for controlling parent-child cardinalities in nested data generation.</td>
+</tr>
+<tr>
+<td>Default Instance</td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spec</td>
+<td>A weighted-number literal. It lists weighted values in a comma-separated list. Each weighted value is specified by the numeric value followed by a circumflex (^) and the weight value, for example '1^70,3^30'</td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fibonaccisequence">FibonacciSequence</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>FibonacciSequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Generates numbers based on the Fibonacci Sequence</td>
+</tr>
+<tr>
+<td>Default Instance</td>
+<td>fibonacci</td>
+</tr>
+</tbody>
+</table>
+<h4 id="padovansequence">PadovanSequence</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>PadovanSequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Generates numbers based on the Padovan Sequence</td>
+</tr>
+<tr>
+<td>Default Instance</td>
+<td>padovan</td>
+</tr>
+</tbody>
+</table>
+<h3 id="weight-functions">Weight Functions</h3>
+<p>Weight functions are another special case of Distributions. They are based on a function which is supposed to allow
+continuous value generation, but since Benerator needs to perform a numerical integration for deriving random values, a
+granularity must be applied. This way, the generated value set is quantized. Another drawback of the approach is that
+fine-grained generation is memory-consuming and slow.</p>
+<p>Thus, it is recommended to avoid weight functions if possible and choose a similar Sequence or
+CumulativeDistributionFunction instead.</p>
+<h4 id="gaussianfunction">GaussianFunction</h4>
+<p>Implements the well-known Gaussian Function.</p>
+<p>Full class name: <code>com.rapiddweller.benerator.distribution.function.GaussianFunction</code></p>
+<p>Parameters: <code>average [, deviation]</code></p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;import</span> <span class="na">class=</span><span class="s">&quot;com.rapiddweller.benerator.distribution.function.*&quot;</span><span class="nt">/&gt;</span>
+        ...
+<span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;price&quot;</span> <span class="na">type=</span><span class="s">&quot;big_decimal&quot;</span> <span class="na">min=</span><span class="s">&quot;0.1&quot;</span> <span class="na">max=</span><span class="s">&quot;99.90&quot;</span> <span class="na">granularity=</span><span class="s">&quot;0.1&quot;</span>
+           <span class="na">distribution=</span><span class="s">&quot;new GaussianFunction(50,20)&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h4 id="exponentialfunction">ExponentialFunction</h4>
+<p>The Exponential Function.</p>
+<p>Full class name: <code>com.rapiddweller.benerator.distribution.function.ExponentialFunction</code></p>
+<p>Parameters: <code>[scale,] frequency</code></p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;import</span> <span class="na">class=</span><span class="s">&quot;com.rapiddweller.benerator.distribution.function.*&quot;</span><span class="nt">/&gt;</span>
+        ...
+<span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;category&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">values=</span><span class="s">&quot;A,B,C&quot;</span> <span class="na">distribution=</span><span class="s">&quot;new ExponentialFunction(0.5)&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h4 id="discretefunction">DiscreteFunction</h4>
+<p>Discrete Function that specifies an explicit weight for each possible value</p>
+<p>Full class name: <code>com.rapiddweller.benerator.distribution.function.DiscreteFunction</code></p>
+<p>Parameters: <code>weight1 [, weight2 [, weight3 ...]]</code></p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;import</span> <span class="na">class=</span><span class="s">&quot;com.rapiddweller.benerator.distribution.function.*&quot;</span><span class="nt">/&gt;</span>
+        ...
+<span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;rating&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">min=</span><span class="s">&quot;1&quot;</span> <span class="na">max=</span><span class="s">&quot;3&quot;</span> <span class="na">distribution=</span><span class="s">&quot;new DiscreteFunction(1, 2, 1)&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h3 id="cumulativedistributionfunction">CumulativeDistributionFunction</h3>
+<p>The CumulativeDistributionFunction is another special case of a Distribution, which allows for continuous value
+generation as opposed to Sequence and WeightFunction.</p>
+<h3 id="exponentialdensityintegral">ExponentialDensityIntegral</h3>
+<p>Inverse of the integral of the probability density <code>f(x) = a e^{-ax} (x &gt; 0)</code>, which resolves to 
+<code>F^{-1}(x) = - log(1 - x) / a</code>.</p>
+<h2 id="converters">Converters</h2>
+<p>Benerator supports two different types of converter interfaces:</p>
+<ul>
+<li>
+<p><a class="external" href="https://github.com/rapiddweller/rd-lib-common/tree/development/src/main/java/com/rapiddweller/common/converter" rel="noopener" target="_blank">com.rapiddweller.common.Converter</a></p>
+</li>
+<li>
+<p><a class="external" href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/text/Format.html" rel="noopener" target="_blank">java.text.Format</a></p>
+</li>
+</ul>
+<h3 id="converter-setup">Converter Setup</h3>
+<p>Instantiation of converters follows the same principles as other objects handled by benerator. They can be instantiated
+either as beans (see NoiseInducer example below) or inline. </p>
+<p>An inline instantiation of the Mask converter below:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;iterate</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;column&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">converter=</span><span class="s">&quot;Mask&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/iterate&gt;</span>
+</code></pre></div>
+<p>Configuration for inline usage of converters 
+(cp. <code>new Mask{maskChar = '$' }</code>) to set converter properties 
+with curly brackets notation looks like:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;iterate</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;column&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">converter=</span><span class="s">&quot;new Mask{maskChar=&#39;$&#39;}&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/iterate&gt;</span>
+</code></pre></div>
+<h3 id="default-converters">Default Converters</h3>
+<p>The following converter classes are imported by default:</p>
+<ul>
+<li>
+<p><strong>ByteArrayToBase64Converter</strong>: Converts byte arrays to strings which are base-64-encoded</p>
+</li>
+<li>
+<p><strong>ByteArray2StringConverter</strong>: Converts byte arrays to strings</p>
+</li>
+<li>
+<p><strong>ToLowerCaseConverter</strong>: Converts strings to lowercase</p>
+</li>
+<li>
+<p><strong>ToUpperCaseConverter</strong>: Converts strings to uppercase</p>
+</li>
+<li>
+<p><strong>LiteralParser</strong>: Parses strings as numbers, strings, dates and times</p>
+</li>
+<li>
+<p><strong>Mask</strong>: Replaces each character of a string with an asterisk '*' or another configurable character (
+  property : <code>maskChar</code>).</p>
+</li>
+<li>
+<p><strong>MiddleMask</strong>: Replaces each character of a string with an asterisk '*' or another configurable character, leaving a
+  configurable number of characters unmasked at the beginning and/or the end of the string.</p>
+</li>
+<li>
+<p><strong>Append</strong>: Appends a configurable suffix.</p>
+</li>
+<li>
+<p><strong>CutLength</strong>: Cuts the length of a string.</p>
+</li>
+<li>
+<p><strong>MD5Hash</strong>, <strong>SHA1Hash</strong>, <strong>SHA256Hash</strong>: Convert any data to a hexadecimal hash code</p>
+</li>
+<li>
+<p><strong>MD5HashBase64</strong>, <strong>SHA1HashBase64</strong>, <strong>SHA256HashBase64</strong>: Convert any data to a hash code in Base64 format</p>
+</li>
+<li>
+<p><strong>JavaHash</strong>: Convert any data to a hexadecimal hash code. This implementation is faster than the hash converters
+  above</p>
+</li>
+<li>
+<p><strong>MessageConverter</strong>: Converts an object, wrapping it with a message string, using a java.text.MessageFormat</p>
+</li>
+<li>
+<p><strong>PropertyResourceBundleConverter</strong>: Uses a Java PropertyResourceBundle to translate keywords to translations in a
+  given Java Locale</p>
+</li>
+<li>
+<p><strong>ToStringConverter</strong>: Converts arbitrary objects to strings</p>
+</li>
+<li>
+<p><strong>UniqueStringConverter</strong>: Assures uniqueness for all processed Strings by appending unique numbers to recurring
+  instances (attention: limited to a few 100.000 elements)</p>
+</li>
+<li>
+<p><strong>URLEncodeConverter</strong>: Applies a URL encoding to strings</p>
+</li>
+<li>
+<p><strong>URLDecodeConverter</strong>: decodes URL encoded strings</p>
+</li>
+<li>
+<p><strong>PrintfConverter</strong>: formats objects using a pattern in printf format</p>
+</li>
+<li>
+<p><strong>RegexReplacer</strong>: Uses a regular expression to replace parts of the processed strings</p>
+</li>
+<li>
+<p><strong>String2ByteArrayConverter</strong>: Converts Strings to ByteArrays. Might be useful for writing JSON to raw data types (BLOB, BYTEA).</p>
+</li>
+<li>
+<p><strong>SubstringExtractor</strong>: Extracts substrings from strings. It has the properties <code>from</code> and <code>to</code>. If <code>to</code>
+  is not set, it extracts from <code>from</code> until the end. If <code>to</code> or <code>from</code> is negative, it denotes a backwards
+  position count, making e.g. -1 the last character position. </p>
+</li>
+<li>
+<p><strong>EscapingConverter</strong>: Escapes strings in Java style, like <code>A\tB</code></p>
+</li>
+<li>
+<p><strong>Number2CharConverter</strong>: Converts a number to a character of the corresponding ASCII code</p>
+</li>
+<li>
+<p><strong>Char2StringConverter</strong>: Converts a character to a string of length 1</p>
+</li>
+<li>
+<p><strong>EscapingConverter</strong>: Escapes control codes in a string in C and Java style, e.g. with <code>\r</code>, <code>\n</code>, <code>\t</code></p>
+</li>
+<li>
+<p><strong>Number2CharConverter</strong>: Converts a number to a character with the corresponding ASCII code, e.g. <code>65</code> → <code>A</code></p>
+</li>
+</ul>
+<p>The package <strong>com.rapiddweller.text</strong> provides the following converters:</p>
+<ul>
+<li>
+<p><strong>DelocalizingConverter</strong>: Converts strings with non-ASCII letters to ASCII strings, e.g. Müller → Mueller, Sœr → Soer</p>
+</li>
+<li>
+<p><strong>NameNormalizer</strong>: Normalizes a string by trimming it, normalizing inner white space and formatting each word to
+  start with an uppercase character and continue with lowercase characters</p>
+</li>
+<li>
+<p><strong>NormalizeSpaceConverter</strong>: Trims a string and normalizes inner white space to one space character</p>
+</li>
+<li>
+<p><strong>ToHexConverter</strong>: Renders characters, strings snd integral numbers in hexadecimal representation</p>
+</li>
+</ul>
+<p>In the package <strong>com.rapiddweller.benerator.primitive.number</strong> there are two converters that can be used to quantize
+numerical values:</p>
+<ul>
+<li>
+<p><strong>FloatingPointQuantizer</strong>, <strong>IntegralQuantizer, NumberQuantizer</strong>: Quantize numbers to be a <strong>min</strong> value plus an
+  integral multiple of a <strong>
+  granularity</strong></p>
+</li>
+<li>
+<p><strong>NoiseInducer</strong>: Adds numerical noise to numbers. The noise characteristics can be configured with the
+  properties <code>minNoise</code>, <code>maxNoise</code>,
+  <code>noiseGranularity</code> and <code>noiseDistribution</code>. When setting the boolean property relative to true, noise is relative,
+  where <code>maxCount=1</code> corresponds to 100% noise-to-signal ratio. If <code>relative=false</code>, the absolute value of the noise is
+  added or subtracted. Example:</p>
+</li>
+</ul>
+<p>NoiseInducer example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;inducer&quot;</span> <span class="na">class=</span><span class="s">&quot;com.rapiddweller.benerator.primitive.number.NoiseInducer&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;minNoise&quot;</span> <span class="na">value=</span><span class="s">&quot;-0.2&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;maxNoise&quot;</span> <span class="na">value=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;noiseGranularity&quot;</span> <span class="na">value=</span><span class="s">&quot;0.01&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;noiseDistribution&quot;</span> <span class="na">value=</span><span class="s">&quot;cumulated&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;relative&quot;</span> <span class="na">value=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+
+<span class="nt">&lt;generate</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;x&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">constant=</span><span class="s">&quot;100&quot;</span> <span class="na">converter=</span><span class="s">&quot;inducer&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>produces the result:</p>
+<div class="highlight"><pre><span></span><code>entity<span class="o">[</span><span class="nv">x</span><span class="o">=</span><span class="m">99</span><span class="o">]</span>
+entity<span class="o">[</span><span class="nv">x</span><span class="o">=</span><span class="m">105</span><span class="o">]</span>
+entity<span class="o">[</span><span class="nv">x</span><span class="o">=</span><span class="m">92</span><span class="o">]</span>
+entity<span class="o">[</span><span class="nv">x</span><span class="o">=</span><span class="m">104</span><span class="o">]</span>
+entity<span class="o">[</span><span class="nv">x</span><span class="o">=</span><span class="m">99</span><span class="o">]</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Find out more about built-in converters in the rapiddweller 
+<a class="external" href="https://github.com/rapiddweller/rd-lib-common/tree/development/src/main/java/com/rapiddweller/common/converter" rel="noopener" target="_blank">rd-lib-common repository</a>
+and check the <a class="external" href="https://github.com/rapiddweller/rd-lib-common/tree/development/src/main/java/com/rapiddweller/common/converter" rel="noopener" target="_blank">available converter classes</a>.</p>
+</div>
+<h3 id="java-formats">Java Formats</h3>
+<p>Beware that the <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/text/Format.html">java.text.Format</a> 
+classes are not thread-safe!</p>
+<ul>
+<li>
+<p><strong>SimpleDateFormat</strong>: Uses a pattern to format dates as strings</p>
+</li>
+<li>
+<p><strong>DecimalFormat</strong>: Uses a pattern to format numbers as strings</p>
+</li>
+</ul>
+<h2 id="validators">Validators</h2>
+<h3 id="domain-validators">Domain Validators</h3>
+<p>For the validators from the domains see <strong><a href="domains.html">Domains</a></strong>.</p>
+<h3 id="common-validators">Common validators</h3>
+<ul>
+<li>
+<p><strong>CharacterRangeValidator</strong>: Validates if a character is in a certain range</p>
+</li>
+<li>
+<p><strong>NotNullValidator</strong>: Requires the validated data to be not null</p>
+</li>
+<li>
+<p><strong>StringLengthValidator</strong>: Limits allowed strings to a minimum and/or maximum length</p>
+</li>
+<li>
+<p><strong>StringValidator</strong>: Validates string by min length, max length and a charactor validator</p>
+</li>
+<li>
+<p><strong>UniqueValidator</strong>: Requires data to be unique (attention: limited to some 100.000 elements)</p>
+</li>
+<li>
+<p><strong>UnluckyNumberValidator</strong>: Checks if a String contains an 'unlucky' number like 13 in western cultures or 4 in
+  east-asian cultures</p>
+</li>
+<li>
+<p><strong>DayOfWeekValidator</strong>: Accepts only Dates of certain (configurable) weekdays</p>
+</li>
+<li>
+<p><strong>RegexValidator</strong>: Validates if a string matches a regular expression</p>
+</li>
+<li>
+<p><strong>LuhnValidator</strong>: Checks if a number string (e.g. credit card number) is Luhn-valid</p>
+</li>
+</ul>
+<h3 id="tasks">Tasks</h3>
+<ul>
+<li>
+<p><strong>FileJoiner</strong>: Joins several files (<strong>sources</strong>) into a <strong>destination</strong> file, optionally <strong>append</strong>ing the joint data
+  to an existing destination file, or overwriting it. If <strong>deleteSources</strong> is set to true, the sources are deleted
+  afterwards.</p>
+</li>
+<li>
+<p><strong>FileDeleter</strong>: Deletes a number of <strong>files</strong>.</p>
+</li>
+</ul>
+<h2 id="consumers">Consumers</h2>
+<p>A Consumer consumes generated data and usually is used for exporting or persisting the data.</p>
+<h3 id="loggingconsumer">LoggingConsumer</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>LoggingConsumer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td>default</td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Logs all Consumer invocations to a logger</td>
+</tr>
+</tbody>
+</table>
+<h3 id="consoleexporter">ConsoleExporter</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>ConsoleExporter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td>default</td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Prints entities in the console</td>
+</tr>
+<tr>
+<td>Constructors</td>
+<td>Default constructorConstructor with 'limit' argument (see below)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>limit</td>
+<td>The maximum number of entries per type to print out</td>
+<td>unlimited</td>
+</tr>
+<tr>
+<td>nullString</td>
+<td>Text to represent <em>null</em> values</td>
+<td>""</td>
+</tr>
+<tr>
+<td>datePattern</td>
+<td>The pattern to render date values</td>
+<td>"yyyy-MM-dd"</td>
+</tr>
+<tr>
+<td>timePattern</td>
+<td>The pattern to render time values</td>
+<td>"HH:mm:ss"</td>
+</tr>
+<tr>
+<td>timestampPattern</td>
+<td>The pattern to render timestamp values</td>
+<td>"yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS"</td>
+</tr>
+<tr>
+<td>decimalPattern</td>
+<td>The pattern to render decimal values</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>decimalSeparator</td>
+<td>The decimal separator to use for decimal values</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>integralPattern</td>
+<td>The pattern to integral number values</td>
+<td>System default</td>
+</tr>
+</tbody>
+</table>
+<h3 id="javainvoker">JavaInvoker</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>JavaInvoker</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import platforms="java"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Maps entity components to method parameters and invokes a method on a Java object with these parameters.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target</td>
+<td>The Java object on which to invoke the method</td>
+<td></td>
+</tr>
+<tr>
+<td>methodName</td>
+<td>The name of the Java method to invoke</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Usage example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;service&quot;</span> <span class="na">spec=</span><span class="s">&quot;...&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;invoker&quot;</span> <span class="na">spec=</span><span class="s">&quot;new JavaInvoker(ejb, &#39;enrolCustomer&#39;)&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h3 id="dbunitentityexporter">DbUnitEntityExporter</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>DbUnitEntityExporter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import platforms="dbunit"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Exports entities to a file in DbUnit XML format.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uri</td>
+<td>The URI of the file to create</td>
+<td>"data.dbunit.xml"</td>
+</tr>
+<tr>
+<td>encoding</td>
+<td>The character encoding to use for the file</td>
+<td>The system default</td>
+</tr>
+</tbody>
+</table>
+<h3 id="xmlentityexporter">XMLEntityExporter</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>XMLEntityExporter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import platforms="xml"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Exports entities to an XML file</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uri</td>
+<td>The URI of the file to create</td>
+<td>"export.xml"</td>
+</tr>
+<tr>
+<td>encoding</td>
+<td>The character encoding to use for the file</td>
+<td>The system default</td>
+</tr>
+</tbody>
+</table>
+<h3 id="noconsumer">NoConsumer</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>NoConsumer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td>default</td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>In some cases a pseudo <code>&lt;generate&gt;</code> statements acts as a mechanism to perform a loop. In such cases a consumer does not make sense but causes Benerator to emit a warning „No consumers defined for <code>&lt;loop name&gt;</code>“. In order to avoid this warning, you can use the NoConsumer class, which is an empty implementation of the Consumer interface.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="scriptedentityexporter">ScriptedEntityExporter</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>ScriptedEntityExporter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import platforms="script"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Exports entities to a file in custom format, rendered using a script language, e.g. FreeMarker. Three different script expressions may be applied for header (headerScript property), entity (partScript) and footer (footerScript).</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uri</td>
+<td>The URI of the file to create</td>
+<td></td>
+</tr>
+<tr>
+<td>encoding</td>
+<td>The character encoding to use for the file</td>
+<td>The system default</td>
+</tr>
+<tr>
+<td>headerScript</td>
+<td>Script to format an eventual header line</td>
+<td></td>
+</tr>
+<tr>
+<td>partScript</td>
+<td>Script to format an exported entity</td>
+<td></td>
+</tr>
+<tr>
+<td>footerScript</td>
+<td>Script to format an eventual footer line</td>
+<td></td>
+</tr>
+<tr>
+<td>nullString</td>
+<td>Text to represent <em>null</em> values</td>
+<td>""</td>
+</tr>
+<tr>
+<td>datePattern</td>
+<td>The pattern to render date values</td>
+<td>"yyyy-MM-dd"</td>
+</tr>
+<tr>
+<td>dateCapitalization</td>
+<td>The capitalization to use when rendering a month name in a date: 'upper', 'lower' or 'mixed'</td>
+<td>mixed</td>
+</tr>
+<tr>
+<td>timePattern</td>
+<td>The pattern to render time values</td>
+<td>"HH:mm:ss"</td>
+</tr>
+<tr>
+<td>timestampPattern</td>
+<td>The pattern to render timestamp values</td>
+<td>"yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS"</td>
+</tr>
+<tr>
+<td>timestampCapitalization</td>
+<td>The capitalization to use when rendering a month name in a timestamp: 'upper', 'lower' or 'mixed'</td>
+<td>mixed</td>
+</tr>
+<tr>
+<td>decimalPattern</td>
+<td>The pattern to render decimal values</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>decimalSeparator</td>
+<td>The decimal separator to use for decimal values</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>integralPattern</td>
+<td>The pattern to integral number values</td>
+<td>System default</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fixedwidthentityexporter">FixedWidthEntityExporter</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>FixedWidthEntityExporter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import platforms="fixedwidth"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Exports entities to a fixed column width file.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uri</td>
+<td>The URI of the file to create</td>
+<td>"export.fcw"</td>
+</tr>
+<tr>
+<td>columns</td>
+<td>A comma-separated list of column format specifications</td>
+<td></td>
+</tr>
+<tr>
+<td>encoding</td>
+<td>The character encoding to use for the file</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>lineSeparator</td>
+<td>The line separator to use in the generated file</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>append</td>
+<td>If set to true, data is appended to existing files, otherwise existing files are overwritten</td>
+<td>false</td>
+</tr>
+<tr>
+<td>nullString</td>
+<td>Text to represent <em>null</em> values</td>
+<td>""</td>
+</tr>
+<tr>
+<td>datePattern</td>
+<td>The pattern to render date values</td>
+<td>"yyyy-MM-dd"</td>
+</tr>
+<tr>
+<td>dateCapitalization</td>
+<td>The capitalization to use when rendering a month name in a date: 'upper', 'lower' or 'mixed'</td>
+<td>mixed</td>
+</tr>
+<tr>
+<td>timePattern</td>
+<td>The pattern to render time values</td>
+<td>"HH:mm:ss"</td>
+</tr>
+<tr>
+<td>timestampPattern</td>
+<td>The pattern to render timestamp values</td>
+<td>"yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS"</td>
+</tr>
+<tr>
+<td>timestampCapitalization</td>
+<td>The capitalization to use when rendering a month name in a timestamp: 'upper', 'lower' or 'mixed'</td>
+<td>mixed</td>
+</tr>
+<tr>
+<td>decimalPattern</td>
+<td>The pattern to render decimal values</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>decimalSeparator</td>
+<td>The decimal separator to use for decimal values</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>integralPattern</td>
+<td>The pattern to integral number values</td>
+<td>System default</td>
+</tr>
+</tbody>
+</table>
+<p>The line format is described as a comma-separated list of property names with format spec, e.g. name[20],age[3r]
+,points[5.2r0]. The format spec consists of</p>
+<ul>
+<li>
+<p>[] brackets</p>
+</li>
+<li>
+<p>the (required) column width</p>
+</li>
+<li>
+<p>an optional alignment flag l, r or c (for left, right, center), left by default</p>
+</li>
+<li>
+<p>an optional pad character, space by default</p>
+</li>
+</ul>
+<p>So a property configuration of name[20],age[3r],points[5.2r0] would resolve to three columns,</p>
+<p>first, a name entry, padded to 20 columns using spaces (default), aligned to the left (default)</p>
+<p>second, an age entry, padded to 3 columns using spaces (default), aligned to the right</p>
+<p>third, a points column, padded to 5 columns using zeros, having two fraction digits, aligned to the right</p>
+<p>and would be rendered like this:</p>
+<div class="highlight"><pre><span></span><code>Alice Hamilton 2310.05
+Bob Durand 4601.23
+Helmut Schmidt 10226.14
+</code></pre></div>
+<h3 id="xlsentityexporter">XLSEntityExporter</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>XLSEntityExporter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import platforms="xls"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Exports entities to Excel XLS files. For using this exporter you need to add the Apache POI library to the Benerator's lib directory.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uri</td>
+<td>The URI of the file to create</td>
+<td>"export.xls"</td>
+</tr>
+<tr>
+<td>nullString</td>
+<td>Text to represent <em>null</em> values</td>
+<td>""</td>
+</tr>
+</tbody>
+</table>
+<h3 id="csventityexporter">CSVEntityExporter</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>CSVEntityExporter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import platforms="csv"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Exports entities to a CSV file</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uri</td>
+<td>The URI of the file to create</td>
+<td>"export.csv"</td>
+</tr>
+<tr>
+<td>columns</td>
+<td>A comma-separated list of column names</td>
+<td></td>
+</tr>
+<tr>
+<td>headless</td>
+<td>Flag to leave out column headers</td>
+<td>false</td>
+</tr>
+<tr>
+<td>separator</td>
+<td>The character to use as column separator</td>
+<td>","</td>
+</tr>
+<tr>
+<td>encoding</td>
+<td>The character encoding to use for the file</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>lineSeparator</td>
+<td>The line separator to use in the generated file</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>endWithNewLine</td>
+<td>Specifies if the last row in the file should end with a line break</td>
+<td>false</td>
+</tr>
+<tr>
+<td>append</td>
+<td>If set to true, data is appended to existing files, otherwise existing files are overwritten</td>
+<td>false</td>
+</tr>
+<tr>
+<td>nullString</td>
+<td>Text to represent <em>null</em> values</td>
+<td>Empty string</td>
+</tr>
+<tr>
+<td>quoteEmpty</td>
+<td>When set to 'true', empty strings are formatted with double quotes ("",""), otherwise an empty field (,)</td>
+<td>false</td>
+</tr>
+<tr>
+<td>datePattern</td>
+<td>The pattern to render date values</td>
+<td>"yyyy-MM-dd"</td>
+</tr>
+<tr>
+<td>dateCapitalization</td>
+<td>The capitalization to use when rendering a month name in a date: 'upper', 'lower' or 'mixed'</td>
+<td>mixed</td>
+</tr>
+<tr>
+<td>timePattern</td>
+<td>The pattern to render time values</td>
+<td>"HH:mm:ss"</td>
+</tr>
+<tr>
+<td>timestampPattern</td>
+<td>The pattern to render timestamp values</td>
+<td>"yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS"</td>
+</tr>
+<tr>
+<td>timestampCapitalization</td>
+<td>The capitalization to use when rendering a month name in a timestamp: 'upper', 'lower' or 'mixed'</td>
+<td>mixed</td>
+</tr>
+<tr>
+<td>decimalPattern</td>
+<td>The pattern to render decimal values</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>decimalSeparator</td>
+<td>The decimal separator to use for decimal values</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>integralPattern</td>
+<td>The pattern to integral number values</td>
+<td>System default</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sqlentityexporter">SQLEntityExporter</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>SQLEntityExporter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import platforms="db"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Exports entities as 'INSERT' commands to a SQL file</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uri</td>
+<td>The URI of the file to create</td>
+<td>"export.sql"</td>
+</tr>
+<tr>
+<td>encoding</td>
+<td>The character encoding to use for the file</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>lineSeparator</td>
+<td>The line separator to use in the generated file</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>append</td>
+<td>If set to true, data is appended to existing files, otherwise existing files are overwritten</td>
+<td>false</td>
+</tr>
+<tr>
+<td>dialect</td>
+<td>The SQL dialect to use in the generated file. Available values: db2, derby, firebird, hsql, h2, oracle, postgres, sql_server</td>
+<td></td>
+</tr>
+<tr>
+<td>datePattern</td>
+<td>The pattern to render date values</td>
+<td>"yyyy-MM-dd"</td>
+</tr>
+<tr>
+<td>timePattern</td>
+<td>The pattern to render time values</td>
+<td>"HH:mm:ss"</td>
+</tr>
+<tr>
+<td>timestampPattern</td>
+<td>The pattern to render timestamp values</td>
+<td>"yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS"</td>
+</tr>
+<tr>
+<td>decimalPattern</td>
+<td>The pattern to render decimal values</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>decimalSeparator</td>
+<td>The decimal separator to use for decimal values</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>integralPattern</td>
+<td>The pattern to integral number values</td>
+<td>System default</td>
+</tr>
+</tbody>
+</table>
+<h2 id="entitysources-importers">EntitySources (Importers)</h2>
+<p>Benerator provides the following implementations of the EntitySource interface:</p>
+<h3 id="dbunitentitysource">DbUnitEntitySource</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>DbUnitEntitySource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import platforms="dbunit"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Imports entities from a DbUnit XML file</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uri</td>
+<td>The URI of the file to read</td>
+<td>"export.sql"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="csventitysource">CSVEntitySource</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>CSVEntitySource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import platforms="csv"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Imports entities from a CSV file</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uri</td>
+<td>The URI of the file to read</td>
+<td>"export.sql"</td>
+</tr>
+<tr>
+<td>encoding</td>
+<td>The character encoding used in the file</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>separator</td>
+<td>The line separator used in the file</td>
+<td>","</td>
+</tr>
+<tr>
+<td>columns</td>
+<td>When set, the input file is expected to have no header row</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="fixedcolumnwidthentitysource">FixedColumnWidthEntitySource</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>CSVEntitySource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import platforms="fixedwidth"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Imports entities from a fixed column width file</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uri</td>
+<td>The URI of the file to read</td>
+<td>"export.sql"</td>
+</tr>
+<tr>
+<td>encoding</td>
+<td>The character encoding of the file</td>
+<td>System default</td>
+</tr>
+<tr>
+<td>columns</td>
+<td>The columns specification (See the FixedWidthEntityExporter for documentation)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="xlsentitysource">XLSEntitySource</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>XLSEntitySource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import platforms="xls"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Imports entities from an Excel(TM) document</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Property Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uri</td>
+<td>The URI of the file to read</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="benerator-utility-classes">Benerator Utility Classes</h2>
+<h3 id="randomutil">RandomUtil</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>RandomUtil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import class="com.rapiddweller.benerator.util.RandomUtil"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Provides basic random functions</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Method Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>randomLong(min, max)</td>
+<td>Returns a random long between min (inclusively) and max (inclusively)</td>
+</tr>
+<tr>
+<td>randomInt(min, max)</td>
+<td>Returns a random int between min (inclusively) and max (inclusively)</td>
+</tr>
+<tr>
+<td>randomElement(value1, value2, ...)</td>
+<td>Returns a random element of the ones listed as parameters</td>
+</tr>
+<tr>
+<td>randomElement(List values)</td>
+<td>Returns a random element from the 'values' list</td>
+</tr>
+<tr>
+<td>randomIndex(List values)</td>
+<td>Returns a random index for the 'values' list</td>
+</tr>
+<tr>
+<td>randomDigit(min)</td>
+<td>Returns a random numerical character with a value of at least min. Example: randomDigit(1) produces characters between '1' and '9'.</td>
+</tr>
+<tr>
+<td>randomProbability()</td>
+<td>Returns a float between 0 and 1</td>
+</tr>
+<tr>
+<td>randomDate(min, max)</td>
+<td>Returns a random date between min (inclusively) and max (inclusively)</td>
+</tr>
+<tr>
+<td>randomFromWeightLiteral(literal)</td>
+<td>Evaluates the weight literal and returns one of the specified values with the specified probability. Example literal: 'A'^3,'B'^1 will produce 75% of 'A' values and 25% of 'B' values.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="rapiddweller-commons-library">rapiddweller Commons Library</h2>
+<p>The library rd-lib-common derived from Databene Commons from Volker Bergmann is a general-purpose utility collection
+which also provides some features useful for data generation and manipulation. Its converters and validators are liste
+above, but there are some general utility classes too. They can be invoked directly using rapiddwellerScript or other
+supported script languages.</p>
+<h3 id="timeutil">TimeUtil</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>TimeUtil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import class="com.rapiddweller.common.TimeUtil"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Provides time and date related utility methods</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Method Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currentYear()</td>
+<td>returns the current year as integer value</td>
+</tr>
+<tr>
+<td>today()</td>
+<td>returns the current day as date object</td>
+</tr>
+<tr>
+<td>yesterday()</td>
+<td>returns the previous date as date object</td>
+</tr>
+<tr>
+<td>tomorrow()</td>
+<td>returns the next day as date object</td>
+</tr>
+<tr>
+<td>date(year, month, day)</td>
+<td>creates a date object for the specified day in the user's default time zone. 'month' is a zero-based integer, January = 0, February = 1, ...</td>
+</tr>
+<tr>
+<td>gmtDate(year, month, day)</td>
+<td>creates a date object for the specified day in the time zone GMT. 'month' is a zero-based integer, January = 0, February = 1, ...</td>
+</tr>
+<tr>
+<td>date(year, month, day, hours, minutes, seconds, milliseconds)</td>
+<td>creates a date object for the specified day and time in the user's default time zone. 'month' is a zero-based integer, January = 0, February = 1, ...</td>
+</tr>
+<tr>
+<td>date(millis)</td>
+<td>creates a date object in the user's default time zone. The time is specified as milliseconds since 1970-01-01</td>
+</tr>
+<tr>
+<td>year(date)</td>
+<td>returns the year of the specified date as integer</td>
+</tr>
+<tr>
+<td>month(date)</td>
+<td>returns the month of the specified date as integer</td>
+</tr>
+<tr>
+<td>dayOfMonth(date)</td>
+<td>returns the day of month of the specified date as integer</td>
+</tr>
+<tr>
+<td>firstDayOfMonth(date)</td>
+<td>returns the first day of the specified date's month</td>
+</tr>
+<tr>
+<td>lastDayOfMonth(date)</td>
+<td>returns the last day of the specified date's month</td>
+</tr>
+<tr>
+<td>millis(year, month, day, hour, minute, second)</td>
+<td>Calculates the number of milliseconds since 1970-01-01. 'month' is a zero-based integer, January = 0, February = 1, ...</td>
+</tr>
+<tr>
+<td>time(hour, minute, second)</td>
+<td>Creates a time object for the specified time</td>
+</tr>
+<tr>
+<td>time(hour, minute, second, millisecond)</td>
+<td>Creates a time object for the specified time</td>
+</tr>
+<tr>
+<td>timestamp(year, month, day, hour, minute, second, nanosecond)</td>
+<td>Creates a timestamp value for the specified time. 'month' is a zero-based integer, January = 0, February = 1, ...</td>
+</tr>
+<tr>
+<td>currentTime()</td>
+<td>Creates a time object representing the current time</td>
+</tr>
+<tr>
+<td>midnightOf(date)</td>
+<td>Rounds down a date value that may include a time to a value that represents midnight (time = 0)</td>
+</tr>
+<tr>
+<td>addDays(date, noOfDays)</td>
+<td>Calculates a date a given number of days past a given date</td>
+</tr>
+<tr>
+<td>addMonths(date, noOfMonths)</td>
+<td>Calculates a date a given number of months past a given date</td>
+</tr>
+<tr>
+<td>addYears(date, noOfYears)</td>
+<td>Calculates a date a given number of years past a given date</td>
+</tr>
+</tbody>
+</table>
+<h3 id="period">Period</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>Period</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import class="com.rapiddweller.common.Period"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Provides constants for some time periods</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Invocation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Period.SECOND.millis</td>
+<td>The number of milliseconds in a second</td>
+</tr>
+<tr>
+<td>Period.MINUTE.millis</td>
+<td>The number of milliseconds in a minute</td>
+</tr>
+<tr>
+<td>Period.HOUR.millis</td>
+<td>The number of milliseconds in an hour</td>
+</tr>
+<tr>
+<td>Period.DAY.millis</td>
+<td>The number of milliseconds in a day</td>
+</tr>
+<tr>
+<td>Period.WEEK.millis</td>
+<td>The number of milliseconds in a week</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ioutil">IOUtil</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>IOUtil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import class="com.rapiddweller.common.IOUtil"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Provides I/O related utility methods</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Method Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>isURIAvailable(uri)</td>
+<td>Tells if the file specified by the given URI exists</td>
+</tr>
+<tr>
+<td>getContentOfURI(uri)</td>
+<td>Provides the content of the specified file as string</td>
+</tr>
+<tr>
+<td>getBinaryContentOfUri(uri)</td>
+<td>Provides the content of the specified file as byte array</td>
+</tr>
+<tr>
+<td>getParentUri(uri)</td>
+<td>Determines the parent URI (folder) of the specified URI</td>
+</tr>
+<tr>
+<td>getProtocol(uri)</td>
+<td>Determines the protocol specified in the URI</td>
+</tr>
+<tr>
+<td>download(sourceUrl, targetFile)</td>
+<td>Downloads the content of a remote URI to the local file system</td>
+</tr>
+<tr>
+<td>copyFile(sourceUri, targetUri)</td>
+<td>Copies a file on the local file system</td>
+</tr>
+</tbody>
+</table>
+<h3 id="charutil">CharUtil</h3>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>CharUtil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import</td>
+<td><code>&lt;import class="com.rapiddweller.common.CharUtil"/&gt;</code></td>
+</tr>
+<tr>
+<td>Class Description</td>
+<td>Provides character related utility methods</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Method Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ordinal(character)</td>
+<td>Returns a character's ordinal as integer</td>
+</tr>
+<tr>
+<td>character(ordinal)</td>
+<td>Returns the character that corresponds to the given ordinal</td>
+</tr>
+</tbody>
+</table>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="domains.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Domains" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Domains
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="using_db_sanity.html" class="md-footer__link md-footer__link--next" aria-label="Next: Using DB Sanity" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Using DB Sanity
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2006 - 2022 rapiddweller GmbH & Volker Bergmann
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/rapiddweller" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/rapiddweller/" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/intent/follow?screen_name=rapiddweller" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["search.suggest", "search.highlight", "search.share", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.top"], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="js/termynal.js"></script>
+      
+        <script src="js/custom.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="js/tablesort.js"></script>
+      
+    
+  </body>
+</html>

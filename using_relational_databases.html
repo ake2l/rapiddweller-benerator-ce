@@ -1,0 +1,2505 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This document is supposed to become a complete summary of everything you need to know of Benerator usage, use it efficiently and extend it as you need. This reference is under construction and will update from time to time. Feel free to contribute your ideas in our repo at https://github.com/rapiddweller/rapiddweller-benerator-ce/.">
+      
+      
+        <meta name="author" content="rapiddweller GmbH & Volker Bergmann">
+      
+      
+        <link rel="canonical" href="https://docs.benerator.de/using_relational_databases.html">
+      
+      <link rel="icon" href="assets/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Using Relational Databases - rapiddweller Benerator</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/termynal.css">
+    
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="rapiddweller" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#using-relational-databases" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="rapiddweller Benerator" class="md-header__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            rapiddweller Benerator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Using Relational Databases
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="rapiddweller Benerator" class="md-nav__button md-logo" aria-label="rapiddweller Benerator" data-md-component="logo">
+      
+  <img src="assets/rd.png" alt="logo">
+
+    </a>
+    rapiddweller Benerator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rapiddweller-benerator-ce
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction_to_benerator.html" class="md-nav__link">
+        Goals and Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="the_benerator_project_wizard.html" class="md-nav__link">
+        The Benerator Project Wizard
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quick_tour_through_the_descriptor_file_format.html" class="md-nav__link">
+        Quick tour through the descriptor file format
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_generation_concepts.html" class="md-nav__link">
+        Data Generation Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_anonymization_concepts.html" class="md-nav__link">
+        Data Anonymization Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="regular_expression_support.html" class="md-nav__link">
+        Regular Expression Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_file_processing.html" class="md-nav__link">
+        CSV File Generation/Anonymization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xml_file_processing.html" class="md-nav__link">
+        XML File Processing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distribution.html" class="md-nav__link">
+        Distribution Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Using Relational Databases
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="using_relational_databases.html" class="md-nav__link md-nav__link--active">
+        Using Relational Databases
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#import-and-database" class="md-nav__link">
+    Import and &lt;database&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usual-database-settings" class="md-nav__link">
+    Usual Database Settings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-database-repositories" class="md-nav__link">
+    Using Database Repositories
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Database Repositories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overriding-environment-settings" class="md-nav__link">
+    Overriding Environment Settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iterating-through-database-tables" class="md-nav__link">
+    Iterating through database tables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caching-database-metadata" class="md-nav__link">
+    Caching Database Metadata
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-sql-statements" class="md-nav__link">
+    Executing SQL statements
+  </a>
+  
+    <nav class="md-nav" aria-label="Executing SQL statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternative-delimiters" class="md-nav__link">
+    Alternative Delimiters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inserting-entities-into-a-database" class="md-nav__link">
+    Inserting entities into a database
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-related-id-generators" class="md-nav__link">
+    Database-related Id Generators
+  </a>
+  
+    <nav class="md-nav" aria-label="Database-related Id Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sequencetablegenerator" class="md-nav__link">
+    SequenceTableGenerator
+  </a>
+  
+    <nav class="md-nav" aria-label="SequenceTableGenerator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-value-table" class="md-nav__link">
+    Single-Value-Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name-value-pair-table" class="md-nav__link">
+    Name-Value-Pair Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arbitrary-table" class="md-nav__link">
+    Arbitrary Table
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handling-of-common-columns" class="md-nav__link">
+    Handling of common Columns
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#determining-attribute-values-by-a-database-query" class="md-nav__link">
+    Determining attribute values by a database query
+  </a>
+  
+    <nav class="md-nav" aria-label="Determining attribute values by a database query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cycling-through-query-result-sets" class="md-nav__link">
+    Cycling through query result sets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-a-distribution-to-a-query" class="md-nav__link">
+    Applying a distribution to a query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-selectors" class="md-nav__link">
+    Sub selectors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolving-database-relations" class="md-nav__link">
+    Resolving Database Relations
+  </a>
+  
+    <nav class="md-nav" aria-label="Resolving Database Relations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-referencing" class="md-nav__link">
+    Automatic referencing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null-references" class="md-nav__link">
+    Null references
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selective-referencing" class="md-nav__link">
+    Selective Referencing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-referencing-options" class="md-nav__link">
+    Other referencing options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composite-keys" class="md-nav__link">
+    Composite Keys
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prototype-queries" class="md-nav__link">
+    Prototype Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Prototype Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prototype-queries-on-entities" class="md-nav__link">
+    Prototype Queries on Entities
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-database-content" class="md-nav__link">
+    Exporting Database Content
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-database-entries" class="md-nav__link">
+    Updating Database Entries
+  </a>
+  
+    <nav class="md-nav" aria-label="Updating Database Entries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overwrite-output-table-name-with-inserter" class="md-nav__link">
+    Overwrite output table name with inserter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlling-transactions" class="md-nav__link">
+    Controlling Transactions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transcoding-database-data" class="md-nav__link">
+    Transcoding Database Data
+  </a>
+  
+    <nav class="md-nav" aria-label="Transcoding Database Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#copying-database-entries" class="md-nav__link">
+    Copying database entries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restricting-the-copied-set" class="md-nav__link">
+    Restricting the copied Set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transcoding" class="md-nav__link">
+    Transcoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cascaded-transcoding" class="md-nav__link">
+    Cascaded Transcoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging-foreign-key-relations" class="md-nav__link">
+    Merging Foreign Key Relations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-identities" class="md-nav__link">
+    Defining Identities
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Identities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#natural-pk" class="md-nav__link">
+    natural-pk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unique-key" class="md-nav__link">
+    unique-key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nk-pk-query" class="md-nav__link">
+    nk-pk-query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-nk-pk-query" class="md-nav__link">
+    sub-nk-pk-query
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-schema-references" class="md-nav__link">
+    Multi-schema references
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-schema references">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#known-issue" class="md-nav__link">
+    Known issue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="message_queue_access.html" class="md-nav__link">
+        Message Queue Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kafka_access.html" class="md-nav__link">
+        Kafka Access (Enterprise Edition)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="environment_files.html" class="md-nav__link">
+        Environment Files
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced_topics.html" class="md-nav__link">
+        Advanced Topics
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="generating_unique_data.html" class="md-nav__link">
+        Generating Unique Data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scripting.html" class="md-nav__link">
+        Scripting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rapiddwellerscript.html" class="md-nav__link">
+        rapiddwellerScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="command_line_tools.html" class="md-nav__link">
+        Command Line Tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="domains.html" class="md-nav__link">
+        Domains
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="component_reference.html" class="md-nav__link">
+        Component Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_db_sanity.html" class="md-nav__link">
+        Using DB Sanity
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maven_benerator_plugin.html" class="md-nav__link">
+        Maven Benerator Plugin
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extending_benerator.html" class="md-nav__link">
+        Extending Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_benerator_as_load_generator.html" class="md-nav__link">
+        Using Benerator as Load Generator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting.html" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="monitoring_benerator.html" class="md-nav__link">
+        Monitoring Benerator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance_tuning.html" class="md-nav__link">
+        Benerator Performance Tuning
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migrating_benerator_projects.html" class="md-nav__link">
+        Migrating Benerator Projects
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#import-and-database" class="md-nav__link">
+    Import and &lt;database&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usual-database-settings" class="md-nav__link">
+    Usual Database Settings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-database-repositories" class="md-nav__link">
+    Using Database Repositories
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Database Repositories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overriding-environment-settings" class="md-nav__link">
+    Overriding Environment Settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iterating-through-database-tables" class="md-nav__link">
+    Iterating through database tables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caching-database-metadata" class="md-nav__link">
+    Caching Database Metadata
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-sql-statements" class="md-nav__link">
+    Executing SQL statements
+  </a>
+  
+    <nav class="md-nav" aria-label="Executing SQL statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternative-delimiters" class="md-nav__link">
+    Alternative Delimiters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inserting-entities-into-a-database" class="md-nav__link">
+    Inserting entities into a database
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-related-id-generators" class="md-nav__link">
+    Database-related Id Generators
+  </a>
+  
+    <nav class="md-nav" aria-label="Database-related Id Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sequencetablegenerator" class="md-nav__link">
+    SequenceTableGenerator
+  </a>
+  
+    <nav class="md-nav" aria-label="SequenceTableGenerator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-value-table" class="md-nav__link">
+    Single-Value-Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name-value-pair-table" class="md-nav__link">
+    Name-Value-Pair Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arbitrary-table" class="md-nav__link">
+    Arbitrary Table
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handling-of-common-columns" class="md-nav__link">
+    Handling of common Columns
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#determining-attribute-values-by-a-database-query" class="md-nav__link">
+    Determining attribute values by a database query
+  </a>
+  
+    <nav class="md-nav" aria-label="Determining attribute values by a database query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cycling-through-query-result-sets" class="md-nav__link">
+    Cycling through query result sets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-a-distribution-to-a-query" class="md-nav__link">
+    Applying a distribution to a query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-selectors" class="md-nav__link">
+    Sub selectors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolving-database-relations" class="md-nav__link">
+    Resolving Database Relations
+  </a>
+  
+    <nav class="md-nav" aria-label="Resolving Database Relations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-referencing" class="md-nav__link">
+    Automatic referencing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null-references" class="md-nav__link">
+    Null references
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selective-referencing" class="md-nav__link">
+    Selective Referencing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-referencing-options" class="md-nav__link">
+    Other referencing options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composite-keys" class="md-nav__link">
+    Composite Keys
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prototype-queries" class="md-nav__link">
+    Prototype Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Prototype Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prototype-queries-on-entities" class="md-nav__link">
+    Prototype Queries on Entities
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-database-content" class="md-nav__link">
+    Exporting Database Content
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-database-entries" class="md-nav__link">
+    Updating Database Entries
+  </a>
+  
+    <nav class="md-nav" aria-label="Updating Database Entries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overwrite-output-table-name-with-inserter" class="md-nav__link">
+    Overwrite output table name with inserter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlling-transactions" class="md-nav__link">
+    Controlling Transactions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transcoding-database-data" class="md-nav__link">
+    Transcoding Database Data
+  </a>
+  
+    <nav class="md-nav" aria-label="Transcoding Database Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#copying-database-entries" class="md-nav__link">
+    Copying database entries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restricting-the-copied-set" class="md-nav__link">
+    Restricting the copied Set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transcoding" class="md-nav__link">
+    Transcoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cascaded-transcoding" class="md-nav__link">
+    Cascaded Transcoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging-foreign-key-relations" class="md-nav__link">
+    Merging Foreign Key Relations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-identities" class="md-nav__link">
+    Defining Identities
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Identities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#natural-pk" class="md-nav__link">
+    natural-pk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unique-key" class="md-nav__link">
+    unique-key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nk-pk-query" class="md-nav__link">
+    nk-pk-query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-nk-pk-query" class="md-nav__link">
+    sub-nk-pk-query
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-schema-references" class="md-nav__link">
+    Multi-schema references
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-schema references">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#known-issue" class="md-nav__link">
+    Known issue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="using-relational-databases">Using Relational Databases</h1>
+<h2 id="import-and-database">Import and <code>&lt;database&gt;</code></h2>
+<p>For using database-related features, you must import the <code>db</code> package:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;import</span> <span class="na">platforms=</span><span class="s">&quot;db&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>You can easily define a database:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;db&quot;</span> <span class="na">url=</span><span class="s">&quot;jdbc:hsqldb:hsql://localhost&quot;</span> <span class="na">driver=</span><span class="s">&quot;org.hsqldb.jdbcDriver&quot;</span> <span class="na">user=</span><span class="s">&quot;sa&quot;</span> <span class="na">batch=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>A database must have an <code>id</code> by which it can be referenced later. For starting a project, it is better to have <code>batch="
+false"</code>. In this mode, database errors are easier to track.</p>
+<p>The following attributes are available in the <code>&lt;database&gt;</code> element:</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>identifier under which the database is accessible in the context (required)</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>Identifier of a database repository entry</td>
+</tr>
+<tr>
+<td>url</td>
+<td>JDBC database url</td>
+</tr>
+<tr>
+<td>driver</td>
+<td>JDBC driver class</td>
+</tr>
+<tr>
+<td>user</td>
+<td>user name for login</td>
+</tr>
+<tr>
+<td>password</td>
+<td>password for login</td>
+</tr>
+<tr>
+<td>catalog</td>
+<td>Database catalog to use</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>database schema to use</td>
+</tr>
+<tr>
+<td>includeTables</td>
+<td>Regular expression for tables to be used or #all for multi schema inclusion (table, index, keys)</td>
+</tr>
+<tr>
+<td>excludeTables</td>
+<td>Regular expression for tables to be ignored</td>
+</tr>
+<tr>
+<td>lazy</td>
+<td>boolean flag to enable lazy metadata parsing. This improves performance on large systems of which only a small number of tables are actually used in generation.</td>
+</tr>
+<tr>
+<td>metaCache</td>
+<td>boolean flag which can be activated on databases with slow database access to cache database metadata on the local file system instead of reparsing it on each run</td>
+</tr>
+<tr>
+<td>batch</td>
+<td>boolean flag to specify if batch inserts and updates shall be done</td>
+</tr>
+<tr>
+<td>fetchSize</td>
+<td>JDBC fetch size for query results</td>
+</tr>
+<tr>
+<td>readOnly</td>
+<td>indicates if only read access shall be allowed in order to protect sensitive data</td>
+</tr>
+<tr>
+<td>acceptUnknownColumnTypes</td>
+<td>If set to true, Benerator accepts exotic database column types without complaining and relies on the user to take care of the appropriate data type when generating values for the column.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Benerator has some built-in knowledge about the most widely used database systems and their conventions.
+So in most cases, it is sufficient to provide url, driver, user, and password. In special cases, e.g. if you want to
+access a schema that is not the default schema of your user, you may have to set schema (and possibly catalog)
+explicitly.</p>
+</div>
+<h2 id="usual-database-settings">Usual Database Settings</h2>
+<table>
+<thead>
+<tr>
+<th>Database</th>
+<th>URL Format</th>
+<th>Driver Class</th>
+<th>Default Catalog</th>
+<th>Default Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DB2</td>
+<td>jdbc:db2://host:50001/dbname</td>
+<td>com.ibm.db2.jcc.DB2Driver</td>
+<td></td>
+<td><code>&lt;user name&gt;</code></td>
+</tr>
+<tr>
+<td>Derby</td>
+<td>jdbc:derby://host:1527/dbname</td>
+<td></td>
+<td></td>
+<td><code>&lt;user name&gt;</code></td>
+</tr>
+<tr>
+<td>Firebird</td>
+<td>jdbc:firebirdsql:host/3050:dbname</td>
+<td>org.firebirdsql.jdbc.FBDriver</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>H2</td>
+<td>Jdbc:h2:....</td>
+<td>org.h2.Driver</td>
+<td></td>
+<td>PUBLIC</td>
+</tr>
+<tr>
+<td>HSQL</td>
+<td>jdbc:hsqldb:hsql://host:9001/dbname</td>
+<td>org.hsqldb.jdbcDriver</td>
+<td></td>
+<td>PUBLIC</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>jdbc:mysql://host:3306/dbname</td>
+<td>com.mysql.jdbc.Driver</td>
+<td><code>&lt;user name&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td>jdbc:oracle:thin:@host:1521:SID</td>
+<td>oracle.jdbc.driver.OracleDriver</td>
+<td></td>
+<td><code>&lt;user name&gt;</code></td>
+</tr>
+<tr>
+<td>Postgres</td>
+<td>jdbc:postgresql://host:5432/dbname</td>
+<td>org.postgresql.Driver</td>
+<td><code>&lt;user name&gt;</code></td>
+<td>public</td>
+</tr>
+<tr>
+<td>SQL Server</td>
+<td>jdbc:jtds:sqlserver://host:1433/dbname</td>
+<td>net.sourceforge.jtds.jdbc.Driver</td>
+<td>master</td>
+<td>dbo</td>
+</tr>
+</tbody>
+</table>
+<h2 id="using-database-repositories">Using Database Repositories</h2>
+<p>For frequently-used databases it is more convenient to use a central environment configuration repository 
+and have Benerator look up all the system connection details by a simple system name instead of having 
+to copy &amp; paste JDBC settings again and again.</p>
+<p>This way, a database definition turns from</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;db&quot;</span> <span class="na">url=</span><span class="s">&quot;jdbc:oracle:thin:@host:1521:SID&quot;</span> 
+          <span class="na">driver=</span><span class="s">&quot;oracle.jdbc.driver.OracleDriver&quot;</span> 
+          <span class="na">user=</span><span class="s">&quot;sam&quot;</span> <span class="na">password=</span><span class="s">&quot;sam123&quot;</span> 
+          <span class="na">catalog=</span><span class="s">&quot;CRM01&quot;</span> <span class="na">schema=</span><span class="s">&quot;CUSTS&quot;</span> <span class="na">readOnly=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>to </p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;db&quot;</span> <span class="na">environment=</span><span class="s">&quot;dev&quot;</span> <span class="na">system=</span><span class="s">&quot;crm&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>where <code>environment</code> denotes the environment definition file and <code>crm</code> a system configuration within that file.</p>
+<p>A global standard location for a system repository is located in a folder <code>rapiddweller</code> under 
+your user home directory (like <code>C:\Documents and Settings\&lt;user_name&gt;\</code> on Windows)</p>
+<p>You can as well define a project-specific environment repository in a sub directory <code>conf</code> under the project folder.</p>
+<p>For details, see <a href="environment_files.html">Environment Files</a>.</p>
+<h3 id="overriding-environment-settings">Overriding Environment Settings</h3>
+<p>When using a system definition in an environment file and specifying different attributes in the XML file, 
+(like another user and password), these override the configuration details in the database repository. 
+This way you can have a central and convenient database lookup and can
+access the database with different users in the same run. An example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;db1&quot;</span> <span class="na">environment=</span><span class="s">&quot;mydb&quot;</span> <span class="na">user=</span><span class="s">&quot;user1&quot;</span> <span class="na">password=</span><span class="s">&quot;password1&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;db2&quot;</span> <span class="na">environment=</span><span class="s">&quot;mydb&quot;</span> <span class="na">user=</span><span class="s">&quot;user2&quot;</span> <span class="na">password=</span><span class="s">&quot;password2&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h2 id="iterating-through-database-tables">Iterating through database tables</h2>
+<p>For importing or anonymizing data, you need to iterate through database tables. 
+This is configured easily by using the database id as <code>source</code>
+and the table name as <code>type</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;db&quot;</span> <span class="na">environment=</span><span class="s">&quot;dev&quot;</span> <span class="na">system=</span><span class="s">&quot;crm&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;iterate</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">type=</span><span class="s">&quot;customers&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>For iterating over a data sub set, specify a <code>selector</code> 
+which may take the content of a regular SQL 'where' clause: </p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;db&quot;</span> <span class="na">environment=</span><span class="s">&quot;dev&quot;</span> <span class="na">system=</span><span class="s">&quot;crm&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;iterate</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">type=</span><span class="s">&quot;customers&quot;</span> <span class="na">selector=</span><span class="s">&quot;level &gt; 5 AND cust_type = &#39;PRIVATE&#39;&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h2 id="caching-database-metadata">Caching Database Metadata</h2>
+<p>On very large databases, especially when accessed remotely, database metadata retrieval may take several minutes. In
+this case, you can make use of the <code>metaCache</code> facility.</p>
+<p>Two preconditions exist for using meta data caching: You need to</p>
+<ol>
+<li>
+<p>configure a database repository (<a href="environment_files.html">environment</a>) and</p>
+</li>
+<li>
+<p>set <code>metaCache</code> to <code>true</code></p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;db2&quot;</span> <span class="na">environment=</span><span class="s">&quot;mydb&quot;</span> <span class="na">metaCache=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>On the first run, you will not observe any speedup – metadata parsing may even take longer since the cache needs to be
+created on the first run and Benerator is likely to read (much) more metadata than you absolutely need for your
+specific data generation. When done so, Benerator saves the metadata in an XML file. On subsequent runs, Benerator
+notices the cache file and reads it within milliseconds.</p>
+<p><strong>Cache Invalidation</strong>: There are several reasons that make Benerator invalidate its cache information and reload it:</p>
+<ul>
+<li>
+<p><strong>Execution of SQL code via <code>&lt;execute&gt;</code></strong>: Benerator is not so clever about interpreting SQL code. Thus, it interprets
+  any executed SQL code as a potential metadata change and invalidates the cache.</p>
+</li>
+<li>
+<p><strong>Cache time out</strong>: If the cache file is older than twelve hours, Benerator throws it away just in case. If you are
+  sure that the database has not changed meanwhile, you can perform a 'touch' on the cache file.</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you change the database structure from another client system and Benerator is configured to cache 
+metadata, there is no way to become aware of it and the old metadata cache file is used which has become obsolete. You need
+to delete the cache file manually in such cases!</p>
+</div>
+<h2 id="executing-sql-statements">Executing SQL statements</h2>
+<p>SQL code can be executed, e.g. from a file:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;execute</span> <span class="na">uri=</span><span class="s">&quot;drop-tables.sql&quot;</span> <span class="na">target=</span><span class="s">&quot;db&quot;</span> <span class="na">onError=</span><span class="s">&quot;warn&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>Uris are resolved relative to the benerator file that declares them (as common in HTML). If the file is not found
+locally, it is searched relative to the current working directory.</p>
+<p>You can inline SQL code as well:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;execute</span> <span class="na">target=</span><span class="s">&quot;db&quot;</span> <span class="na">onError=</span><span class="s">&quot;warn&quot;</span><span class="nt">&gt;</span>
+    CREATE TABLE db_role (
+    id int NOT NULL,
+    name varchar(16) NOT NULL,
+    PRIMARY KEY (id)
+    );
+<span class="nt">&lt;/execute&gt;</span>
+</code></pre></div>
+<h3 id="alternative-delimiters">Alternative Delimiters</h3>
+<p>By default, the semicolon is the delimiter between commands: Benerator splits SQL commands by their delimiter and sends
+one after the other to the database. In some cases, you need different behavior, e.g. if a procedure should be defined
+and/or called. In such cases, you can specify an alternative delimiter in an <code>&lt;execute&gt;</code> statement:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;execute</span> <span class="na">target=</span><span class="s">&quot;db&quot;</span> <span class="na">separator=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>
+    declare output_var varchar(500);
+    begin
+    EXECUTE_PROC_A(output_var);
+    EXECUTE_PROC_B(output_var);
+    end;
+<span class="nt">&lt;/execute&gt;</span>
+</code></pre></div>
+<h2 id="inserting-entities-into-a-database">Inserting entities into a database</h2>
+<p>When using a database as consumer in a <code>&lt;generate&gt;</code> or <code>&lt;iterate&gt;</code> element, the elements are <em>inserted</em> by default. For
+information, how to <em>update</em> entries, see the next chapter.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;db_user&quot;</span> <span class="na">count=</span><span class="s">&quot;50000&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>If primary key generation should be performed by the database, you need to tell Benerator to ignore the field, setting
+the mode to 'ignored'</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;db_user&quot;</span> <span class="na">count=</span><span class="s">&quot;50000&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;id</span> <span class="na">mode=</span><span class="s">&quot;ignored&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<h2 id="database-related-id-generators">Database-related Id Generators</h2>
+<p>The following id generators make use of database features:</p>
+<ul>
+<li>
+<p><strong>DBSequenceGenerator</strong>: Retrieves id values from a database sequence. With default settings, it operates quite
+  slowly, since it incurs an additional database call for obtaining the id value for each generated entity. When setting
+  its property <code>cached</code> to <code>true</code>, it fetches the current value of its database sequence, creates ids offline in
+  Benerator RAM and updates the database sequence in the end. Of course, this requires Benerator to run in a single
+  instance and no other client may be writing data to the system while Benerator is generating – otherwise, a primary key
+  conflict may arise.</p>
+</li>
+<li>
+<p><strong>DBSeqHiLoGenerator</strong>: Combines a value retrieved from a database with a local counter to create unique values (with
+  a strongly reduced performance burden compared to the DBSequenceGenerator)</p>
+</li>
+<li>
+<p><strong>QueryGenerator</strong>: Uses a database query to calculate id values</p>
+</li>
+<li>
+<p><strong>QueryLongGenerator</strong>: Uses a database to calculate id values of number type</p>
+</li>
+<li>
+<p><strong>QueryHiLoGenerator</strong>: Works like a DBSeqHiLoGenerator, but based on a query instead of a sequence</p>
+</li>
+<li>
+<p><strong>SequenceTableGenerator</strong>: Lets you read and increment values from database tables</p>
+</li>
+</ul>
+<p>The best performance with cluster-safe generators is achieved with the <code>DBSeqHiLoGenerator</code>, followed by the
+<code>QueryHiLoGenerator</code>.</p>
+<h3 id="sequencetablegenerator">SequenceTableGenerator</h3>
+<p>The SequenceTableGenerator lets you create unique long values from a database table. Depending on the table structure
+this can be trivial or tricky.</p>
+<p>You always need to specify a <strong>database</strong>, a <strong>table</strong> and a <strong>column</strong> from which to read the value, in non-trivial
+cases, you also need a selector.</p>
+<h4 id="single-value-table">Single-Value-Table</h4>
+<p>In the simplest case, you have a table which stores a single row with a single value:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;setup&gt;</span>
+    <span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;db&quot;</span> <span class="na">environment=</span><span class="s">&quot;mydb&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;sg&quot;</span> <span class="na">class=</span><span class="s">&quot;SequenceTableGenerator&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;database&quot;</span> <span class="na">ref=</span><span class="s">&quot;db&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;table&quot;</span> <span class="na">value=</span><span class="s">&quot;MY_TABLE&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;column&quot;</span> <span class="na">value=</span><span class="s">&quot;SEQ_VALUE&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;PERSON&quot;</span> <span class="na">count=</span><span class="s">&quot;100&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span> <span class="na">generator=</span><span class="s">&quot;sg&quot;</span><span class="nt">/&gt;</span>
+        ...
+    <span class="nt">&lt;/generate&gt;</span>
+<span class="nt">&lt;/setup&gt;</span>
+</code></pre></div>
+<h4 id="name-value-pair-table">Name-Value-Pair Table</h4>
+<p>In a slightly more difficult case, you have name-value-pairs of 'sequence identifier' and 'sequence value'. Then you
+must specify a selector, that tells Benerator which row to use. For example, if the sequence for the PERSON table is
+specified by a row in which the <code>SEQ_ID</code> column has the value <code>PERSON</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;setup&gt;</span>
+    <span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;db&quot;</span> <span class="na">environment=</span><span class="s">&quot;mydb&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;sg&quot;</span> <span class="na">class=</span><span class="s">&quot;SequenceTableGenerator&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;database&quot;</span> <span class="na">ref=</span><span class="s">&quot;db&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;table&quot;</span> <span class="na">value=</span><span class="s">&quot;MY_TABLE&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;column&quot;</span> <span class="na">value=</span><span class="s">&quot;&#39;SEQ_VALUE&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;selector&quot;</span> <span class="na">value=</span><span class="s">&quot;SEQ_ID = &#39;PERSON&#39;&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;PERSON&quot;</span> <span class="na">count=</span><span class="s">&quot;100&quot;</span> <span class="na">consumer=</span><span class="s">&quot;cons&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">generator=</span><span class="s">&quot;sg&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/generate&gt;</span>
+<span class="nt">&lt;/setup&gt;</span>
+</code></pre></div>
+<h4 id="arbitrary-table">Arbitrary Table</h4>
+<p>You can support arbitrary complex sequence tables with a <strong>parameterized selector</strong>. It marks each parameter with a
+question mark (<strong>?</strong>) and must be invoked differently than the examples above, using a <strong>script</strong> that calls the <strong>
+generateWithParams(...)</strong> method:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;setup&gt;</span>
+    <span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;db&quot;</span> <span class="na">environment=</span><span class="s">&quot;mydb&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;sg&quot;</span> <span class="na">class=</span><span class="s">&quot;SequenceTableGenerator&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;database&quot;</span> <span class="na">ref=</span><span class="s">&quot;db&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;table&quot;</span> <span class="na">value=</span><span class="s">&quot;MY_TABLE&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;column&quot;</span> <span class="na">value=</span><span class="s">&quot;&#39;SEQ_VALUE&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;selector&quot;</span> <span class="na">value=</span><span class="s">&quot;MOD_ID = ? and ITEM_ID = ?&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+
+
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;PERSON&quot;</span> <span class="na">count=</span><span class="s">&quot;100&quot;</span> <span class="na">consumer=</span><span class="s">&quot;cons&quot;</span><span class="nt">&gt;</span> <span class="cm">&lt;!-- calculate mid and iid as required --&gt;</span>
+        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">script=</span><span class="s">&quot;sg.generateWithParams(mid, iid)&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/generate&gt;</span>
+<span class="nt">&lt;/setup&gt;</span>
+</code></pre></div>
+<h2 id="handling-of-common-columns">Handling of common Columns</h2>
+<p>In many databases, you encounter common columns like auditing information <code>created_by</code>, <code>created_at</code>, <code>updated_by</code>, <code>updated_at</code> or optimistic locking columns.</p>
+<p>See <a href="data_generation_concepts.html#default-attribute-settings">Default Attribute Settings</a> for instructions on how to
+define common default generation settings for these.</p>
+<h2 id="determining-attribute-values-by-a-database-query">Determining attribute values by a database query</h2>
+<p>You can use database queries to determine column values. A <strong>source</strong> attribute identifies the database to query and a
+selector the SQL query to perform:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;user_rank&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">selector=</span><span class="s">&quot;select rank from ranks where active = 1&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>You can use <strong>source</strong> and selector in <code>&lt;attribute&gt;</code>, <code>&lt;id&gt;</code>, <code>&lt;reference&gt;</code> and <code>&lt;variable&gt;</code> statements.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>With this syntax, the query's result set is iterated throughout the <code>&lt;generate&gt;</code> loop until its end is
+reached. In the example above, a result set with the rows [1], [2], [3] will result in the user_rank values 1 for the
+first generated entry, 2, for the second and 3 for the third. After that the end of the result set is reached, the
+component signals, that it is unavailable and Benerator will terminate the generation loop. If you configured more than
+3 objects to be generated, you will get an exception that Benerator was not able to provide the requested number of data
+sets. You have the following alternatives:</p>
+<ol>
+<li>
+<p>Cycling through the result set again and again (<code>cyclic="true"</code>)</p>
+</li>
+<li>
+<p>Apply a distribution choose a mode for selecting elements of the result set repeatedly or randomly</p>
+</li>
+<li>
+<p>If the query should be performed for each generated entity and is supposed to provide a single result, this is called
+   sub-query and is supported by a 'subQuery' attribute</p>
+</li>
+</ol>
+</div>
+<h3 id="cycling-through-query-result-sets">Cycling through query result sets</h3>
+<p>When using a selector in combination with <code>cyclic="true"</code>, the query is automatically repeated when the end of the
+result set is reached:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;user_rank&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">selector=</span><span class="s">&quot;select rank from ranks where active = 1&quot;</span> <span class="na">cyclic=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h3 id="applying-a-distribution-to-a-query">Applying a distribution to a query</h3>
+<p>When using a selector in combination with <strong>distribution</strong>, the query's result set is processed by the selected
+distribution algorithm. Depending on the distribution, the result set may be buffered. Result set elements may be
+provided uniquely or repeatedly in an ordered or a random fashion. See the 
+<a href="component_reference.html#distributions">Distributions Reference</a>. The most common distribution is the <code>random</code> 
+distribution which buffers the full result set and then provides a
+randomly chosen entry on each invocation.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;user_rank&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">selector=</span><span class="s">&quot;select rank from ranks where active = 1&quot;</span> <span class="na">distribution=</span><span class="s">&quot;random&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h3 id="sub-selectors">Sub selectors</h3>
+<p>Frequently you will encounter multi-field constraints in an entity which can be matched by a query. Usually this means
+to first generate a random value and then to impose a database query with the value generated before. The query's
+results are valid only for the currently generated entity, and in general only one query result row is expected. You
+have a kind of „sub-query“ which is handled best by using a <strong>subSelector</strong>. </p>
+<p>For example, you might offer products (table 'product') 
+in different geographical regions and have a cross-reference table product_region that describes, which
+products are available in which region:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">name=</span><span class="s">&quot;example&quot;</span> <span class="na">type=</span><span class="s">&quot;ex&quot;</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;region&quot;</span> <span class="na">values=</span><span class="s">&quot;&#39;americas&#39;,&#39;emea&#39;,&#39;asia&#39;&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;product&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span>
+               <span class="na">subSelector=</span><span class="s">&quot;{{&#39;select product_id from product_region where region_id = &#39; + this.region }}&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In the example, you need double brackets {{…}} in order to signal that <strong>this.region</strong> should be
+reevaluated on each invocation. When using a single bracket, the query memorizes the value of <strong>this.region</strong> at the
+first invocation and reuses it on each subsequent call.</p>
+</div>
+<h2 id="resolving-database-relations">Resolving Database Relations</h2>
+<h3 id="automatic-referencing">Automatic referencing</h3>
+<p><strong>By default</strong>, Benerator assumes that all relations are <strong>one-to-one</strong> as the most defensive choice. Thus, the
+following setup in which a table db_user references a table db_role will cause an error:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;db_role&quot;</span> <span class="na">count=</span><span class="s">&quot;10&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;db_user&quot;</span> <span class="na">count=</span><span class="s">&quot;100&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>This is because, assuming a <strong>one-to-one</strong> relationship, you <strong>can only</strong> generate as many users as unique roles are
+available!
+...and you have generated only 10 roles before. In other words, in fully automatic data generation, the number of user
+entries will be the number of role entries.</p>
+<p>In most cases you actually deal with many-to-one relationships and thus need to specify its characteristics explicitly,
+typically by using a distribution. Basically, a reference is defined by (column) <strong>name</strong>, (database) <strong>source</strong> and
+<strong>targetType</strong> (referenced table):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;setup&gt;</span>
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;db_role&quot;</span> <span class="na">count=</span><span class="s">&quot;10&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;db_user&quot;</span> <span class="na">count=</span><span class="s">&quot;100&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;role_fk&quot;</span> <span class="na">targetType=</span><span class="s">&quot;db_role&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">distribution=</span><span class="s">&quot;random&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/generate&gt;</span>
+    ...
+<span class="nt">&lt;/setup&gt;</span>
+</code></pre></div>
+<p>This will cause the creation of 100 users which are evenly distributed over the roles.</p>
+<h3 id="null-references">Null references</h3>
+<p>If you want to generate only null values, you can reduce the declaration to a <code>name</code> and <code>nullQuota="1"</code> element:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;db_user&quot;</span> <span class="na">count=</span><span class="s">&quot;100&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;role_fk&quot;</span> <span class="na">nullQuota=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<h3 id="selective-referencing">Selective Referencing</h3>
+<p>For restricting the objects referred to or using an individual way to construct the reference values, you can specify a
+selector which will be evaluated by the target system and return a reference value. For databases the selector needs to
+be a SQL where clause or complete query:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;setup&gt;</span>
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;db_role&quot;</span> <span class="na">count=</span><span class="s">&quot;10&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;db_user&quot;</span> <span class="na">count=</span><span class="s">&quot;100&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;role_fk&quot;</span> <span class="na">targetType=</span><span class="s">&quot;db_role&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">selector=</span><span class="s">&quot;role_name != &#39;admin&#39;&quot;</span>
+                   <span class="na">distribution=</span><span class="s">&quot;random&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/generate&gt;</span>
+    ...
+<span class="nt">&lt;/setup&gt;</span>
+</code></pre></div>
+<h3 id="other-referencing-options">Other referencing options</h3>
+<p>Besides selective referencing, you can use (almost) the full feature set of <code>&lt;attribute&gt;</code> elements to generate
+references, e.g. <code>constant</code>, <code>pattern</code>, <code>values</code>, <code>script</code>, etc. You could, e.g., configure the use of each role type by itself:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;setup&gt;</span>
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;db_user&quot;</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;role_fk&quot;</span> <span class="na">constant=</span><span class="s">&quot;&#39;admin&#39;&quot;</span><span class="nt">/&gt;</span>
+        ...
+    <span class="nt">&lt;/generate&gt;</span>
+
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;db_user&quot;</span> <span class="na">count=</span><span class="s">&quot;95&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;role_fk&quot;</span> <span class="na">constant=</span><span class="s">&quot;&#39;customer&#39;&quot;</span><span class="nt">/&gt;</span>
+        ...
+    <span class="nt">&lt;/generate&gt;</span>
+    ...
+<span class="nt">&lt;/setup&gt;</span>
+</code></pre></div>
+<h2 id="composite-keys">Composite Keys</h2>
+<p>Benerator does not provide an <strong>automated</strong> composite key handling, but you can configure it to handle them
+<strong>explicitly</strong>. The typical approach for this is a prototype query.</p>
+<h2 id="prototype-queries">Prototype Queries</h2>
+<p>For the general idea of prototype-based generation,
+see <a href="data_generation_concepts.html#prototype-based-data-generation">Prototype-based Data Generation</a>. In addition to the
+core features, the prototype approach is a good way to handle composite primary keys and composite foreign keys, since
+their components are available in combination.</p>
+<h3 id="prototype-queries-on-entities">Prototype Queries on Entities</h3>
+<p>When querying entities, you specify the database to query as <strong><code>source</code></strong>, the where clause of the select as <strong><code>selector</code></strong>, and
+the table which is queried as <strong><code>type</code></strong>. After that, you can access the results' attributes by their names:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">name=</span><span class="s">&quot;example&quot;</span> <span class="na">type=</span><span class="s">&quot;ex&quot;</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">&quot;_product&quot;</span>
+              <span class="na">type=</span><span class="s">&quot;MY_PRODUCT&quot;</span>
+              <span class="na">source=</span><span class="s">&quot;db&quot;</span>
+              <span class="na">selector=</span><span class="s">&quot;sysdate between VALID_FROM and VALID_TO&quot;</span>
+              <span class="na">distribution=</span><span class="s">&quot;random&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;PRODUCT_ID&quot;</span> <span class="na">script=</span><span class="s">&quot;_product.PRODUCT_ID&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;ROUTING_TYPE&quot;</span> <span class="na">script=</span><span class="s">&quot;_product.ROUTING_TYPE&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When aggregating data with a general query that is not (or cannot be) mapped to a type, you can access the results'
+column values as array elements (indices are 0-based):</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">&quot;_product&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span>
+          <span class="na">selector=</span><span class="s">&quot;select PRODUCT_ID, ROUTING_TYPE from MY_PRODUCT where sysdate between VALID_FROM and VALID_TO&quot;</span>
+          <span class="na">distribution=</span><span class="s">&quot;random&quot;</span><span class="nt">/&gt;</span>
+
+
+<span class="nt">&lt;generate</span> <span class="na">name=</span><span class="s">&quot;example&quot;</span> <span class="na">type=</span><span class="s">&quot;ex&quot;</span> <span class="na">count=</span><span class="s">&quot;5&quot;</span> <span class="na">consumer=</span><span class="s">&quot;ConsoleExporter&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;PRODUCT_ID&quot;</span> <span class="na">script=</span><span class="s">&quot;_product[0]&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;reference</span> <span class="na">name=</span><span class="s">&quot;ROUTNG_TYPE&quot;</span> <span class="na">script=</span><span class="s">&quot;_product[1]&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<h2 id="exporting-database-content">Exporting Database Content</h2>
+<p>The rows of a database table can be iterated simply. Here's an example for writing all users of a table <code>db_user</code> to a
+file <code>users.csv</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;iterate</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">type=</span><span class="s">&quot;db_user&quot;</span> <span class="na">consumer=</span><span class="s">&quot;new CSVEntityExporter(&#39;users.csv&#39;)&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>You can as well select a subset to iterate:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;iterate</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">type=</span><span class="s">&quot;db_user&quot;</span> <span class="na">selector=</span><span class="s">&quot;active = 1&quot;</span> <span class="na">consumer=</span><span class="s">&quot;new CSVEntityExporter(&#39;users.csv&#39;)&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h2 id="updating-database-entries">Updating Database Entries</h2>
+<p>When using a database, you can update existing entries.</p>
+<p>For example, if you have db_orders that refer (one-to-many) db_order_items, you can calculate the sum of the
+db_order_items' total_price values and write it to the db_order's total_price column:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;iterate</span> <span class="na">type=</span><span class="s">&quot;db_order&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db.updater()&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;total_price&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span>
+               <span class="na">selector=</span><span class="s">&quot;{{ftl:select sum(total_price) from db_order_item where order_id = ${db_order.id}}}&quot;</span>
+               <span class="na">cyclic=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/iterate&gt;</span>
+</code></pre></div>
+<p>The described update mechanism can also be used to anonymize production data –
+see <a href="introduction_to_benerator.html#production-data-anonymization">Production Data Anonymization</a>. For transferring user
+data from a source database <code>sourcedb</code> to a target database <code>testdb</code>, you would write</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;iterate</span> <span class="na">source=</span><span class="s">&quot;sourcedb&quot;</span> <span class="na">type=</span><span class="s">&quot;db_user&quot;</span> <span class="na">consumer=</span><span class="s">&quot;testdb&quot;</span><span class="nt">&gt;</span>
+
+    <span class="cm">&lt;!-- anonymize here --&gt;</span>
+
+<span class="nt">&lt;/iterate&gt;</span>
+</code></pre></div>
+<p>If you have duplicated the database and want to anonymize the copy by updating the tables, you would write</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;iterate</span> <span class="na">type=</span><span class="s">&quot;db_user&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db.updater()&quot;</span><span class="nt">&gt;</span>
+
+    <span class="cm">&lt;!-- anonymize here --&gt;</span>
+
+<span class="nt">&lt;/iterate&gt;</span>
+</code></pre></div>
+<h3 id="overwrite-output-table-name-with-inserter">Overwrite output table name with inserter</h3>
+<p>If you want to read data from one table, anonymize it and write it to a different table in the same database, you can
+use a special inserter:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;iterate</span> <span class="na">type=</span><span class="s">&quot;prod_user&quot;</span> <span class="na">source=</span><span class="s">&quot;db&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db.inserter(&#39;anon_user&#39;)&quot;</span><span class="nt">&gt;</span>
+
+    <span class="cm">&lt;!-- anonymize here --&gt;</span>
+
+<span class="nt">&lt;/iterate&gt;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>db.inserter() is the only way to overwrite the target table name for the consumer. 
+Otherwise, Benerator will always take the type as name and assumes both source and target 
+table have the same name. </p>
+<p>Using db.inserter() might also be helpful for creating staging tables 
+from multiple sources and persisting these in e.g. H2 databases. </p>
+</div>
+<h2 id="controlling-transactions">Controlling Transactions</h2>
+<p>By default, Benerator performs one transaction per data set that is generated. When generating huge amounts of data,
+transaction overhead quickly becomes significant, and you will want to insert several data set in a common transaction.
+You can use the <code>pageSize</code> argument to configure the number of data elements per transaction. For most databases and
+tasks, <code>pageSize="1000"</code> is a reasonable setting:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;user&quot;</span> <span class="na">count=</span><span class="s">&quot;1000000&quot;</span> <span class="na">pageSize=</span><span class="s">&quot;1000&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>For further hints on improving performance, refer to the <a href="performance_tuning.html">Performance</a> section.</p>
+<p>If you are nesting creation loops, you can set the transaction control for each level separately:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;user&quot;</span> <span class="na">count=</span><span class="s">&quot;1000&quot;</span> <span class="na">pageSize=</span><span class="s">&quot;100&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;order&quot;</span> <span class="na">count=</span><span class="s">&quot;50&quot;</span> <span class="na">pageSize=</span><span class="s">&quot;500&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>But an 'inner' transaction commit will commit the outer elements too, so you may get more transactions than you expect.
+The inner pageCount in the descriptor example makes the outer pageSize 10 effective, since there is a commit after 500
+orders. With 50 orders per customer, it is a commit for every 10th customer.</p>
+<p>In most cases it is feasible and more intuitive to make the sub creation loops simply join the outer transaction
+control, by setting their <code>pageSize</code> to zero:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;user&quot;</span> <span class="na">count=</span><span class="s">&quot;1000&quot;</span> <span class="na">pageSize=</span><span class="s">&quot;100&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;generate</span> <span class="na">type=</span><span class="s">&quot;order&quot;</span> <span class="na">count=</span><span class="s">&quot;50&quot;</span> <span class="na">pageSize=</span><span class="s">&quot;0&quot;</span> <span class="na">consumer=</span><span class="s">&quot;db&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/generate&gt;</span>
+</code></pre></div>
+<p>Any <code>&lt;generate&gt;</code> loop with <code>pageSize &gt; 0</code> is flushed when finished. For databases this means a commit.</p>
+<h2 id="transcoding-database-data">Transcoding Database Data</h2>
+<p>Benerator's transcoding feature enables you to</p>
+<ol>
+<li>
+<p>copy database entries from one database to another</p>
+</li>
+<li>
+<p>assign new primary key values while copying</p>
+</li>
+<li>
+<p>transcode relationships (automatically translate foreign key relationships to the new primary key values)</p>
+</li>
+<li>
+<p>merge relationships (make copied data refer to pre-existing data in the target database)</p>
+</li>
+</ol>
+<p>Features 1-3 are can be performed easily, for feature 4 you need to fulfill some preconditions.</p>
+<h3 id="copying-database-entries">Copying database entries</h3>
+<p>A transcoding task that involves one or more database tables is wrapped with a <code>&lt;transcodingTask&gt;</code> and for each table to
+be transcoded, there needs to be a <code>&lt;transcode&gt;</code> element that specifies the table name. The <code>&lt;transcode&gt;</code> steps must be
+specified in the order in which they can be applied without violating foreign key constraints. For example, if you have
+a table USER which references a table ROLE, you need to transcode ROLE first, then USER.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;transcodingTask</span> <span class="na">defaultSource=</span><span class="s">&quot;db1&quot;</span> <span class="na">target=</span><span class="s">&quot;db2&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;transcode</span> <span class="na">table=</span><span class="s">&quot;ROLE&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transcode</span> <span class="na">table=</span><span class="s">&quot;USER&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/transcodingTask&gt;</span>
+</code></pre></div>
+<p>This copies the full content of the tables ROLE and USER from db1 to db2.</p>
+<h3 id="restricting-the-copied-set">Restricting the copied Set</h3>
+<p>You can restrict the set of database entries to copy by using a <code>selector</code> attribute in the <code>&lt;transcode&gt;</code> element:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;transcodingTask</span> <span class="na">defaultSource=</span><span class="s">&quot;s&quot;</span> <span class="na">target=</span><span class="s">&quot;t&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;transcode</span> <span class="na">table=</span><span class="s">&quot;ROLE&quot;</span> <span class="na">selector=</span><span class="s">&quot;ID = 1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transcode</span> <span class="na">table=</span><span class="s">&quot;USER&quot;</span> <span class="na">selector=</span><span class="s">&quot;ROLE_ID = 1&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/transcodingTask&gt;</span>
+</code></pre></div>
+<p>Only the ROLE with id 1 and the USERs that refer role #1 are copied.</p>
+<h3 id="transcoding">Transcoding</h3>
+<p>You can overwrite primary key values and other attributes while you are transferring data using the normal Benerator
+syntax:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;transcodingTask</span> <span class="na">defaultSource=</span><span class="s">&quot;s&quot;</span> <span class="na">target=</span><span class="s">&quot;t&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;transcode</span> <span class="na">table=</span><span class="s">&quot;ROLE&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">generator=</span><span class="s">&quot;IncrementalIdGenerator&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/transcode&gt;</span>
+
+    <span class="nt">&lt;transcode</span> <span class="na">table=</span><span class="s">&quot;USER&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">generator=</span><span class="s">&quot;IncrementalIdGenerator&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/transcode&gt;</span>
+
+<span class="nt">&lt;/transcodingTask&gt;</span>
+</code></pre></div>
+<p>Each ROLE and USER gets a new primary key value, and the foreign key references from USER to ROLE are reassigned to
+match the new id values.</p>
+<h3 id="cascaded-transcoding">Cascaded Transcoding</h3>
+<p>As an easy approach to transcode graphs of dependent objects along with their parent object, they can be transcoded in
+cascade along with their '
+owner' object. This means, for each transcoded owner object, Benerator looks up, which database rows relate to it as
+defined in the cascade and transcodes them too. Thus, if you restrict the owners (e.g. company) to a subset of all
+available owners, the cascade statement assures that only database rows (e.g. department), which relate to this subset (
+company), are transcoded.</p>
+<p>A cascade statement consists of <code>&lt;cascade&gt;</code> element nested in a <code>&lt;transcode&gt;</code> element specifying a ref that tells, which
+columns of which table make up the table relationship. The Syntax is <code>table(column1 [, column2 [, …]])</code>, depending on the
+number of columns used as a foreign key. Benerator looks up the corresponding foreign key constraint in the database and
+finds out the type of relationship.</p>
+<p>As an example, if you want to transcode the rows of a company table and cascade to their departments, you would write</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;transcode</span> <span class="na">table=</span><span class="s">&quot;company&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cascade</span> <span class="na">ref=</span><span class="s">&quot;department(company_id)&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/transcode&gt;</span>
+</code></pre></div>
+<p>Cascades can be nested:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;transcode</span> <span class="na">table=</span><span class="s">&quot;company&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;cascade</span> <span class="na">ref=</span><span class="s">&quot;department(company_id)&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cascade</span> <span class="na">ref=</span><span class="s">&quot;employee(department_id)&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cascade&gt;</span>
+
+<span class="nt">&lt;/transcode&gt;</span>
+</code></pre></div>
+<p>In <code>&lt;cascade&gt;</code>, you can overwrite attributes, ids and references like in <code>&lt;transcode&gt;</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;transcode</span> <span class="na">table=</span><span class="s">&quot;company&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">generator=</span><span class="s">&quot;IncrementalIdGenerator&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;cascade</span> <span class="na">ref=</span><span class="s">&quot;department(company_id)&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/transcode&gt;</span>
+</code></pre></div>
+<h3 id="merging-foreign-key-relations">Merging Foreign Key Relations</h3>
+<p>Benerator allows you to merge data from different databases. To continue the example above, you could have ROLES and
+USERS in different databases and merge them into one single target database. This introduces a new requirement: Since
+you might have automatically assigned technical ids, an object with a given 'business' identity (e.g. user 'Volker
+Bergmann') might have different 'technical' ids (primary keys of value e.g. 10 or 1000) in different databases. Thus,
+you need to provide Benerator with a description, which technical id relates to which business id in which database.</p>
+<p>There are several alternatives available: Let us start with one of the simplest, and most widely used in order to give
+you an overview of the approach and then provide you with a complete list of possibilities.</p>
+<p>Let's assume the tables ROLE and USER each have a NAME column with unique identifiers. In this case, you can apply the
+unique-key identity mapping and store it in a file with the suffix <code>.id.xml</code>, e.g. <code>identities.id.xml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+
+<span class="nt">&lt;dbsanity&gt;</span>
+    <span class="nt">&lt;identity</span> <span class="na">table=</span><span class="s">&quot;ROLE&quot;</span> <span class="na">type=</span><span class="s">&quot;unique-key&quot;</span> <span class="na">columns=</span><span class="s">&quot;NAME&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;identity</span> <span class="na">table=</span><span class="s">&quot;USER&quot;</span> <span class="na">type=</span><span class="s">&quot;unique-key&quot;</span> <span class="na">columns=</span><span class="s">&quot;NAME&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/dbsanity&gt;</span>
+</code></pre></div>
+<p>This identity file enables Benerator to merge foreign key relationships in the transcoding process, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;transcodingTask</span> <span class="na">target=</span><span class="s">&quot;db3&quot;</span> <span class="na">identity=</span><span class="s">&quot;identity-def.xml&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;transcode</span> <span class="na">table=</span><span class="s">&quot;ROLE&quot;</span> <span class="na">source=</span><span class="s">&quot;db1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;transcode</span> <span class="na">table=</span><span class="s">&quot;USER&quot;</span> <span class="na">source=</span><span class="s">&quot;db2&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/transcodingTask&gt;</span>
+</code></pre></div>
+<h3 id="defining-identities">Defining Identities</h3>
+<p>Identities are defined in a file format taken from DB Sanity. Thus, it is XML and its root element is <code>&lt;dbsanity&gt;</code>.
+Under the root, all <code>&lt;identity&gt;</code>
+definitions are listed, each referring to a <strong>table</strong> and having a certain identity <strong>type</strong>, e.g.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+
+<span class="nt">&lt;dbsanity&gt;</span>
+    <span class="nt">&lt;identity</span> <span class="na">table=</span><span class="s">&quot;ROLE&quot;</span> <span class="na">type=</span><span class="s">&quot;...&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;identity</span> <span class="na">table=</span><span class="s">&quot;USER&quot;</span> <span class="na">type=</span><span class="s">&quot;...&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/dbsanity&gt;</span>
+</code></pre></div>
+<p>There are different types of entity definitions available:</p>
+<h4 id="natural-pk">natural-pk</h4>
+<p>The simplest type of identity applies if the primary key (PK) is a business key (natural key). In this case, use
+a <code>&lt;natural-pk&gt;</code> definition:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;identity</span> <span class="na">table=</span><span class="s">&quot;CURRENCY&quot;</span> <span class="na">type=</span><span class="s">&quot;natural-pk&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h4 id="unique-key">unique-key</h4>
+<p>If a non-pk-column or a combination of several columns is unique, use the <code>&lt;unique-key&gt;</code> identity and list the key
+components in a comma-separated list in a <code>columns</code> attribute:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;identity</span> <span class="na">table=</span><span class="s">&quot;PRODUCT&quot;</span> <span class="na">type=</span><span class="s">&quot;unique-key&quot;</span> <span class="na">columns=</span><span class="s">&quot;CATEGORY,CODE&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>You may as well include foreign keys in the list: Benerator will use the business id of the referenced objects to
+determine the identity of the referer.</p>
+<h4 id="nk-pk-query">nk-pk-query</h4>
+<p>In more complicated cases, you might need a definition style that gives you more freedom. The <code>&lt;nk-pk-query&gt;</code> allows you
+to specify an arbitrary SQL query which is supposed to return a pair of natural key and primary key values for each
+table row:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;identity</span> <span class="na">table=</span><span class="s">&quot;COUNTRY&quot;</span> <span class="na">type=</span><span class="s">&quot;nk-pk-query&quot;</span><span class="nt">&gt;</span>
+
+    select COUNTRY_NAME.NAME as NK, COUNTRY.ID as PK from COUNTRY_NAME join COUNTRY on COUNTRY_NAME.COUNTRY_ID =
+    COUNTRY.ID where COUNTRY_NAME.LANGUAGE = &#39;EN&#39;
+
+<span class="nt">&lt;/identity&gt;</span>
+</code></pre></div>
+<h4 id="sub-nk-pk-query">sub-nk-pk-query</h4>
+<p>A table's rows may have a complex identity definition, which is only unique in the context of a 'parent' row in another
+table. A good example is if a state name is only unique within a given country, not different countries may have a state
+of the same name, but different identities. The provided query must have the parent's primary key as <code>?</code> parameter:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;identity</span> <span class="na">type=</span><span class="s">&quot;sub-nk-pk-query&quot;</span> <span class="na">table=</span><span class="s">&quot;&quot;</span> <span class="na">parents=</span><span class="s">&quot;COUNTRY&quot;</span><span class="nt">&gt;</span>
+
+    select sn.STATE_NAME as SUB_NK, s.STATE_ID as PK from STATE s join STATE_NAME sn on sn.STATE_ID = s.STATE_ID where
+    sn.LANGUAGE_ID = &#39;ENG&#39; AND **s.COUNTRY_ID = ?**
+
+<span class="nt">&lt;/identity&gt;</span>
+</code></pre></div>
+<h3 id="limitations">Limitations</h3>
+<p>Currently, the amount of data that can be transcoded is limited by the amount of available Java heap memory, but as long
+as you do not transcode billions of data sets you are not supposed to get problems. Composite primary keys are not
+supported.</p>
+<h3 id="multi-schema-references">Multi-schema references</h3>
+<p>Benerator is scanning data sources for references and validity and check if all data types can be handled by Benerator
+in general.</p>
+<p>When you have a PostgreSQL database for example with the following data model:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">schema1</span><span class="p">;</span><span class="w"></span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">schema2</span><span class="p">;</span><span class="w"></span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">schema3</span><span class="p">;</span><span class="w"></span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">SEQUENCE</span><span class="w"> </span><span class="n">schema1</span><span class="p">.</span><span class="n">seq_id_gen</span><span class="w"> </span><span class="k">START</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">SEQUENCE</span><span class="w"> </span><span class="n">schema2</span><span class="p">.</span><span class="n">seq_id_gen</span><span class="w"> </span><span class="k">START</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">SEQUENCE</span><span class="w"> </span><span class="n">schema3</span><span class="p">.</span><span class="n">seq_id_gen</span><span class="w"> </span><span class="k">START</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">schema3</span><span class="p">.</span><span class="n">db_manufacturer</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="n">description</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">schema1</span><span class="p">.</span><span class="n">db_category</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">schema2</span><span class="p">.</span><span class="n">db_category</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">schema1</span><span class="p">.</span><span class="n">db_product</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="n">ean_code</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="n">category_id</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="n">manufacturer_id</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="n">price</span><span class="w"> </span><span class="nb">decimal</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="n">notes</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="n">description</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">db_product_category_fk</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">category_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">schema1</span><span class="p">.</span><span class="n">db_category</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">),</span><span class="w"></span>
+<span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">db_manufacturer_fk</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">manufacturer_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">schema3</span><span class="p">.</span><span class="n">db_manufacturer</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+<span class="k">COMMIT</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>you would have related data distributed into different schema. In Benerator script you would define 3 different data
+sources ...</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;setup&gt;</span>
+
+    <span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;schema1&quot;</span>
+              <span class="na">url=</span><span class="s">&quot;{dbUrl}&quot;</span>
+              <span class="na">driver=</span><span class="s">&quot;{dbDriver}&quot;</span>
+              <span class="na">schema=</span><span class="s">&quot;schema1&quot;</span>
+              <span class="na">user=</span><span class="s">&quot;{dbUser}&quot;</span>
+              <span class="na">password=</span><span class="s">&quot;{dbPassword}&quot;</span>
+              <span class="na">batch=</span><span class="s">&quot;{dbBatch}&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;schema2&quot;</span>
+              <span class="na">url=</span><span class="s">&quot;{dbUrl}&quot;</span>
+              <span class="na">driver=</span><span class="s">&quot;{dbDriver}&quot;</span>
+              <span class="na">schema=</span><span class="s">&quot;schema2&quot;</span>
+              <span class="na">user=</span><span class="s">&quot;{dbUser}&quot;</span>
+              <span class="na">password=</span><span class="s">&quot;{dbPassword}&quot;</span>
+              <span class="na">batch=</span><span class="s">&quot;{dbBatch}&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;schema3&quot;</span>
+              <span class="na">url=</span><span class="s">&quot;{dbUrl}&quot;</span>
+              <span class="na">driver=</span><span class="s">&quot;{dbDriver}&quot;</span>
+              <span class="na">schema=</span><span class="s">&quot;schema3&quot;</span>
+              <span class="na">user=</span><span class="s">&quot;{dbUser}&quot;</span>
+              <span class="na">password=</span><span class="s">&quot;{dbPassword}&quot;</span>
+              <span class="na">batch=</span><span class="s">&quot;{dbBatch}&quot;</span><span class="nt">/&gt;</span>
+    ...
+<span class="nt">&lt;/setup&gt;</span>
+</code></pre></div>
+<p>when you try to fill one of the tables, Benerator scans your data source and checks if all references are accessible. In
+this case, data source <strong><em>schema1</em></strong> has one table <strong><em>db_product</em></strong> with a foreign key reference into schema 3. The new
+mechanism is getting the foreign keys from your actual scope ...</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;schema1&quot;</span>
+          <span class="na">url=</span><span class="s">&quot;{dbUrl}&quot;</span>
+          <span class="na">driver=</span><span class="s">&quot;{dbDriver}&quot;</span>
+          <span class="na">schema=</span><span class="s">&quot;schema1&quot;</span>
+          <span class="na">user=</span><span class="s">&quot;{dbUser}&quot;</span>
+          <span class="na">password=</span><span class="s">&quot;{dbPassword}&quot;</span>
+          <span class="na">batch=</span><span class="s">&quot;{dbBatch}&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p><strong>schema1</strong> in this case. It contains one foreign key into a foreign schema ('db_product') , based on this meta
+information, Benerator decides what else is necessary to import into your scope. In this case it would be <strong>schema3</strong>.
+<em>The flag <code>includeTable="#all"</code> is not necessary anymore!</em></p>
+<h4 id="known-issue">Known issue</h4>
+<p>There is a known limitation when it comes to multischema. If there are two tables with the same name in different 
+schemas and both schemas are imported into your Benerator context, like </p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;schema1&quot;</span> <span class="na">url=</span><span class="s">&quot;{dbUrl}&quot;</span> <span class="na">driver=</span><span class="s">&quot;{dbDriver}&quot;</span> <span class="na">schema=</span><span class="s">&quot;schema1&quot;</span> <span class="na">user=</span><span class="s">&quot;{dbUser}&quot;</span> <span class="na">password=</span><span class="s">&quot;{dbPassword}&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;schema2&quot;</span> <span class="na">url=</span><span class="s">&quot;{dbUrl}&quot;</span> <span class="na">driver=</span><span class="s">&quot;{dbDriver}&quot;</span> <span class="na">schema=</span><span class="s">&quot;schema2&quot;</span> <span class="na">user=</span><span class="s">&quot;{dbUser}&quot;</span> <span class="na">password=</span><span class="s">&quot;{dbPassword}&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+<p>you might get an error because Benerator can't decide which table you want to access. </p>
+<p>As workaround exclude one of the conflicting table by using <code>excludeTable="db_user"</code> as below:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;schema1&quot;</span> <span class="na">url=</span><span class="s">&quot;{dbUrl}&quot;</span> <span class="na">driver=</span><span class="s">&quot;{dbDriver}&quot;</span> <span class="na">schema=</span><span class="s">&quot;schema1&quot;</span> <span class="na">user=</span><span class="s">&quot;{dbUser}&quot;</span> <span class="na">password=</span><span class="s">&quot;{dbPassword}&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;database</span> <span class="na">id=</span><span class="s">&quot;schema2&quot;</span> <span class="na">url=</span><span class="s">&quot;{dbUrl}&quot;</span> <span class="na">driver=</span><span class="s">&quot;{dbDriver}&quot;</span> <span class="na">schema=</span><span class="s">&quot;schema2&quot;</span> <span class="na">user=</span><span class="s">&quot;{dbUser}&quot;</span> <span class="na">password=</span><span class="s">&quot;{dbPassword}&quot;</span> <span class="na">excludeTable=</span><span class="s">&quot;db_user&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="distribution.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Distribution Concepts" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Distribution Concepts
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="message_queue_access.html" class="md-footer__link md-footer__link--next" aria-label="Next: Message Queue Access (Enterprise Edition)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Message Queue Access (Enterprise Edition)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2006 - 2022 rapiddweller GmbH & Volker Bergmann
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/rapiddweller/rapiddweller-benerator-ce" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/rapiddweller" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/rapiddweller/" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/intent/follow?screen_name=rapiddweller" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["search.suggest", "search.highlight", "search.share", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.top"], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="js/termynal.js"></script>
+      
+        <script src="js/custom.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="js/tablesort.js"></script>
+      
+    
+  </body>
+</html>
